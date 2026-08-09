@@ -1,8 +1,7 @@
-# falys.github.io
 # FALYS
 ![FALYS Logo](assets/images/logo.png)
 
-Enterprise File Integrity Monitoring (FIM) — real-time file event monitoring, verified user attribution, and self-healing agent-server connectivity.
+Enterprise File Integrity Monitoring (FIM): real-time file event monitoring, verified user attribution, and self-healing agent-server connectivity.
 
 **Live site:** https://maimoona20.github.io/falys.github.io/ 
 
