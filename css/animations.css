@@ -1,0 +1,573 @@
+/* =====================================================
+   FALYS WEBSITE - ANIMATIONS
+   ===================================================== */
+
+
+
+/* =====================
+   HERO GRID MOTION
+===================== */
+
+
+.hero-grid {
+
+    animation:
+    gridMove 25s linear infinite;
+
+}
+
+
+
+@keyframes gridMove {
+
+
+    from {
+
+        transform:
+        translateY(0);
+
+    }
+
+
+    to {
+
+        transform:
+        translateY(50px);
+
+    }
+
+
+}
+
+
+
+
+
+/* =====================
+   LOGO GLOW
+===================== */
+
+
+.logo-box {
+
+
+    animation:
+
+    logoPulse 3s ease-in-out infinite;
+
+
+}
+
+
+
+@keyframes logoPulse {
+
+
+    0% {
+
+        box-shadow:
+        0 0 15px rgba(0,234,255,.3);
+
+    }
+
+
+    50% {
+
+        box-shadow:
+        0 0 40px rgba(168,85,247,.6);
+
+    }
+
+
+    100% {
+
+        box-shadow:
+        0 0 15px rgba(0,234,255,.3);
+
+    }
+
+
+}
+
+
+
+
+
+
+/* =====================
+   DASHBOARD FLOAT
+===================== */
+
+
+.dashboard-preview {
+
+
+    animation:
+
+    dashboardFloat 6s ease-in-out infinite;
+
+
+}
+
+
+
+@keyframes dashboardFloat {
+
+
+    0%,
+    100% {
+
+        transform:
+        translateY(0);
+
+    }
+
+
+    50% {
+
+        transform:
+        translateY(-15px);
+
+    }
+
+
+}
+
+
+
+
+
+
+
+/* =====================
+   BUTTON SHINE
+===================== */
+
+
+.primary {
+
+
+    position:relative;
+
+    overflow:hidden;
+
+
+}
+
+
+
+.primary::before {
+
+
+    content:"";
+
+    position:absolute;
+
+
+    top:0;
+
+    left:-100%;
+
+
+    width:60%;
+
+    height:100%;
+
+
+    background:
+
+    linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.5),
+        transparent
+    );
+
+
+    transition:.6s;
+
+
+}
+
+
+
+.primary:hover::before {
+
+
+    left:120%;
+
+
+}
+
+
+
+
+
+
+
+
+/* =====================
+   FEATURE CARD GLOW
+===================== */
+
+
+.feature-card {
+
+
+    position:relative;
+
+    overflow:hidden;
+
+
+}
+
+
+
+.feature-card::after {
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    width:120px;
+
+    height:120px;
+
+
+    right:-60px;
+
+    bottom:-60px;
+
+
+    background:
+
+    radial-gradient(
+        circle,
+        rgba(0,234,255,.25),
+        transparent 70%
+    );
+
+
+    opacity:0;
+
+
+    transition:.4s;
+
+
+}
+
+
+
+.feature-card:hover::after {
+
+
+    opacity:1;
+
+
+}
+
+
+
+
+
+
+
+
+/* =====================
+   FLOW BOX ANIMATION
+===================== */
+
+
+.flow-box {
+
+
+    animation:
+
+    flowGlow 4s ease-in-out infinite;
+
+
+}
+
+
+
+
+.flow-box:nth-child(3) {
+
+
+    animation-delay:1s;
+
+
+}
+
+
+
+.flow-box:nth-child(5) {
+
+
+    animation-delay:2s;
+
+
+}
+
+
+
+@keyframes flowGlow {
+
+
+    0% {
+
+
+        box-shadow:
+        0 0 0 rgba(0,234,255,0);
+
+
+    }
+
+
+    50% {
+
+
+        box-shadow:
+        0 0 25px rgba(0,234,255,.18);
+
+
+    }
+
+
+    100% {
+
+
+        box-shadow:
+        0 0 0 rgba(0,234,255,0);
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+/* =====================
+   PIPELINE ANIMATION
+===================== */
+
+
+.pipeline div {
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.pipeline div:hover {
+
+
+    transform:
+
+    translateY(-8px);
+
+
+    border-color:
+
+    rgba(0,234,255,.5);
+
+
+    box-shadow:
+
+    0 0 25px rgba(0,234,255,.2);
+
+
+}
+
+
+
+
+
+
+
+
+/* =====================
+   FADE IN ANIMATION
+===================== */
+
+
+.fade-in {
+
+
+    animation:
+
+    fadeIn 1s ease forwards;
+
+
+}
+
+
+
+
+
+@keyframes fadeIn {
+
+
+    from {
+
+        opacity:0;
+
+        transform:
+        translateY(30px);
+
+
+    }
+
+
+    to {
+
+
+        opacity:1;
+
+        transform:
+        translateY(0);
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+/* =====================
+   SCAN LINE EFFECT
+   (security console feel)
+===================== */
+
+
+.dashboard-preview::after {
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    left:0;
+
+    right:0;
+
+
+    height:2px;
+
+
+    top:0;
+
+
+    background:
+
+    linear-gradient(
+        90deg,
+        transparent,
+        var(--cyan),
+        transparent
+    );
+
+
+    opacity:.6;
+
+
+    animation:
+
+    scan 4s linear infinite;
+
+
+}
+
+
+
+
+@keyframes scan {
+
+
+    from {
+
+
+        top:0;
+
+
+    }
+
+
+    to {
+
+
+        top:100%;
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+/* =====================
+   RESOURCE CARDS READY
+===================== */
+
+
+.resource-card:hover {
+
+
+    transform:
+
+    translateY(-10px);
+
+
+    border-color:
+
+    rgba(168,85,247,.5);
+
+
+}
+
+
+
+
+
+/* =====================
+   REDUCED MOTION SUPPORT
+===================== */
+
+
+@media(prefers-reduced-motion:reduce){
+
+
+    * {
+
+        animation:none!important;
+
+        transition:none!important;
+
+    }
+
+
+}
