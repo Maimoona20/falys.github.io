@@ -1,9 +1,10 @@
 # falys.github.io
 # FALYS
+![FALYS Logo](assets/images/logo.png)
 
 Enterprise File Integrity Monitoring (FIM) — real-time file event monitoring, verified user attribution, and self-healing agent-server connectivity.
 
-**Live site:** [Add your GitHub Pages URL here]
+**Live site:** https://maimoona20.github.io/falys.github.io/ 
 
 This repo hosts the static marketing site via GitHub Pages.
 
