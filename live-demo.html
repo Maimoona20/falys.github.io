@@ -28,10 +28,10 @@
 
     <style>
         /* =====================================================
-           FALYS LIVE DEMO — scoped styles (fd- prefix)
-           Everything below is namespaced so it can never collide
-           with the existing site CSS. Nothing above this file
-           was changed on the rest of the site.
+           FALYS LIVE DEMO — scoped styles, "fd-" prefix only.
+           Nothing here touches the rest of the site's CSS.
+           Palette/layout intentionally mirrors the real FALYS
+           SOC console (navy #0B1120 shell, cyan #06B6D4 accents).
         ===================================================== */
 
         .fd-disclaimer {
@@ -46,210 +46,107 @@
             font-size: 0.85rem;
         }
 
-        .fd-hero {
-            text-align: center;
-            padding: 70px 20px 30px;
+        .fd-hero-wrap { text-align: center; padding: 60px 20px 10px; }
+        .fd-hero-wrap .fd-badge {
+            display: inline-block; padding: 6px 16px; border-radius: 9999px;
+            background: rgba(0, 234, 255, 0.1); border: 1px solid rgba(0, 234, 255, 0.3);
+            color: var(--cyan); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em;
+            text-transform: uppercase; margin-bottom: 16px;
         }
+        .fd-hero-wrap h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.3rem; color: var(--text); margin-bottom: 10px; }
+        .fd-hero-wrap p { color: var(--muted); max-width: 620px; margin: 0 auto; font-size: 1rem; }
 
-        .fd-hero .fd-badge {
-            display: inline-block;
-            padding: 6px 16px;
-            border-radius: 9999px;
-            background: rgba(0, 234, 255, 0.1);
-            border: 1px solid rgba(0, 234, 255, 0.3);
-            color: var(--cyan);
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            margin-bottom: 18px;
-        }
-
-        .fd-hero h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.6rem;
-            color: var(--text);
-            margin-bottom: 12px;
-        }
-
-        .fd-hero p {
-            color: var(--muted);
-            max-width: 640px;
-            margin: 0 auto;
-            font-size: 1.05rem;
-        }
-
-        /* ---- App shell (mirrors the real FALYS SOC dashboard) ---- */
+        /* ---- App shell ---- */
         .fd-app {
-            background: #0B1120;
-            color: #E2E8F0;
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            border-radius: 22px;
-            max-width: 1400px;
-            margin: 36px auto 90px;
-            border: 1px solid #263042;
-            overflow: hidden;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+            background: #0B1120; color: #E2E8F0; font-family: 'Segoe UI', system-ui, sans-serif;
+            border-radius: 20px; max-width: 1440px; margin: 30px auto 90px;
+            border: 1px solid #263042; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,.45);
         }
 
         .fd-topbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-            padding: 18px 26px;
-            background: #111827;
-            border-bottom: 1px solid #263042;
-            flex-wrap: wrap;
+            display: flex; align-items: center; justify-content: space-between; gap: 16px;
+            padding: 14px 24px; background: #0F172A; border-bottom: 1px solid #263042; flex-wrap: wrap;
         }
-
-        .fd-logo {
-            font-size: 22px;
-            font-weight: bold;
-            color: #06B6D4;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .fd-logo { font-size: 21px; font-weight: bold; color: #06B6D4; display: flex; align-items: center; gap: 10px; }
+        .fd-user-block { font-size: 0.78rem; color: #94A3B8; line-height: 1.5; }
+        .fd-user-block strong { color: #E2E8F0; }
+        .fd-signout {
+            display: inline-flex; align-items: center; gap: 6px; margin-top: 2px;
+            background: #1E2937; border: 1px solid #334155; color: #CBD5E1;
+            padding: 3px 10px; border-radius: 6px; font-size: 0.72rem; cursor: default;
         }
-
-        .fd-live {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.85rem;
-            color: #94A3B8;
-        }
-
-        .fd-live-dot {
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            background: #22C55E;
-            box-shadow: 0 0 8px #22C55E;
-            animation: fd-pulse 1.5s infinite;
-        }
-
-        @keyframes fd-pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.35; }
-        }
-
-        .fd-topright {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
+        .fd-topright { display: flex; align-items: center; gap: 12px; }
         .fd-reset-btn, .fd-inject-btn {
-            background: #1E2937;
-            border: 1px solid #334155;
-            color: #CBD5E1;
-            padding: 8px 14px;
-            border-radius: 9999px;
-            font-size: 0.82rem;
-            cursor: pointer;
-            transition: all .2s;
+            background: #1E2937; border: 1px solid #334155; color: #CBD5E1;
+            padding: 8px 14px; border-radius: 9999px; font-size: 0.8rem; cursor: pointer; transition: all .2s;
         }
         .fd-inject-btn { color: #0F172A; background: #06B6D4; border-color: #06B6D4; font-weight: 600; }
         .fd-reset-btn:hover { border-color: #06B6D4; color: #06B6D4; }
         .fd-inject-btn:hover { background: #22D3EE; }
 
-        .fd-body {
-            display: flex;
-            min-height: 640px;
-        }
+        .fd-body { display: flex; min-height: 640px; }
 
-        .fd-sidebar {
-            width: 220px;
-            flex-shrink: 0;
-            background: #111827;
-            border-right: 1px solid #263042;
-            padding: 16px 0;
-        }
-
+        .fd-sidebar { width: 216px; flex-shrink: 0; background: #0F172A; border-right: 1px solid #263042; padding: 14px 0; }
         .fd-nav-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 13px 22px;
-            color: #CBD5E1;
-            font-size: 0.92rem;
-            cursor: pointer;
-            border-left: 3px solid transparent;
-            transition: all .15s;
+            display: flex; align-items: center; gap: 12px; padding: 13px 22px; color: #CBD5E1;
+            font-size: 0.92rem; cursor: pointer; border-left: 3px solid transparent; transition: all .15s;
         }
+        .fd-nav-item:hover { background: #16202f; color: #67E8F9; }
+        .fd-nav-item.active { background: #1E2937; color: #06B6D4; border-left-color: #06B6D4; }
+        .fd-nav-item i { width: 16px; text-align: center; }
 
-        .fd-nav-item:hover { background: #1a2332; color: #67E8F9; }
-
-        .fd-nav-item.active {
-            background: #1E2937;
-            color: #06B6D4;
-            border-left-color: #06B6D4;
-        }
-
-        .fd-main {
-            flex: 1;
-            padding: 26px 28px 40px;
-            min-width: 0;
-        }
-
+        .fd-main { flex: 1; padding: 28px 30px 44px; min-width: 0; }
         .fd-panel { display: none; }
         .fd-panel.active { display: block; animation: fd-fade .25s ease; }
         @keyframes fd-fade { from { opacity: 0; transform: translateY(4px);} to { opacity: 1; transform: none; } }
 
-        .fd-panel-title {
-            font-size: 1.5rem;
-            color: #F1F5F9;
-            margin-bottom: 4px;
-        }
-        .fd-panel-sub { color: #64748B; font-size: 0.85rem; margin-bottom: 22px; }
+        .fd-page-title { font-size: 2rem; font-weight: 700; color: #F1F5F9; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+        .fd-page-sub { color: #64748B; font-size: 0.85rem; margin: 6px 0 24px; }
+        .fd-live-inline { display: inline-flex; align-items: center; gap: 7px; font-size: 0.88rem; color: #94A3B8; font-weight: 500; }
+        .fd-live-dot { width: 9px; height: 9px; border-radius: 50%; background: #22C55E; box-shadow: 0 0 8px #22C55E; animation: fd-pulse 1.5s infinite; flex-shrink:0; }
+        .fd-live-dot.paused { background: #64748B; box-shadow: none; animation: none; }
+        @keyframes fd-pulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
 
-        .fd-kpi-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-
-        .fd-kpi-card, .fd-card {
-            background: #131c2e;
-            border: 1px solid #263042;
-            border-radius: 14px;
-            padding: 20px;
-        }
-
-        .fd-kpi-label { color: #94A3B8; font-size: 0.78rem; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 8px; }
-        .fd-kpi-value { font-size: 2.1rem; font-weight: 700; color: #06B6D4; line-height: 1; margin-bottom: 6px; }
-        .fd-kpi-value.red { color: #EF4444; }
-        .fd-kpi-value.green { color: #22C55E; }
-        .fd-kpi-value.violet { color: #A78BFA; }
+        .fd-kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; margin-bottom: 26px; }
+        .fd-kpi-card, .fd-card { background: #111827; border: 1px solid #263042; border-radius: 14px; padding: 20px; }
+        .fd-kpi-label { color: #94A3B8; font-size: 0.75rem; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 10px; }
+        .fd-kpi-value { font-size: 2.4rem; font-weight: 700; color: #06B6D4; line-height: 1; margin-bottom: 8px; }
+        .fd-kpi-value.red { color: #EF4444; } .fd-kpi-value.green { color: #22C55E; } .fd-kpi-value.violet { color: #A78BFA; }
         .fd-kpi-sub { font-size: 0.78rem; color: #64748B; }
-        .fd-kpi-sub .dot { color: #22C55E; }
+        .fd-kpi-sub .go { color: #22C55E; } .fd-kpi-sub .go-red { color: #EF4444; }
 
-        .fd-grid-2 { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 20px; }
-        .fd-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 20px; }
-        @media (max-width: 1000px) { .fd-grid-2, .fd-grid-3 { grid-template-columns: 1fr; } }
+        .fd-card h3 { font-size: 0.95rem; color: #E2E8F0; margin-bottom: 14px; font-weight: 600; display:flex; align-items:center; gap:8px; }
+        .fd-card-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom: 12px; flex-wrap: wrap; }
+        .fd-chart-box { position: relative; height: 230px; }
 
-        .fd-card h3 { font-size: 0.95rem; color: #E2E8F0; margin-bottom: 14px; font-weight: 600; }
-        .fd-chart-box { position: relative; height: 240px; }
+        .fd-grid-2 { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 22px; }
+        .fd-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 22px; }
+        .fd-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 22px; }
+        @media (max-width: 1100px) { .fd-grid-2, .fd-grid-3, .fd-grid-4 { grid-template-columns: 1fr; } }
 
-        .fd-timeline { list-style: none; max-height: 360px; overflow-y: auto; padding-right: 4px; }
-        .fd-timeline li {
-            padding: 11px 0; border-bottom: 1px solid #263042;
-            display: flex; align-items: center; gap: 12px; font-size: 0.85rem;
-        }
+        .fd-pillbtn { background:#1E2937; border:1px solid #334155; color:#CBD5E1; padding:8px 16px; border-radius:9999px; font-size:0.8rem; cursor:pointer; display:inline-flex; align-items:center; gap:7px; }
+        .fd-pillbtn:hover { border-color:#06B6D4; color:#67E8F9; }
+        .fd-pillbtn.solid { background:#06B6D4; border-color:#06B6D4; color:#0F172A; font-weight:600; }
+        .fd-pillbtn.solid:hover { background:#22D3EE; }
+        .fd-count-chip { background:#0F172A; padding:1px 8px; border-radius:9999px; font-size:0.72rem; }
+
+        /* timeline */
+        .fd-timeline { list-style: none; max-height: 380px; overflow-y: auto; padding-right: 4px; }
+        .fd-timeline li { padding: 11px 0; border-bottom: 1px solid #263042; font-size: 0.85rem; }
         .fd-timeline li:last-child { border-bottom: none; }
-        .fd-timeline .t { font-family: monospace; color: #64748B; width: 62px; flex-shrink: 0; font-size: 0.78rem;}
-        .fd-timeline .host { color: #E2E8F0; font-weight: 600; flex-shrink: 0; }
+        .fd-timeline .tl-date { color:#64748B; font-size:0.72rem; display:block; margin-bottom:2px; }
+        .fd-timeline .tl-row { display:flex; align-items:center; gap:12px; }
+        .fd-timeline .t { font-family: monospace; color: #64748B; width: 64px; flex-shrink: 0; font-size: 0.78rem;}
+        .fd-timeline .host { color: #E2E8F0; font-weight: 600; flex-shrink: 0; max-width:180px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
         .fd-timeline .file { color: #94A3B8; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1;}
         @keyframes fd-flash { 0% { background: rgba(6,182,212,.28);} 100% { background: transparent; } }
         .fd-timeline li.flash { animation: fd-flash 1.4s ease-out; }
+        .fd-day-sep { color:#475569; font-size:0.72rem; text-transform:uppercase; letter-spacing:.05em; margin:16px 0 6px; padding-top:10px; border-top:1px dashed #263042; }
+        .fd-day-sep:first-child { border-top:none; margin-top:0; padding-top:0; }
 
-        .fd-pill {
-            display: inline-block; padding: 2px 10px; border-radius: 9999px;
-            font-size: 0.72rem; font-weight: 700; white-space: nowrap;
-        }
+        .fd-pill { display: inline-block; padding: 2px 10px; border-radius: 9999px; font-size: 0.72rem; font-weight: 700; white-space: nowrap; }
 
+        /* toolbar / inputs */
         .fd-toolbar { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; align-items: center; }
         .fd-input, .fd-select {
             background: #1E2937; border: 1px solid #334155; color: #E2E8F0;
@@ -258,61 +155,97 @@
         .fd-input { flex: 1; min-width: 180px; }
         .fd-input::placeholder { color: #64748B; }
 
+        /* table */
         .fd-table-wrap { overflow-x: auto; }
-        .fd-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+        .fd-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
         .fd-table th, .fd-table td { padding: 11px 12px; text-align: left; border-bottom: 1px solid #263042; white-space: nowrap; }
-        .fd-table th { color: #94A3B8; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: .03em; }
-        .fd-table td.file { white-space: normal; word-break: break-all; color: #CBD5E1; }
+        .fd-table th { color: #94A3B8; font-weight: 600; font-size: 0.72rem; text-transform: uppercase; letter-spacing: .03em; background:#141d2e; }
+        .fd-table td.file { white-space: normal; word-break: break-all; color: #CBD5E1; font-family: monospace; font-size:0.78rem; }
+        .fd-table tr:hover td { background: #131c2e; }
         .fd-pager { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; color: #64748B; font-size: 0.8rem; }
         .fd-pager button { background: #1E2937; border: 1px solid #334155; color: #CBD5E1; padding: 6px 14px; border-radius: 8px; cursor: pointer; font-size: 0.8rem; }
         .fd-pager button:disabled { opacity: 0.4; cursor: default; }
+        .fd-verify-pill { font-size:0.62rem; font-weight:700; padding:1px 7px; border-radius:9999px; margin-left:6px; background:rgba(245,158,11,.15); color:#F59E0B; }
 
-        .fd-agent-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
-        .fd-agent-card { background: #131c2e; border: 1px solid #263042; border-radius: 12px; padding: 14px 16px; }
-        .fd-agent-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
-        .fd-agent-host { font-weight: 600; font-size: 0.85rem; color: #E2E8F0; }
-        .fd-dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; margin-right: 6px; }
-        .fd-agent-meta { color: #64748B; font-size: 0.75rem; line-height: 1.5; }
+        /* email log */
+        .fd-email-panel { margin-bottom: 20px; }
+        .fd-email-item { border-bottom:1px solid #263042; padding:14px 0; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+        .fd-email-item:last-child { border-bottom:none; }
+        .fd-email-subject { font-weight:700; font-size:0.88rem; margin-bottom:6px; display:flex; align-items:center; gap:8px; }
+        .fd-email-fields { font-size:0.8rem; color:#CBD5E1; line-height:1.7; }
+        .fd-email-fields b { color:#94A3B8; font-weight:600; }
+        .fd-email-status { display:inline-flex; align-items:center; gap:6px; font-size:0.76rem; font-weight:600; padding:4px 10px; border-radius:9999px; margin-top:8px; }
+        .fd-email-status.ok { color:#22C55E; background:rgba(34,197,94,.12); }
+        .fd-email-status.warn { color:#F59E0B; background:rgba(245,158,11,.12); }
+        .fd-email-status.fail { color:#EF4444; background:rgba(239,68,68,.12); }
+        .fd-email-note { font-size:0.74rem; color:#64748B; margin-top:4px; }
+        .fd-email-time { font-size:0.72rem; color:#64748B; white-space:nowrap; }
 
-        .fd-alert { padding: 14px 16px; margin-bottom: 10px; border-radius: 10px; background: #131c2e; border-left: 4px solid #334155; }
-        .fd-alert.high { border-left-color: #EF4444; }
-        .fd-alert.medium { border-left-color: #F59E0B; }
-        .fd-alert-top { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 6px; flex-wrap: wrap; }
-        .fd-alert-body { font-size: 0.85rem; color: #E2E8F0; margin-bottom: 4px; }
-        .fd-alert-meta { color: #64748B; font-size: 0.75rem; }
-        .fd-status-ok { color: #22C55E; }
-        .fd-status-fail { color: #EF4444; }
+        /* agents */
+        .fd-deploy-card { background:#111827; border:1px solid #263042; border-radius:14px; padding:20px 22px; margin-bottom:20px; }
+        .fd-deploy-grid { display:grid; grid-template-columns: 1fr 1.4fr 1.4fr auto; gap:14px; margin-top:14px; align-items:end; }
+        @media (max-width: 900px) { .fd-deploy-grid { grid-template-columns: 1fr; } }
+        .fd-field-label { font-size:0.75rem; color:#94A3B8; margin-bottom:6px; display:block; }
+        .fd-deploy-note { font-size:0.75rem; color:#64748B; margin-top:10px; }
+        .fd-agent-row { border-left:4px solid #334155; background:#111827; border-radius:10px; padding:14px 18px; margin-bottom:10px; }
+        .fd-agent-row.online { border-left-color:#22C55E; }
+        .fd-agent-row.offline { border-left-color:#EF4444; }
+        .fd-agent-row-top { font-weight:700; font-size:0.95rem; color:#F1F5F9; }
+        .fd-agent-row-mid { font-size:0.82rem; color:#CBD5E1; margin-top:3px; }
+        .fd-agent-row-mid .st-on { color:#22C55E; font-weight:600; }
+        .fd-agent-row-mid .st-off { color:#EF4444; font-weight:600; }
+        .fd-agent-row-bottom { font-size:0.76rem; color:#64748B; margin-top:2px; }
 
-        .fd-settings-row {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 16px 0; border-bottom: 1px solid #263042; gap: 20px; flex-wrap: wrap;
-        }
+        /* detections */
+        .fd-guide-box { background:#0F172A; border:1px solid #263042; border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:0.8rem; color:#94A3B8; cursor:pointer; }
+        .fd-guide-toggle { display:flex; justify-content:space-between; align-items:center; }
+        .fd-guide-body { display:none; margin-top:12px; padding-top:12px; border-top:1px solid #263042; }
+        .fd-guide-body.open { display:block; }
+        .fd-guide-body div { padding:5px 0; }
+        .fd-det-kpi-grid { display:grid; grid-template-columns: repeat(5, 1fr); gap:16px; margin-bottom:20px; }
+        @media (max-width: 1100px) { .fd-det-kpi-grid { grid-template-columns: repeat(2,1fr); } }
+        .fd-det-kpi { background:#111827; border:1px solid #263042; border-radius:14px; padding:16px 18px; }
+        .fd-det-kpi-label { font-size:0.68rem; text-transform:uppercase; letter-spacing:.04em; color:#94A3B8; display:flex; justify-content:space-between; }
+        .fd-det-kpi-value { font-size:1.9rem; font-weight:700; margin-top:8px; }
+        .fd-tier-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; }
+        .fd-tier-label { width: 90px; font-size: 12.5px; color: #CBD5E1; flex-shrink: 0; }
+        .fd-tier-track { flex: 1; height: 8px; background: #1E2937; border-radius: 4px; overflow: hidden; }
+        .fd-tier-fill { display: block; height: 100%; border-radius: 4px; }
+        .fd-tier-count { width: 34px; text-align: right; font-weight: 700; font-size: 12.5px; }
+        .fd-reason-toggle { color:#06B6D4; font-size:0.74rem; cursor:pointer; background:none; border:none; padding:0; }
+        .fd-reason-list { display:none; font-size:0.72rem; color:#94A3B8; padding:6px 0 0 14px; list-style: disc; }
+        .fd-reason-list.open { display:block; }
+        .fd-score-chip { background:#1E2937; padding:2px 9px; border-radius:6px; font-size:0.76rem; font-weight:700; }
+        .fd-conf-track { width:80px; height:6px; background:#1E2937; border-radius:4px; overflow:hidden; display:inline-block; vertical-align:middle; margin-right:6px; }
+        .fd-conf-fill { display:block; height:100%; background:#06B6D4; }
+
+        /* settings */
+        .fd-settings-row { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid #263042; gap: 20px; flex-wrap: wrap; }
         .fd-settings-row:last-child { border-bottom: none; }
-        .fd-settings-label { font-size: 0.9rem; color: #E2E8F0; }
-        .fd-settings-desc { font-size: 0.78rem; color: #64748B; margin-top: 3px; max-width: 480px; }
-
-        .fd-switch { position: relative; width: 46px; height: 26px; flex-shrink: 0; }
+        .fd-settings-label { font-size: 0.9rem; color: #E2E8F0; font-weight:600; }
+        .fd-settings-desc { font-size: 0.78rem; color: #64748B; margin-top: 3px; max-width: 320px; }
+        .fd-switch { position: relative; width: 44px; height: 25px; flex-shrink: 0; }
         .fd-switch input { opacity: 0; width: 0; height: 0; }
         .fd-slider { position: absolute; inset: 0; background: #334155; border-radius: 9999px; cursor: pointer; transition: .2s; }
-        .fd-slider::before { content: ""; position: absolute; width: 20px; height: 20px; left: 3px; top: 3px; background: white; border-radius: 50%; transition: .2s; }
+        .fd-slider::before { content: ""; position: absolute; width: 19px; height: 19px; left: 3px; top: 3px; background: white; border-radius: 50%; transition: .2s; }
         .fd-switch input:checked + .fd-slider { background: #06B6D4; }
-        .fd-switch input:checked + .fd-slider::before { transform: translateX(20px); }
+        .fd-switch input:checked + .fd-slider::before { transform: translateX(19px); }
 
-        .fd-toast-wrap { position: fixed; bottom: 24px; right: 24px; z-index: 5000; display: flex; flex-direction: column; gap: 10px; }
+        .fd-toast-wrap { position: fixed; bottom: 24px; right: 24px; z-index: 5000; display: flex; flex-direction: column; gap: 10px; max-width:90vw; }
         .fd-toast {
-            background: #111827; border: 1px solid #06B6D4; color: #E2E8F0;
-            padding: 14px 18px; border-radius: 12px; font-size: 0.85rem; max-width: 320px;
-            box-shadow: 0 12px 30px rgba(0,0,0,.4); display: flex; gap: 10px; align-items: flex-start;
-            animation: fd-toast-in .25s ease;
+            background: #111827; border: 1px solid #06B6D4; color: #E2E8F0; padding: 14px 18px; border-radius: 12px;
+            font-size: 0.85rem; max-width: 320px; box-shadow: 0 12px 30px rgba(0,0,0,.4);
+            display: flex; gap: 10px; align-items: flex-start; animation: fd-toast-in .25s ease;
         }
         @keyframes fd-toast-in { from { opacity: 0; transform: translateX(20px);} to { opacity: 1; transform: none; } }
         .fd-toast i { color: #06B6D4; margin-top: 2px; }
 
-        @media (max-width: 800px) {
+        @media (max-width: 820px) {
             .fd-body { flex-direction: column; }
             .fd-sidebar { width: 100%; display: flex; overflow-x: auto; padding: 8px; }
-            .fd-nav-item { border-left: none; border-bottom: 3px solid transparent; padding: 10px 14px; flex-shrink: 0; }
+            .fd-nav-item { border-left: none; border-bottom: 3px solid transparent; padding: 10px 14px; flex-shrink: 0; white-space:nowrap; }
             .fd-nav-item.active { border-left: none; border-bottom-color: #06B6D4; }
+            .fd-det-kpi-grid { grid-template-columns: repeat(2,1fr); }
         }
     </style>
 </head>
@@ -331,32 +264,32 @@
                 <a href="platform.html">Platform</a>
                 <a href="resources.html">Resources</a>
                 <a href="live-demo.html" style="color:var(--cyan);">Live Demo</a>
-                <a href="pricing.html">Pricing</a>
                 <a href="contact.html">Contact</a>
             </div>
         </nav>
     </header>
 
     <!-- ================= HERO ================= -->
-    <section class="fd-hero">
+    <section class="fd-hero-wrap">
         <span class="fd-badge"><i class="fas fa-play"></i>&nbsp; Interactive Demo</span>
-        <h1>See the FALYS SOC dashboard in action</h1>
-        <p>This is a fully interactive walkthrough of the FALYS console — real UI, simulated data. Click around
-            the tabs, filter events, and watch new detections and email alerts stream in live.</p>
+        <h1>See the FALYS SOC console in action</h1>
+        <p>This is the real console layout — Home, Dashboard, Event History, Agents, Detections and Settings —
+            wired up to simulated data instead of a live deployment. Click around freely.</p>
     </section>
 
     <div class="fd-disclaimer">
         <i class="fas fa-circle-info"></i>
-        All endpoints, events, alerts and emails on this page are synthetically generated for demonstration
-        purposes and reset each time you reload. No real infrastructure, files, or inboxes are involved.
+        Every endpoint, event, alert and email below is synthetically generated in your browser for demonstration
+        purposes and regenerates on reload. No real infrastructure, files or inboxes are involved.
     </div>
 
     <!-- ================= APP SHELL ================= -->
     <div class="fd-app">
         <div class="fd-topbar">
-            <div style="display:flex; align-items:center; gap:22px; flex-wrap:wrap;">
-                <div class="fd-logo"><i class="fas fa-shield-alt"></i> FALYS SOC</div>
-                <div class="fd-live"><span class="fd-live-dot"></span> <span id="fd-live-text">Live simulation running</span></div>
+            <div class="fd-logo"><i class="fas fa-shield-alt"></i> FALYS</div>
+            <div class="fd-user-block">
+                <i class="fas fa-user-circle"></i> Administrator<br>
+                Signed in as <strong>admin</strong> · <span class="fd-signout"><i class="fas fa-right-from-bracket"></i> Sign Out</span>
             </div>
             <div class="fd-topright">
                 <button class="fd-inject-btn" id="fd-inject-btn"><i class="fas fa-bolt"></i> Simulate an attack</button>
@@ -366,209 +299,314 @@
 
         <div class="fd-body">
             <div class="fd-sidebar" id="fd-sidebar">
-                <div class="fd-nav-item active" data-panel="overview"><i class="fas fa-tachometer-alt"></i> Overview</div>
+                <div class="fd-nav-item active" data-panel="home"><i class="fas fa-house"></i> Home</div>
+                <div class="fd-nav-item" data-panel="dashboard"><i class="fas fa-gauge-high"></i> Dashboard</div>
                 <div class="fd-nav-item" data-panel="history"><i class="fas fa-list"></i> Event History</div>
+                <div class="fd-nav-item" data-panel="timeline"><i class="fas fa-clock"></i> Timeline</div>
                 <div class="fd-nav-item" data-panel="agents"><i class="fas fa-desktop"></i> Agents</div>
-                <div class="fd-nav-item" data-panel="alerts"><i class="fas fa-bell"></i> Alerts &amp; Email Log</div>
                 <div class="fd-nav-item" data-panel="detections"><i class="fas fa-shield-virus"></i> Detections</div>
-                <div class="fd-nav-item" data-panel="settings"><i class="fas fa-cog"></i> Settings</div>
+                <div class="fd-nav-item" data-panel="settings"><i class="fas fa-gear"></i> Settings</div>
             </div>
 
             <div class="fd-main">
 
-                <!-- ===== OVERVIEW ===== -->
-                <div class="fd-panel active" data-panel="overview">
-                    <div class="fd-panel-title">Security Operations Overview</div>
-                    <div class="fd-panel-sub">Real-time posture across every monitored endpoint</div>
+                <!-- ===== HOME ===== -->
+                <div class="fd-panel active" data-panel="home">
+                    <div style="text-align:center; padding:50px 10px 30px; background:linear-gradient(135deg,#1E2937,#0F172A); border-radius:18px; margin-bottom:30px;">
+                        <h1 style="font-size:2.6rem; background:linear-gradient(90deg,#06B6D4,#67E8F9); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:14px; font-family:'Space Grotesk',sans-serif;">FALYS Security Operations Center</h1>
+                        <p style="color:#94A3B8; font-size:1.1rem; max-width:600px; margin:0 auto 30px;">Real-Time Filesystem Anomaly Detection &amp; Enterprise-Grade Threat Response</p>
+                        <button class="fd-pillbtn solid" id="fd-open-dashboard" style="padding:12px 26px; font-size:0.9rem;"><i class="fas fa-gauge-high"></i> Open Dashboard</button>
+                    </div>
 
                     <div class="fd-kpi-grid">
                         <div class="fd-kpi-card">
                             <div class="fd-kpi-label">Endpoints Protected</div>
-                            <div class="fd-kpi-value" id="kpi-endpoints">0</div>
-                            <div class="fd-kpi-sub" id="kpi-endpoints-sub">—</div>
+                            <div class="fd-kpi-value" id="home-endpoints">0</div>
+                            <div class="fd-kpi-sub" id="home-endpoints-sub">—</div>
                         </div>
                         <div class="fd-kpi-card">
-                            <div class="fd-kpi-label">Events Logged</div>
-                            <div class="fd-kpi-value" id="kpi-events">0</div>
-                            <div class="fd-kpi-sub" id="kpi-events-sub">— in the last hour</div>
+                            <div class="fd-kpi-label">Total Events Logged</div>
+                            <div class="fd-kpi-value" id="home-events">0</div>
+                            <div class="fd-kpi-sub" id="home-events-sub">— in the last hour</div>
                         </div>
                         <div class="fd-kpi-card">
                             <div class="fd-kpi-label">Threats Detected</div>
-                            <div class="fd-kpi-value red" id="kpi-threats">0</div>
-                            <div class="fd-kpi-sub" id="kpi-threats-sub">0 critical</div>
+                            <div class="fd-kpi-value red" id="home-threats">0</div>
+                            <div class="fd-kpi-sub" id="home-threats-sub">0 high severity</div>
                         </div>
                         <div class="fd-kpi-card">
                             <div class="fd-kpi-label">Email Alerts Sent</div>
-                            <div class="fd-kpi-value violet" id="kpi-alerts">0</div>
-                            <div class="fd-kpi-sub" id="kpi-alerts-sub">—</div>
-                        </div>
-                        <div class="fd-kpi-card">
-                            <div class="fd-kpi-label">Events / Min</div>
-                            <div class="fd-kpi-value green" id="kpi-epm">0</div>
-                            <div class="fd-kpi-sub">live throughput</div>
+                            <div class="fd-kpi-value" id="home-alerts">0</div>
+                            <div class="fd-kpi-sub go" id="home-alerts-sub">Email alerts enabled</div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="fd-card" style="margin-bottom:20px;">
+                <!-- ===== DASHBOARD ===== -->
+                <div class="fd-panel" data-panel="dashboard">
+                    <div class="fd-page-title">Dashboard <span class="fd-live-inline"><span class="fd-live-dot" id="fd-live-dot-dash"></span> <span id="fd-live-text">Live (real-time)</span></span></div>
+                    <div class="fd-page-sub">Last updated: <span id="fd-last-updated">—</span></div>
+
+                    <div class="fd-kpi-grid">
+                        <div class="fd-kpi-card"><div class="fd-kpi-label">Endpoints Protected</div><div class="fd-kpi-value" id="d-endpoints">0</div><span class="fd-kpi-sub go">● Live</span></div>
+                        <div class="fd-kpi-card"><div class="fd-kpi-label">Events Today</div><div class="fd-kpi-value" id="d-events">0</div></div>
+                        <div class="fd-kpi-card"><div class="fd-kpi-label">Threats Detected</div><div class="fd-kpi-value red" id="d-threats">0</div></div>
+                        <div class="fd-kpi-card"><div class="fd-kpi-label">Alerts Sent</div><div class="fd-kpi-value" id="d-alerts">0</div></div>
+                        <div class="fd-kpi-card"><div class="fd-kpi-label">Agents Online</div><div class="fd-kpi-value green" id="d-agents-online">0/0</div><span class="fd-kpi-sub go">● Live</span></div>
+                        <div class="fd-kpi-card"><div class="fd-kpi-label">Events / Min</div><div class="fd-kpi-value violet" id="d-epm">0</div><span class="fd-kpi-sub go">● Live</span></div>
+                    </div>
+
+                    <div class="fd-card" style="margin-bottom:22px;">
                         <h3>Live Event Timeline</h3>
                         <ul class="fd-timeline" id="fd-timeline"></ul>
                     </div>
 
-                    <div class="fd-card" style="margin-bottom:20px;">
+                    <div class="fd-card" style="margin-bottom:22px;">
                         <h3>Event Trend — Last 24 Hours</h3>
                         <div class="fd-chart-box"><canvas id="chart-trend"></canvas></div>
                     </div>
 
                     <div class="fd-grid-3">
-                        <div class="fd-card">
-                            <h3>Event Distribution</h3>
-                            <div class="fd-chart-box"><canvas id="chart-events"></canvas></div>
+                        <div class="fd-card"><h3>Event Distribution</h3><div class="fd-chart-box"><canvas id="chart-events"></canvas></div></div>
+                        <div class="fd-card"><h3>Events by Host</h3><div class="fd-chart-box"><canvas id="chart-hosts"></canvas></div></div>
+                        <div class="fd-card"><h3>Severity Breakdown</h3><div class="fd-chart-box"><canvas id="chart-severity"></canvas></div></div>
+                    </div>
+
+                    <div class="fd-card" style="margin-bottom:22px;">
+                        <div class="fd-card-head">
+                            <div>
+                                <h3 style="margin-bottom:4px;"><i class="fas fa-shield-halved" style="color:#06B6D4;"></i> Threat Detections</h3>
+                                <div style="font-size:0.78rem; color:#64748B;">Live output of the rule + anomaly + correlation detection engine — see Detections for the full classified event table and incident feed.</div>
+                            </div>
+                            <button class="fd-pillbtn" id="fd-view-detections">View all detections <i class="fas fa-arrow-right"></i></button>
                         </div>
-                        <div class="fd-card">
-                            <h3>Top Endpoints by Activity</h3>
-                            <div class="fd-chart-box"><canvas id="chart-hosts"></canvas></div>
+                        <div class="fd-grid-3" style="margin-bottom:0;">
+                            <div><div id="fd-mini-tiers"></div></div>
+                            <div>
+                                <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:.04em; color:#94A3B8; margin-bottom:8px;">Recent High-Priority Events</div>
+                                <div id="fd-mini-recent"></div>
+                            </div>
+                            <div>
+                                <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:.04em; color:#94A3B8; margin-bottom:8px;">Active Incidents</div>
+                                <div id="fd-mini-incidents"></div>
+                            </div>
                         </div>
+                    </div>
+
+                    <div class="fd-grid-4">
+                        <div class="fd-card"><h3>Top Modified Files</h3><div id="fd-top-files" style="font-size:0.82rem;"></div></div>
+                        <div class="fd-card"><h3>Live Agent Status</h3><div id="fd-agent-status" style="font-size:0.82rem;"></div></div>
+                        <div class="fd-card"><h3>Recent Alerts</h3><div id="fd-recent-alerts" style="font-size:0.8rem;"></div></div>
                         <div class="fd-card">
-                            <h3>Severity Breakdown</h3>
-                            <div class="fd-chart-box"><canvas id="chart-severity"></canvas></div>
+                            <h3>System Health</h3>
+                            <div style="font-size:0.83rem; display:flex; flex-direction:column; gap:10px;">
+                                <div style="display:flex; justify-content:space-between;"><span style="color:#94A3B8;">Server Uptime</span><strong id="sh-uptime">0m</strong></div>
+                                <div style="display:flex; justify-content:space-between;"><span style="color:#94A3B8;">Total Events Logged</span><strong id="sh-events">0</strong></div>
+                                <div style="display:flex; justify-content:space-between;"><span style="color:#94A3B8;">Monitoring</span><strong id="sh-monitoring" class="go">Active</strong></div>
+                                <div style="display:flex; justify-content:space-between;"><span style="color:#94A3B8;">Email Alerts</span><strong id="sh-email" class="go">Enabled</strong></div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- ===== EVENT HISTORY ===== -->
                 <div class="fd-panel" data-panel="history">
-                    <div class="fd-panel-title">Event History</div>
-                    <div class="fd-panel-sub">Full filesystem event log across all endpoints</div>
+                    <div class="fd-page-title">Event History</div>
+                    <div class="fd-page-sub">Full filesystem event log across all endpoints</div>
 
-                    <div class="fd-toolbar">
-                        <input class="fd-input" id="fd-hist-search" placeholder="Search host or file path...">
-                        <select class="fd-select" id="fd-hist-event">
-                            <option value="">All events</option>
-                            <option value="created">Created</option>
-                            <option value="modified">Modified</option>
-                            <option value="deleted">Deleted</option>
-                            <option value="moved">Moved</option>
-                        </select>
-                        <select class="fd-select" id="fd-hist-severity">
-                            <option value="">All severities</option>
-                            <option value="Critical">Critical</option>
-                            <option value="High Risk">High Risk</option>
-                            <option value="Suspicious">Suspicious</option>
-                            <option value="Low Risk">Low Risk</option>
-                            <option value="Legitimate">Legitimate</option>
-                        </select>
+                    <div class="fd-card fd-email-panel" id="fd-email-panel" style="display:none;">
+                        <div class="fd-card-head">
+                            <h3 style="margin-bottom:0;"><i class="fas fa-inbox" style="color:#06B6D4;"></i> Alert Emails <span class="fd-live-inline" style="margin-left:8px;"><span class="fd-live-dot"></span> Live</span></h3>
+                            <button class="fd-pillbtn" id="fd-close-emails"><i class="fas fa-xmark"></i> Close</button>
+                        </div>
+                        <div id="fd-email-list"></div>
                     </div>
 
                     <div class="fd-card">
+                        <div class="fd-card-head">
+                            <h3 style="margin-bottom:0;">All Events</h3>
+                            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                                <button class="fd-pillbtn" id="fd-toggle-emails"><i class="fas fa-envelope"></i> Emails <span class="fd-count-chip" id="fd-email-count">0</span></button>
+                                <button class="fd-pillbtn" id="fd-export-csv"><i class="fas fa-file-csv"></i> Export CSV</button>
+                                <button class="fd-pillbtn solid" id="fd-export-json"><i class="fas fa-file-code"></i> Export JSON</button>
+                            </div>
+                        </div>
+
+                        <div class="fd-toolbar">
+                            <input class="fd-input" id="fd-hist-search" placeholder="Search host or file path...">
+                            <select class="fd-select" id="fd-hist-event">
+                                <option value="">All events</option>
+                                <option value="created">Created</option>
+                                <option value="modified">Modified</option>
+                                <option value="deleted">Deleted</option>
+                                <option value="moved">Moved</option>
+                            </select>
+                        </div>
+
                         <div class="fd-table-wrap">
                             <table class="fd-table">
-                                <thead>
-                                    <tr><th>Time</th><th>Host</th><th>Event</th><th>File</th><th>User</th><th>Severity</th></tr>
-                                </thead>
+                                <thead><tr><th>Time</th><th>Host</th><th>Event</th><th>File</th><th>User</th></tr></thead>
                                 <tbody id="fd-hist-body"></tbody>
                             </table>
                         </div>
                         <div class="fd-pager">
                             <span id="fd-hist-count">0 events</span>
-                            <div>
-                                <button id="fd-hist-prev">Prev</button>
-                                <span id="fd-hist-page" style="margin:0 10px;">Page 1</span>
-                                <button id="fd-hist-next">Next</button>
-                            </div>
+                            <div><button id="fd-hist-prev">Prev</button><span id="fd-hist-page" style="margin:0 10px;">Page 1</span><button id="fd-hist-next">Next</button></div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- ===== TIMELINE ===== -->
+                <div class="fd-panel" data-panel="timeline">
+                    <div class="fd-page-title">Timeline</div>
+                    <div class="fd-page-sub">Chronological feed of every filesystem event, grouped by day</div>
+                    <div class="fd-card">
+                        <div id="fd-full-timeline" style="max-height:640px; overflow-y:auto;"></div>
                     </div>
                 </div>
 
                 <!-- ===== AGENTS ===== -->
                 <div class="fd-panel" data-panel="agents">
-                    <div class="fd-panel-title">Agents</div>
-                    <div class="fd-panel-sub"><span id="fd-agents-sub">—</span></div>
+                    <div class="fd-page-title">Connected Agents</div>
+                    <div class="fd-page-sub"><span id="fd-agents-sub">—</span></div>
+
+                    <div class="fd-deploy-card">
+                        <h3 style="margin-bottom:2px;"><i class="fas fa-download" style="color:#06B6D4;"></i> Deploy a New Agent</h3>
+                        <div style="font-size:0.78rem; color:#64748B;">A single compiled binary with this deployment's config already filled in — no Python required on the endpoint either way.</div>
+                        <div class="fd-deploy-grid">
+                            <div>
+                                <span class="fd-field-label">Platform</span>
+                                <select class="fd-select" id="deploy-platform" style="width:100%;"><option>Windows</option><option>Linux</option></select>
+                            </div>
+                            <div>
+                                <span class="fd-field-label">Folder to watch on that machine</span>
+                                <input class="fd-input" id="deploy-folder" placeholder="e.g. C:\Monitor" style="width:100%;">
+                            </div>
+                            <div>
+                                <span class="fd-field-label">Alert email (focal person for this agent)</span>
+                                <input class="fd-input" id="deploy-email" placeholder="e.g. soc-lead@company.com" style="width:100%;">
+                            </div>
+                            <button class="fd-pillbtn solid" id="deploy-generate" style="white-space:nowrap;"><i class="fas fa-download"></i> Generate &amp; Download</button>
+                        </div>
+                        <div class="fd-deploy-note">Alerts for events from this agent would go only to the email above — not to every recipient on the server's default alert list.</div>
+                    </div>
 
                     <div class="fd-toolbar">
                         <input class="fd-input" id="fd-agent-search" placeholder="Search hostname or IP...">
-                        <select class="fd-select" id="fd-agent-status">
-                            <option value="">All statuses</option>
-                            <option value="Online">Online</option>
-                            <option value="Offline">Offline</option>
-                        </select>
+                        <select class="fd-select" id="fd-agent-status"><option value="">All statuses</option><option value="Online">Online</option><option value="Offline">Offline</option></select>
                     </div>
 
-                    <div class="fd-agent-grid" id="fd-agent-grid"></div>
-                </div>
-
-                <!-- ===== ALERTS ===== -->
-                <div class="fd-panel" data-panel="alerts">
-                    <div class="fd-panel-title">Alerts &amp; Email Log</div>
-                    <div class="fd-panel-sub">Every alert FALYS decided was worth a human's attention, and the email that went out for it</div>
-                    <div class="fd-card">
-                        <div id="fd-alerts-list"></div>
-                    </div>
+                    <div id="fd-agent-list"></div>
                 </div>
 
                 <!-- ===== DETECTIONS ===== -->
                 <div class="fd-panel" data-panel="detections">
-                    <div class="fd-panel-title">Detections</div>
-                    <div class="fd-panel-sub">Confidence &amp; severity scoring across the fleet</div>
+                    <div class="fd-page-title">Detections <span class="fd-live-inline"><span class="fd-live-dot"></span> Live (real-time)</span></div>
+                    <div class="fd-page-sub">Detection engine · rule scoring · behavioral anomaly · correlation · updated <span id="fd-det-updated">—</span></div>
 
-                    <div class="fd-grid-3">
+                    <div class="fd-guide-box" id="fd-guide-toggle">
+                        <div class="fd-guide-toggle">
+                            <span><i class="fas fa-circle-info"></i> What do these labels mean?</span>
+                            <span id="fd-guide-arrow"><i class="fas fa-chevron-down"></i> Show guide</span>
+                        </div>
+                        <div class="fd-guide-body" id="fd-guide-body">
+                            <div><strong style="color:#EF4444;">Critical</strong> — confirmed high-confidence pattern (e.g. mass deletion combined with off-hours access).</div>
+                            <div><strong style="color:#F97316;">High Risk</strong> — strong indicators of risk that warrant review.</div>
+                            <div><strong style="color:#F59E0B;">Suspicious</strong> — anomalous but inconclusive on its own.</div>
+                            <div><strong style="color:#38BDF8;">Low Risk</strong> — minor deviation from the endpoint's normal baseline.</div>
+                            <div><strong style="color:#22C55E;">Legitimate</strong> — matches expected, routine behavior.</div>
+                        </div>
+                    </div>
+
+                    <div class="fd-det-kpi-grid">
+                        <div class="fd-det-kpi"><div class="fd-det-kpi-label">Critical <i class="fas fa-triangle-exclamation"></i></div><div class="fd-det-kpi-value" style="color:#EF4444;" id="det-critical">0</div></div>
+                        <div class="fd-det-kpi"><div class="fd-det-kpi-label">High Risk <i class="fas fa-triangle-exclamation"></i></div><div class="fd-det-kpi-value" style="color:#F97316;" id="det-high">0</div></div>
+                        <div class="fd-det-kpi"><div class="fd-det-kpi-label">Suspicious <i class="fas fa-magnifying-glass"></i></div><div class="fd-det-kpi-value" style="color:#F59E0B;" id="det-suspicious">0</div></div>
+                        <div class="fd-det-kpi"><div class="fd-det-kpi-label">Low Risk / Legitimate <i class="fas fa-check"></i></div><div class="fd-det-kpi-value" style="color:#22C55E;" id="det-low">0</div></div>
+                        <div class="fd-det-kpi"><div class="fd-det-kpi-label">Active Incidents <i class="fas fa-radar"></i></div><div class="fd-det-kpi-value" style="color:#38BDF8;" id="det-incidents-count">0</div></div>
+                    </div>
+
+                    <div class="fd-grid-2">
                         <div class="fd-card">
-                            <h3>Classification Tiers</h3>
-                            <div id="fd-det-tiers"></div>
+                            <h3>Classification Breakdown</h3>
+                            <div class="fd-chart-box" style="height:260px;"><canvas id="chart-classification"></canvas></div>
                         </div>
                         <div class="fd-card">
-                            <h3>Recent High-Priority Events</h3>
-                            <div id="fd-det-recent"></div>
+                            <div class="fd-card-head"><h3 style="margin-bottom:0;"><i class="fas fa-satellite-dish" style="color:#06B6D4;"></i> Correlated Incidents</h3><span class="fd-count-chip" id="det-incidents-pill">0 active</span></div>
+                            <div style="font-size:0.76rem; color:#64748B; margin-bottom:12px;">Related events the engine has linked together — bursts, staged tampering patterns — across a sliding time window per host.</div>
+                            <div id="det-incidents-list"></div>
                         </div>
-                        <div class="fd-card">
-                            <h3>Correlated Incidents</h3>
-                            <div id="fd-det-incidents"></div>
+                    </div>
+
+                    <div class="fd-card">
+                        <div class="fd-card-head">
+                            <h3 style="margin-bottom:0;"><i class="fas fa-table-list" style="color:#06B6D4;"></i> Classified Events</h3>
+                            <span style="font-size:0.78rem; color:#64748B;" id="det-events-count">0 of 0 events</span>
+                        </div>
+                        <div class="fd-toolbar">
+                            <input class="fd-input" id="det-search" placeholder="Search by host or file...">
+                            <select class="fd-select" id="det-filter">
+                                <option value="">All classifications</option>
+                                <option>Critical</option><option>High Risk</option><option>Suspicious</option><option>Low Risk</option><option>Legitimate</option>
+                            </select>
+                        </div>
+                        <div class="fd-table-wrap">
+                            <table class="fd-table">
+                                <thead><tr><th>Time</th><th>Host</th><th>Event</th><th>File</th><th>Classification</th><th>Score</th><th>Confidence</th><th>Reasons</th></tr></thead>
+                                <tbody id="det-table-body"></tbody>
+                            </table>
+                        </div>
+                        <div class="fd-pager">
+                            <span id="det-hist-count-label"></span>
+                            <div><button id="det-prev">Prev</button><span id="det-page" style="margin:0 10px;">Page 1</span><button id="det-next">Next</button></div>
                         </div>
                     </div>
                 </div>
 
                 <!-- ===== SETTINGS ===== -->
                 <div class="fd-panel" data-panel="settings">
-                    <div class="fd-panel-title">Settings</div>
-                    <div class="fd-panel-sub">These controls actually drive this demo's simulation — try them</div>
+                    <div class="fd-page-title">System Settings</div>
+                    <div class="fd-page-sub">These controls actually drive this demo's simulation — try them</div>
 
-                    <div class="fd-card">
-                        <div class="fd-settings-row">
-                            <div>
-                                <div class="fd-settings-label">Real-time file monitoring</div>
-                                <div class="fd-settings-desc">When off, agents stop reporting new filesystem events entirely.</div>
+                    <div class="fd-grid-3">
+                        <div class="fd-card">
+                            <h3>System Status <span class="fd-count-chip go" style="margin-left:6px;">LIVE</span></h3>
+                            <div class="fd-settings-row">
+                                <div><div class="fd-settings-label">Real-time File Monitoring</div><div class="fd-settings-desc">Active on all connected agents</div></div>
+                                <label class="fd-switch"><input type="checkbox" id="set-monitoring" checked><span class="fd-slider"></span></label>
                             </div>
-                            <label class="fd-switch"><input type="checkbox" id="set-monitoring" checked><span class="fd-slider"></span></label>
+                            <div class="fd-settings-row">
+                                <div><div class="fd-settings-label">Email Alerting (Brevo)</div><div class="fd-settings-desc">Connected to soc-team@falys-demo.io</div></div>
+                                <label class="fd-switch"><input type="checkbox" id="set-email" checked><span class="fd-slider"></span></label>
+                            </div>
                         </div>
-                        <div class="fd-settings-row">
-                            <div>
-                                <div class="fd-settings-label">Email alerts</div>
-                                <div class="fd-settings-desc">When off, detections still happen but no emails are sent.</div>
+
+                        <div class="fd-card">
+                            <h3>Alert &amp; Agent Settings</h3>
+                            <div class="fd-settings-row">
+                                <div><div class="fd-settings-label">High Severity Threshold</div><div class="fd-settings-desc">Trigger on delete or move events per host</div></div>
+                                <select class="fd-select" id="set-threshold"><option value="immediate">Immediate</option><option value="1" selected>After 1 event</option><option value="3">After 3 events</option></select>
                             </div>
-                            <label class="fd-switch"><input type="checkbox" id="set-email" checked><span class="fd-slider"></span></label>
+                            <div class="fd-settings-row">
+                                <div><div class="fd-settings-label">Auto Agent Discovery</div><div class="fd-settings-desc">Poll agent activity automatically</div></div>
+                                <label class="fd-switch"><input type="checkbox" id="set-autodiscover" checked><span class="fd-slider"></span></label>
+                            </div>
+                            <div class="fd-settings-row">
+                                <div><div class="fd-settings-label">Agent Offline Threshold</div><div class="fd-settings-desc">Mark an agent Offline after no events for this long</div></div>
+                                <select class="fd-select" id="set-offline-threshold"><option>5 minutes</option><option selected>1 hour</option><option>24 hours</option></select>
+                            </div>
                         </div>
-                        <div class="fd-settings-row">
-                            <div>
-                                <div class="fd-settings-label">Alert threshold</div>
-                                <div class="fd-settings-desc">How many consecutive high-severity events on one host before FALYS emails you.</div>
+
+                        <div class="fd-card">
+                            <h3>Dashboard Settings</h3>
+                            <div class="fd-settings-row">
+                                <div><div class="fd-settings-label">Real-time Refresh Interval</div><div class="fd-settings-desc">How often the Dashboard and Agents pages poll for updates</div></div>
+                                <select class="fd-select" id="set-speed"><option value="6000">30 seconds</option><option value="3000" selected>10 seconds</option><option value="1200">3 seconds</option></select>
                             </div>
-                            <select class="fd-select" id="set-threshold">
-                                <option value="immediate">Immediate</option>
-                                <option value="1" selected>After 1 event</option>
-                                <option value="3">After 3 events</option>
-                            </select>
-                        </div>
-                        <div class="fd-settings-row">
-                            <div>
-                                <div class="fd-settings-label">Simulation speed</div>
-                                <div class="fd-settings-desc">Controls how often new synthetic events arrive.</div>
-                            </div>
-                            <select class="fd-select" id="set-speed">
-                                <option value="6000">Slow</option>
-                                <option value="3000" selected>Normal</option>
-                                <option value="1200">Fast</option>
-                            </select>
                         </div>
                     </div>
+
+                    <button class="fd-pillbtn solid" id="fd-refresh-server" style="padding:12px 26px;"><i class="fas fa-rotate"></i> Refresh From Server</button>
                 </div>
 
             </div>
@@ -579,17 +617,9 @@
 
     <!-- ================= FOOTER (identical to rest of site) ================= -->
     <footer>
-        <div>
-            <h3>FALYS</h3>
-            <p>Enterprise File Integrity Monitoring</p>
-        </div>
-        <div>
-            <p>Developed by</p>
-            <p>Maimoona Shah Khan<br>Sheeza Alam Khan</p>
-        </div>
-        <div>
-            <a href="contact.html">Contact</a>
-        </div>
+        <div><h3>FALYS</h3><p>Enterprise File Integrity Monitoring</p></div>
+        <div><p>Developed by</p><p>Maimoona Shah Khan<br>Sheeza Alam Khan</p></div>
+        <div><a href="contact.html">Contact</a></div>
     </footer>
 
     <script>
@@ -618,44 +648,49 @@
             SUPPORT: ["tickets/export_sept.csv", "kb/troubleshooting_guide.docx", "logs/customer_escalations.log"],
             IT: ["scripts/provision_vm.ps1", "inventory/asset_list.xlsx", "certs/wildcard_2026.pem", "configs/firewall_rules.conf"]
         };
-        const USERS = ["a.khan", "m.iqbal", "s.raza", "j.doe", "svc_backup", "svc_deploy", "r.malik", "n.farooq", "SYSTEM", "t.ahmed"];
+        const USERS = ["a.khan", "m.iqbal", "s.raza", "j.doe", "svc_backup", "svc_deploy", "r.malik", "n.farooq", "root", "t.ahmed"];
         const EVENT_TYPES = ["created", "modified", "deleted", "moved"];
         const EVENT_WEIGHTS = { created: 0.28, modified: 0.5, deleted: 0.12, moved: 0.1 };
-        const TIER_COLORS = {
-            "Critical": "#EF4444", "High Risk": "#F97316", "Suspicious": "#F59E0B",
-            "Low Risk": "#38BDF8", "Legitimate": "#22C55E"
-        };
+        const TIER_COLORS = { "Critical": "#EF4444", "High Risk": "#F97316", "Suspicious": "#F59E0B", "Low Risk": "#38BDF8", "Legitimate": "#22C55E" };
         const HIGH_SEVERITY_EVENTS = new Set(["deleted", "moved"]);
+        const REASONS_POOL = [
+            "Sensitive file path", "Off-hours access window", "Mass modification burst on this host",
+            "Rapid delete sequence detected", "Unverified user attribution", "New / unrecognized endpoint",
+            "High event frequency in short window", "Unusual file extension change", "Matches staged-tampering pattern"
+        ];
 
         function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
-        function weightedPick(weights) {
-            const r = Math.random();
-            let acc = 0;
-            for (const k in weights) { acc += weights[k]; if (r <= acc) return k; }
-            return Object.keys(weights)[0];
-        }
+        function weightedPick(weights) { const r = Math.random(); let acc = 0; for (const k in weights) { acc += weights[k]; if (r <= acc) return k; } return Object.keys(weights)[0]; }
         function pad(n) { return n < 10 ? "0" + n : "" + n; }
-        function fmtTime(d) { return `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`; }
+        function fmtTime(d) { let h = d.getHours(); const ampm = h >= 12 ? "PM" : "AM"; h = h % 12 || 12; return `${pad(h)}:${pad(d.getMinutes())}:${pad(d.getSeconds())} ${ampm}`; }
         function fmtFull(d) { return d.toLocaleString(); }
+        function fmtDay(d) { return d.toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" }); }
         function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 
         const ENDPOINT_COUNT = 78;
-        let endpoints = [];
-        let events = [];      // full history, newest last
-        let alerts = [];      // fired alerts / email log
-        let incidents = [];   // correlated incidents
+        let endpoints = [], events = [], alerts = [], incidents = [];
+        const SERVER_STARTED_AT = Date.now();
 
         function classifyEvent(evt) {
-            // Mirrors the real FALYS severity model: destructive ops score
-            // higher, then a random confidence roll nudges it into a tier —
-            // same idea as engine/rule_scoring.py + classifier.py.
-            const base = HIGH_SEVERITY_EVENTS.has(evt.event) ? 0.55 : (evt.event === "modified" ? 0.3 : 0.12);
+            const base = HIGH_SEVERITY_EVENTS.has(evt.event) ? 0.55 : (evt.event === "modified" ? 0.28 : 0.1);
             const roll = base + Math.random() * 0.5;
-            if (roll > 0.82) return "Critical";
-            if (roll > 0.62) return "High Risk";
-            if (roll > 0.42) return "Suspicious";
-            if (roll > 0.2) return "Low Risk";
-            return "Legitimate";
+            let tier, scoreRange;
+            if (roll > 0.82) { tier = "Critical"; scoreRange = [80, 99]; }
+            else if (roll > 0.62) { tier = "High Risk"; scoreRange = [55, 79]; }
+            else if (roll > 0.42) { tier = "Suspicious"; scoreRange = [35, 54]; }
+            else if (roll > 0.2) { tier = "Low Risk"; scoreRange = [15, 34]; }
+            else { tier = "Legitimate"; scoreRange = [1, 14]; }
+            const score = Math.floor(scoreRange[0] + Math.random() * (scoreRange[1] - scoreRange[0]));
+            const confidence = Math.floor(50 + Math.random() * 49);
+            const reasonCount = tier === "Critical" ? 3 : tier === "High Risk" ? 2 : tier === "Suspicious" ? 2 : 1;
+            const reasons = [...REASONS_POOL].sort(() => Math.random() - 0.5).slice(0, reasonCount);
+            // simple 4-level severity (mirrors the lightweight rules engine, separate from the tier classifier above)
+            let severity;
+            if (evt.event === "deleted") severity = "Critical";
+            else if (evt.event === "moved") severity = "High";
+            else if (evt.event === "modified") severity = "Medium";
+            else severity = "Low";
+            return { tier, score, confidence, reasons, severity };
         }
 
         function genEndpoints() {
@@ -668,12 +703,9 @@
                 const online = Math.random() < 0.91;
                 const lastSeenMinsAgo = online ? Math.floor(Math.random() * 4) : 20 + Math.floor(Math.random() * 600);
                 endpoints.push({
-                    id: i,
-                    host, dept, os,
+                    id: i, host, dept, os,
                     ip: `10.${20 + (dept.length % 5)}.${Math.floor(Math.random() * 254)}.${Math.floor(Math.random() * 254) + 1}`,
-                    status: online ? "Online" : "Offline",
-                    lastSeenMinsAgo,
-                    eventCount: 0
+                    status: online ? "Online" : "Offline", lastSeenMinsAgo, eventCount: 0
                 });
             }
         }
@@ -683,11 +715,8 @@
             const eventType = weightedPick(EVENT_WEIGHTS);
             const file = pick(FILES_BY_DEPT[ep.dept]);
             const path = (ep.os.name.includes("Windows") ? `C:\\FALYS\\monitor\\${ep.dept}\\` : `/falys/monitor/${ep.dept}/`) + file;
-            const evt = {
-                ts, host: ep.host, ip: ep.ip, event: eventType, file: path,
-                user: pick(USERS), permission: (Math.random() < 0.5 ? "644" : "755")
-            };
-            evt.classification = classifyEvent(evt);
+            const evt = { ts, host: ep.host, ip: ep.ip, event: eventType, file: path, user: pick(USERS) };
+            Object.assign(evt, classifyEvent(evt));
             ep.eventCount++;
             return evt;
         }
@@ -695,67 +724,60 @@
         function genHistoricalEvents() {
             events = [];
             const now = Date.now();
-            const totalHistorical = 1450;
-            for (let i = 0; i < totalHistorical; i++) {
+            for (let i = 0; i < 1450; i++) {
                 const minsAgo = Math.random() * 24 * 60;
-                const ts = new Date(now - minsAgo * 60000);
-                events.push(makeEvent(ts));
+                events.push(makeEvent(new Date(now - minsAgo * 60000)));
             }
             events.sort((a, b) => a.ts - b.ts);
+        }
+
+        function emailStatusFor() {
+            const r = Math.random();
+            if (r < 0.8) return { status: "ok", label: "Sent via Gmail", note: "Email delivered via Gmail SMTP directly" };
+            if (r < 0.95) return { status: "warn", label: "Accepted by Brevo (HTTP 201)", note: "May not have delivered due to DMARC" };
+            return { status: "fail", label: "Failed to send", note: "SMTP connection timed out — queued for retry" };
         }
 
         function genAlertsFromHistory() {
             alerts = [];
             const counters = {};
             for (const evt of events) {
-                const isHigh = HIGH_SEVERITY_EVENTS.has(evt.event) || evt.classification === "Critical" || evt.classification === "High Risk";
+                const isHigh = HIGH_SEVERITY_EVENTS.has(evt.event) || evt.tier === "Critical" || evt.tier === "High Risk";
                 if (!isHigh) continue;
                 counters[evt.host] = (counters[evt.host] || 0) + 1;
-                if (counters[evt.host] >= 1 && Math.random() < 0.55) {
+                if (counters[evt.host] >= 1 && Math.random() < 0.5) {
                     counters[evt.host] = 0;
-                    alerts.push({
-                        ts: evt.ts, host: evt.host, event: evt.event, file: evt.file,
-                        classification: evt.classification,
-                        status: Math.random() < 0.96 ? "sent" : "failed",
-                        recipient: "soc-team@falys-demo.io"
-                    });
+                    const es = emailStatusFor();
+                    alerts.push({ ts: evt.ts, host: evt.host, event: evt.event, file: evt.file, tier: evt.tier, recipient: "soc-team@falys-demo.io", ...es });
                 }
             }
-            // a handful of correlated multi-event incidents for the Detections tab
             incidents = [];
             const byHost = {};
             events.forEach(e => { (byHost[e.host] = byHost[e.host] || []).push(e); });
             Object.keys(byHost).forEach(host => {
-                const highs = byHost[host].filter(e => e.classification === "Critical" || e.classification === "High Risk");
-                if (highs.length >= 3) {
-                    incidents.push({
-                        host, kind: pick(["Rapid mass modification", "Suspicious delete burst", "Off-hours access pattern", "Unusual move/rename chain"]),
-                        eventCount: highs.length,
-                        maxScore: (0.7 + Math.random() * 0.3).toFixed(2)
-                    });
+                const highs = byHost[host].filter(e => e.tier === "Critical" || e.tier === "High Risk");
+                if (highs.length >= 4) {
+                    incidents.push({ host, kind: pick(["Rapid mass modification", "Suspicious delete burst", "Off-hours access pattern", "Unusual move/rename chain"]), eventCount: highs.length, maxScore: (0.7 + Math.random() * 0.3).toFixed(2) });
                 }
             });
             incidents.sort((a, b) => b.eventCount - a.eventCount);
         }
 
         /* =====================================================
-           2. STATE / SETTINGS
+           2. STATE
         ===================================================== */
         const settings = { monitoring: true, emailAlerts: true, threshold: "1", speedMs: 3000 };
         const hostAlertCounters = {};
-        let historyPage = 1;
+        let historyPage = 1, detPage = 1;
         const PAGE_SIZE = 25;
 
         /* =====================================================
-           3. RENDERING
+           3. CHARTS
         ===================================================== */
         let charts = {};
-
         function initCharts() {
-            const gridColor = "rgba(148,163,184,0.08)";
-            const tickColor = "#64748B";
-            Chart.defaults.color = "#94A3B8";
-            Chart.defaults.font.size = 11;
+            const gridColor = "rgba(148,163,184,0.08)", tickColor = "#64748B";
+            Chart.defaults.color = "#94A3B8"; Chart.defaults.font.size = 11;
 
             charts.trend = new Chart(document.getElementById("chart-trend"), {
                 type: "line",
@@ -763,21 +785,24 @@
                 options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
                     scales: { x: { grid: { color: gridColor }, ticks: { color: tickColor, maxTicksLimit: 8 } }, y: { grid: { color: gridColor }, ticks: { color: tickColor }, beginAtZero: true } } }
             });
-
             charts.events = new Chart(document.getElementById("chart-events"), {
                 type: "doughnut",
-                data: { labels: EVENT_TYPES, datasets: [{ data: [0,0,0,0], backgroundColor: ["#22C55E", "#06B6D4", "#EF4444", "#A78BFA"], borderWidth: 0 }] },
+                data: { labels: ["created","modified","deleted","moved"], datasets: [{ data: [0,0,0,0], backgroundColor: ["#22C55E","#06B6D4","#F59E0B","#EF4444"], borderWidth: 0 }] },
                 options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: "bottom", labels: { boxWidth: 10, padding: 10 } } } }
             });
-
             charts.hosts = new Chart(document.getElementById("chart-hosts"), {
                 type: "bar",
                 data: { labels: [], datasets: [{ label: "Events", data: [], backgroundColor: "#06B6D4", borderRadius: 4 }] },
-                options: { indexAxis: "y", responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
-                    scales: { x: { grid: { color: gridColor }, ticks: { color: tickColor } }, y: { grid: { display: false }, ticks: { color: tickColor } } } }
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+                    scales: { x: { grid: { display:false }, ticks: { color: tickColor, maxRotation: 40, minRotation: 40, font:{size:9} } }, y: { grid: { color: gridColor }, ticks: { color: tickColor } } } }
             });
-
             charts.severity = new Chart(document.getElementById("chart-severity"), {
+                type: "bar",
+                data: { labels: ["Low","Medium","High","Critical"], datasets: [{ data: [0,0,0,0], backgroundColor: ["#22C55E","#F59E0B","#EF4444","#B91C1C"], borderRadius: 4 }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+                    scales: { x: { grid: { display:false }, ticks: { color: tickColor } }, y: { grid: { color: gridColor }, ticks: { color: tickColor } } } }
+            });
+            charts.classification = new Chart(document.getElementById("chart-classification"), {
                 type: "doughnut",
                 data: { labels: Object.keys(TIER_COLORS), datasets: [{ data: [0,0,0,0,0], backgroundColor: Object.values(TIER_COLORS), borderWidth: 0 }] },
                 options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: "bottom", labels: { boxWidth: 10, padding: 8, font: { size: 10 } } } } }
@@ -785,122 +810,218 @@
         }
 
         function computeHourlyBuckets() {
-            const now = new Date();
-            const labels = [], counts = [];
-            const buckets = {};
-            events.forEach(e => {
-                const ageHrs = (now - e.ts) / 3600000;
-                if (ageHrs >= 0 && ageHrs < 24) {
-                    const h = e.ts.getHours();
-                    buckets[h] = (buckets[h] || 0) + 1;
-                }
-            });
-            for (let i = 23; i >= 0; i--) {
-                const h = (now.getHours() - i + 24) % 24;
-                labels.push(`${pad(h)}:00`);
-                counts.push(buckets[h] || 0);
-            }
+            const now = new Date(); const labels = [], counts = []; const buckets = {};
+            events.forEach(e => { const ageHrs = (now - e.ts) / 3600000; if (ageHrs >= 0 && ageHrs < 24) { const h = e.ts.getHours(); buckets[h] = (buckets[h] || 0) + 1; } });
+            for (let i = 23; i >= 0; i--) { const h = (now.getHours() - i + 24) % 24; labels.push(`${pad(h)}:00`); counts.push(buckets[h] || 0); }
             return { labels, counts };
         }
 
         function refreshCharts() {
             const { labels, counts } = computeHourlyBuckets();
-            charts.trend.data.labels = labels;
-            charts.trend.data.datasets[0].data = counts;
-            charts.trend.update("none");
+            charts.trend.data.labels = labels; charts.trend.data.datasets[0].data = counts; charts.trend.update("none");
 
             const typeCounts = { created: 0, modified: 0, deleted: 0, moved: 0 };
             events.forEach(e => typeCounts[e.event]++);
-            charts.events.data.datasets[0].data = EVENT_TYPES.map(t => typeCounts[t]);
+            charts.events.data.datasets[0].data = ["created","modified","deleted","moved"].map(t => typeCounts[t]);
             charts.events.update("none");
 
-            const top = [...endpoints].sort((a, b) => b.eventCount - a.eventCount).slice(0, 8);
+            const top = [...endpoints].sort((a, b) => b.eventCount - a.eventCount).slice(0, 6);
             charts.hosts.data.labels = top.map(e => e.host);
             charts.hosts.data.datasets[0].data = top.map(e => e.eventCount);
             charts.hosts.update("none");
 
-            const sevCounts = {}; Object.keys(TIER_COLORS).forEach(t => sevCounts[t] = 0);
-            events.forEach(e => sevCounts[e.classification]++);
-            charts.severity.data.datasets[0].data = Object.keys(TIER_COLORS).map(t => sevCounts[t]);
+            const sevCounts = { Low: 0, Medium: 0, High: 0, Critical: 0 };
+            events.forEach(e => sevCounts[e.severity]++);
+            charts.severity.data.datasets[0].data = [sevCounts.Low, sevCounts.Medium, sevCounts.High, sevCounts.Critical];
             charts.severity.update("none");
+
+            const tierCounts = {}; Object.keys(TIER_COLORS).forEach(t => tierCounts[t] = 0);
+            events.forEach(e => tierCounts[e.tier]++);
+            charts.classification.data.datasets[0].data = Object.keys(TIER_COLORS).map(t => tierCounts[t]);
+            charts.classification.update("none");
         }
 
+        /* =====================================================
+           4. RENDER — HOME / DASHBOARD
+        ===================================================== */
         function refreshKpis() {
             const online = endpoints.filter(e => e.status === "Online").length;
-            document.getElementById("kpi-endpoints").textContent = endpoints.length;
-            document.getElementById("kpi-endpoints-sub").innerHTML = `${online}/${endpoints.length} online <span class="dot">●</span>`;
+            const events1h = events.filter(e => e.ts.getTime() >= Date.now() - 3600000).length;
+            const threats = events.filter(e => e.tier === "Critical" || e.tier === "High Risk").length;
+            const critical = events.filter(e => e.tier === "Critical").length;
 
-            document.getElementById("kpi-events").textContent = events.length;
-            const oneHourAgo = Date.now() - 3600000;
-            const lastHour = events.filter(e => e.ts.getTime() >= oneHourAgo).length;
-            document.getElementById("kpi-events-sub").textContent = `${lastHour} in the last hour`;
+            document.getElementById("home-endpoints").textContent = endpoints.length;
+            document.getElementById("home-endpoints-sub").innerHTML = endpoints.length === 0 ? "No agents reporting yet" : `${online}/${endpoints.length} online <span class="go">●</span>`;
+            document.getElementById("home-events").textContent = events.length;
+            document.getElementById("home-events-sub").textContent = `${events1h} in the last hour`;
+            document.getElementById("home-threats").textContent = threats;
+            document.getElementById("home-threats-sub").textContent = `${threats} high severity`;
+            document.getElementById("home-alerts").textContent = alerts.length;
+            document.getElementById("home-alerts-sub").textContent = settings.emailAlerts ? "Email alerts enabled" : "Email alerts disabled";
+            document.getElementById("home-alerts-sub").className = "fd-kpi-sub " + (settings.emailAlerts ? "go" : "go-red");
 
-            const threats = events.filter(e => e.classification === "Critical" || e.classification === "High Risk").length;
-            const critical = events.filter(e => e.classification === "Critical").length;
-            document.getElementById("kpi-threats").textContent = threats;
-            document.getElementById("kpi-threats-sub").textContent = `${critical} critical`;
+            document.getElementById("d-endpoints").textContent = endpoints.length;
+            document.getElementById("d-events").textContent = events.length;
+            document.getElementById("d-threats").textContent = threats;
+            document.getElementById("d-alerts").textContent = alerts.length;
+            document.getElementById("d-agents-online").textContent = `${online}/${endpoints.length}`;
+            const lastMin = events.filter(e => e.ts.getTime() >= Date.now() - 60000).length;
+            document.getElementById("d-epm").textContent = lastMin;
+            document.getElementById("fd-last-updated").textContent = fmtTime(new Date());
 
-            document.getElementById("kpi-alerts").textContent = alerts.length;
-            document.getElementById("kpi-alerts-sub").textContent = settings.emailAlerts ? "Email alerts enabled" : "Email alerts disabled";
-
-            const last10s = events.filter(e => e.ts.getTime() >= Date.now() - 60000).length;
-            document.getElementById("kpi-epm").textContent = last10s;
+            document.getElementById("sh-uptime").textContent = Math.floor((Date.now() - SERVER_STARTED_AT) / 60000) + "m";
+            document.getElementById("sh-events").textContent = events.length;
+            document.getElementById("sh-monitoring").textContent = settings.monitoring ? "Active" : "Paused";
+            document.getElementById("sh-monitoring").className = settings.monitoring ? "go" : "go-red";
+            document.getElementById("sh-email").textContent = settings.emailAlerts ? "Enabled" : "Disabled";
+            document.getElementById("sh-email").className = settings.emailAlerts ? "go" : "go-red";
         }
 
-        function renderTimeline(latestOnly) {
-            const ul = document.getElementById("fd-timeline");
-            const recent = [...events].slice(-14).reverse();
-            if (latestOnly) {
-                const li = document.createElement("li");
-                li.className = "flash";
-                li.innerHTML = timelineRowHtml(recent[0]);
-                ul.prepend(li);
-                while (ul.children.length > 14) ul.removeChild(ul.lastChild);
-            } else {
-                ul.innerHTML = recent.map(e => `<li>${timelineRowHtml(e)}</li>`).join("");
-            }
-        }
         function timelineRowHtml(e) {
             const color = HIGH_SEVERITY_EVENTS.has(e.event) ? "#EF4444" : (e.event === "modified" ? "#F59E0B" : "#22C55E");
             const fname = e.file.split(/[/\\]/).pop();
             return `<span class="t">${fmtTime(e.ts)}</span><span class="host">${escapeHtml(e.host)}</span>
                 <span style="color:${color}; font-weight:600;">${e.event}</span><span class="file">${escapeHtml(fname)}</span>`;
         }
+        function renderTimeline(latestOnly) {
+            const ul = document.getElementById("fd-timeline");
+            const recent = [...events].slice(-14).reverse();
+            if (latestOnly) {
+                const li = document.createElement("li"); li.className = "flash";
+                li.innerHTML = `<div class="tl-row">${timelineRowHtml(recent[0])}</div>`;
+                ul.prepend(li);
+                while (ul.children.length > 14) ul.removeChild(ul.lastChild);
+            } else {
+                ul.innerHTML = recent.map(e => `<li><div class="tl-row">${timelineRowHtml(e)}</div></li>`).join("") || `<li style="color:#64748B;">No recent events</li>`;
+            }
+        }
 
+        function renderFullTimeline() {
+            const recent = [...events].slice(-250).reverse();
+            let lastDay = null, html = "";
+            recent.forEach(e => {
+                const day = fmtDay(e.ts);
+                if (day !== lastDay) { html += `<div class="fd-day-sep">${day}</div>`; lastDay = day; }
+                html += `<div style="padding:9px 0; border-bottom:1px solid #263042;"><div class="tl-row">${timelineRowHtml(e)}</div></div>`;
+            });
+            document.getElementById("fd-full-timeline").innerHTML = html || `<p style="color:#64748B;">No events yet</p>`;
+        }
+
+        function renderMiniDetections() {
+            const counts = {}; Object.keys(TIER_COLORS).forEach(t => counts[t] = 0);
+            events.forEach(e => counts[e.tier]++);
+            document.getElementById("fd-mini-tiers").innerHTML = Object.keys(TIER_COLORS).map(t => `
+                <div class="fd-tier-row"><span class="fd-tier-label">${t}</span>
+                <span class="fd-tier-track"><span class="fd-tier-fill" style="width:${Math.min(100, counts[t])}%; background:${TIER_COLORS[t]};"></span></span>
+                <span class="fd-tier-count" style="color:${TIER_COLORS[t]};">${counts[t]}</span></div>`).join("");
+
+            const priority = { Critical: 0, "High Risk": 1, Suspicious: 2 };
+            const recent = [...events].filter(e => e.tier in priority).slice(-40).reverse().slice(0, 5);
+            document.getElementById("fd-mini-recent").innerHTML = recent.map(e => `
+                <div style="display:flex; justify-content:space-between; padding:7px 0; border-bottom:1px solid #263042; font-size:12px;">
+                    <span style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:60%;"><strong>${escapeHtml(e.host)}</strong> · ${e.event}</span>
+                    <span class="fd-pill" style="background:${TIER_COLORS[e.tier]}26; color:${TIER_COLORS[e.tier]};">${e.tier}</span>
+                </div>`).join("") || `<p style="color:#64748B; font-size:12px;">No high-priority events yet</p>`;
+
+            document.getElementById("fd-mini-incidents").innerHTML = incidents.slice(0, 5).map(inc => `
+                <div style="padding:7px 0; border-bottom:1px solid #263042; font-size:12px;">
+                    <div><strong>${escapeHtml(inc.host)}</strong> <span style="color:#64748B;">· ${inc.kind}</span></div>
+                    <div style="color:#94A3B8; font-size:11px;">${inc.eventCount} event(s), max score ${inc.maxScore}</div>
+                </div>`).join("") || `<p style="color:#64748B; font-size:12px;">No correlated incidents</p>`;
+        }
+
+        function renderTopFiles() {
+            const counts = {};
+            events.forEach(e => { const f = e.file.split(/[/\\]/).pop(); counts[f] = (counts[f] || 0) + 1; });
+            const top = Object.entries(counts).sort((a,b) => b[1]-a[1]).slice(0, 5);
+            document.getElementById("fd-top-files").innerHTML = top.map(([f,c]) => `
+                <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #263042;"><span style="color:#CBD5E1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:75%;">${escapeHtml(f)}</span><strong style="color:#06B6D4;">${c}</strong></div>`).join("");
+        }
+        function renderAgentStatusMini() {
+            const list = [...endpoints].sort((a,b) => a.host.localeCompare(b.host)).slice(0, 6);
+            document.getElementById("fd-agent-status").innerHTML = list.map(a => `
+                <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #263042;"><span>${escapeHtml(a.host)}</span><span class="${a.status==='Online' ? 'go' : 'go-red'}">${a.status}</span></div>`).join("");
+        }
+        function renderRecentAlertsMini() {
+            const list = [...alerts].reverse().slice(0, 5);
+            document.getElementById("fd-recent-alerts").innerHTML = list.map(a => `
+                <div style="padding:7px 0; border-bottom:1px solid #263042;">
+                    <div style="color:#EF4444; font-weight:600;">${a.event} on ${escapeHtml(a.host)}</div>
+                    <div style="color:#64748B; font-size:0.72rem;">${fmtFull(a.ts)}</div>
+                </div>`).join("") || `<p style="color:#64748B;">No alerts yet</p>`;
+        }
+
+        /* =====================================================
+           5. EVENT HISTORY
+        ===================================================== */
         function filteredHistory() {
             const q = document.getElementById("fd-hist-search").value.trim().toLowerCase();
             const evType = document.getElementById("fd-hist-event").value;
-            const sev = document.getElementById("fd-hist-severity").value;
             return [...events].reverse().filter(e => {
                 if (evType && e.event !== evType) return false;
-                if (sev && e.classification !== sev) return false;
                 if (q && !(e.host.toLowerCase().includes(q) || e.file.toLowerCase().includes(q))) return false;
                 return true;
             });
         }
-
         function renderHistory() {
             const filtered = filteredHistory();
             const pages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
             historyPage = Math.min(historyPage, pages);
             const slice = filtered.slice((historyPage - 1) * PAGE_SIZE, historyPage * PAGE_SIZE);
-
             document.getElementById("fd-hist-body").innerHTML = slice.map(e => `
-                <tr>
-                    <td>${fmtFull(e.ts)}</td>
-                    <td>${escapeHtml(e.host)}</td>
-                    <td>${escapeHtml(e.event)}</td>
-                    <td class="file">${escapeHtml(e.file)}</td>
-                    <td>${escapeHtml(e.user)}</td>
-                    <td><span class="fd-pill" style="background:${TIER_COLORS[e.classification]}26; color:${TIER_COLORS[e.classification]};">${e.classification}</span></td>
-                </tr>`).join("") || `<tr><td colspan="6" style="color:#64748B;">No matching events</td></tr>`;
-
+                <tr><td>${fmtFull(e.ts)}</td><td>${escapeHtml(e.host)}</td><td>${escapeHtml(e.event)}</td>
+                <td class="file">${escapeHtml(e.file)}</td>
+                <td>${escapeHtml(e.user)}<span class="fd-verify-pill">UNVERIFIED</span></td></tr>`).join("")
+                || `<tr><td colspan="5" style="color:#64748B;">No matching events</td></tr>`;
             document.getElementById("fd-hist-count").textContent = `${filtered.length} events`;
             document.getElementById("fd-hist-page").textContent = `Page ${historyPage} of ${pages}`;
             document.getElementById("fd-hist-prev").disabled = historyPage <= 1;
             document.getElementById("fd-hist-next").disabled = historyPage >= pages;
+            document.getElementById("fd-email-count").textContent = alerts.length;
         }
 
+        function renderEmailList() {
+            const list = [...alerts].reverse().slice(0, 50);
+            document.getElementById("fd-email-list").innerHTML = list.map(a => `
+                <div class="fd-email-item">
+                    <div style="flex:1; min-width:220px;">
+                        <div class="fd-email-subject"><i class="fas fa-envelope-open-text" style="color:#06B6D4;"></i> FALYS Alert - ${a.event}</div>
+                        <div class="fd-email-fields">
+                            <b>Host:</b> ${escapeHtml(a.host)}<br>
+                            <b>Event:</b> ${a.event}<br>
+                            <b>File:</b> ${escapeHtml(a.file.split(/[/\\]/).pop())}<br>
+                            <b>To:</b> ${a.recipient}
+                        </div>
+                        <div class="fd-email-status ${a.status}"><i class="fas ${a.status==='ok'?'fa-check':a.status==='warn'?'fa-triangle-exclamation':'fa-xmark'}"></i> ${a.label}</div>
+                        <div class="fd-email-note">${a.note}</div>
+                    </div>
+                    <div class="fd-email-time">${fmtFull(a.ts)}</div>
+                </div>`).join("") || `<p style="color:#64748B; padding:10px 0;">No emails sent yet. Emails go out when an event crosses your alert threshold in Settings.</p>`;
+        }
+
+        function downloadBlob(content, filename, type) {
+            const blob = new Blob([content], { type });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url; a.download = filename; document.body.appendChild(a); a.click();
+            document.body.removeChild(a); URL.revokeObjectURL(url);
+        }
+        function exportCsv() {
+            const rows = [["Time","Host","Event","File","User","Classification"]];
+            filteredHistory().forEach(e => rows.push([fmtFull(e.ts), e.host, e.event, e.file, e.user, e.tier]));
+            const csv = rows.map(r => r.map(v => `"${String(v).replace(/"/g,'""')}"`).join(",")).join("\n");
+            downloadBlob(csv, "falys-demo-events.csv", "text/csv");
+            showToast("CSV export downloaded", "fa-file-csv");
+        }
+        function exportJson() {
+            const data = filteredHistory().map(e => ({ time: e.ts.toISOString(), host: e.host, event: e.event, file: e.file, user: e.user, classification: e.tier }));
+            downloadBlob(JSON.stringify(data, null, 2), "falys-demo-events.json", "application/json");
+            showToast("JSON export downloaded", "fa-file-code");
+        }
+
+        /* =====================================================
+           6. AGENTS
+        ===================================================== */
         function renderAgents() {
             const q = document.getElementById("fd-agent-search").value.trim().toLowerCase();
             const statusFilter = document.getElementById("fd-agent-status").value;
@@ -911,86 +1032,87 @@
                 if (statusFilter && e.status !== statusFilter) return false;
                 if (q && !(e.host.toLowerCase().includes(q) || e.ip.includes(q))) return false;
                 return true;
-            }).sort((a, b) => a.host.localeCompare(b.host));
+            }).sort((a, b) => a.host.localeCompare(b.host)).slice(0, 60);
 
-            document.getElementById("fd-agent-grid").innerHTML = list.map(e => `
-                <div class="fd-agent-card">
-                    <div class="fd-agent-top">
-                        <span class="fd-agent-host"><i class="${e.os.icon}"></i> ${escapeHtml(e.host)}</span>
-                        <span><span class="fd-dot" style="background:${e.status === 'Online' ? '#22C55E' : '#EF4444'}"></span>${e.status}</span>
-                    </div>
-                    <div class="fd-agent-meta">
-                        ${escapeHtml(e.ip)}<br>
-                        ${escapeHtml(e.os.name)} · ${e.dept}<br>
-                        ${e.eventCount} events · last seen ${e.lastSeenMinsAgo < 1 ? "just now" : e.lastSeenMinsAgo + "m ago"}
-                    </div>
+            document.getElementById("fd-agent-list").innerHTML = list.map(e => `
+                <div class="fd-agent-row ${e.status === 'Online' ? 'online' : 'offline'}">
+                    <div class="fd-agent-row-top"><i class="${e.os.icon}"></i> ${escapeHtml(e.host)}</div>
+                    <div class="fd-agent-row-mid">${e.eventCount} events logged &nbsp;·&nbsp; <span class="${e.status==='Online'?'st-on':'st-off'}">${e.status}</span></div>
+                    <div class="fd-agent-row-bottom">IP: ${escapeHtml(e.ip)} · Last seen ${e.lastSeenMinsAgo < 1 ? "just now" : e.lastSeenMinsAgo + "m ago"}</div>
                 </div>`).join("") || `<div style="color:#64748B;">No matching agents</div>`;
         }
 
-        function renderAlerts() {
-            const list = [...alerts].reverse().slice(0, 60);
-            document.getElementById("fd-alerts-list").innerHTML = list.map(a => `
-                <div class="fd-alert ${a.classification === 'Critical' ? 'high' : 'medium'}">
-                    <div class="fd-alert-top">
-                        <strong>${escapeHtml(a.host)}</strong>
-                        <span class="${a.status === 'sent' ? 'fd-status-ok' : 'fd-status-fail'}">
-                            <i class="fas fa-envelope"></i> ${a.status === 'sent' ? 'Email sent' : 'Email failed'}
-                        </span>
-                    </div>
-                    <div class="fd-alert-body">${a.event} — ${escapeHtml(a.file.split(/[/\\]/).pop())}
-                        <span class="fd-pill" style="background:${TIER_COLORS[a.classification]}26; color:${TIER_COLORS[a.classification]}; margin-left:8px;">${a.classification}</span>
-                    </div>
-                    <div class="fd-alert-meta">${fmtFull(a.ts)} → ${a.recipient}</div>
-                </div>`).join("") || `<div style="color:#64748B;">No alerts yet — try lowering the threshold in Settings.</div>`;
+        /* =====================================================
+           7. DETECTIONS
+        ===================================================== */
+        function filteredDetEvents() {
+            const q = document.getElementById("det-search").value.trim().toLowerCase();
+            const tier = document.getElementById("det-filter").value;
+            return [...events].reverse().filter(e => {
+                if (tier && e.tier !== tier) return false;
+                if (q && !(e.host.toLowerCase().includes(q) || e.file.toLowerCase().includes(q))) return false;
+                return true;
+            });
         }
-
         function renderDetections() {
             const counts = {}; Object.keys(TIER_COLORS).forEach(t => counts[t] = 0);
-            events.forEach(e => counts[e.classification]++);
-            const total = events.length || 1;
-            document.getElementById("fd-det-tiers").innerHTML = Object.keys(TIER_COLORS).map(t => {
-                const pct = Math.round((counts[t] / total) * 100);
-                return `<div style="display:flex; align-items:center; gap:10px; padding:7px 0;">
-                    <span style="width:90px; font-size:12px; color:#CBD5E1;">${t}</span>
-                    <span style="flex:1; height:8px; background:#1E2937; border-radius:4px; overflow:hidden;">
-                        <span style="display:block; height:100%; width:${pct}%; background:${TIER_COLORS[t]};"></span>
-                    </span>
-                    <span style="width:30px; text-align:right; font-weight:700; font-size:12px; color:${TIER_COLORS[t]};">${counts[t]}</span>
-                </div>`;
-            }).join("");
+            events.forEach(e => counts[e.tier]++);
+            document.getElementById("det-critical").textContent = counts["Critical"];
+            document.getElementById("det-high").textContent = counts["High Risk"];
+            document.getElementById("det-suspicious").textContent = counts["Suspicious"];
+            document.getElementById("det-low").textContent = counts["Low Risk"] + counts["Legitimate"];
+            document.getElementById("det-incidents-count").textContent = incidents.length;
+            document.getElementById("det-incidents-pill").textContent = `${incidents.length} active`;
+            document.getElementById("fd-det-updated").textContent = fmtTime(new Date());
 
-            const priority = { Critical: 0, "High Risk": 1, Suspicious: 2 };
-            const recent = [...events].filter(e => e.classification in priority).slice(-40).reverse().slice(0, 6);
-            document.getElementById("fd-det-recent").innerHTML = recent.map(e => `
-                <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #263042; font-size:12.5px;">
-                    <span style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:60%;"><strong>${escapeHtml(e.host)}</strong> · ${e.event}</span>
-                    <span class="fd-pill" style="background:${TIER_COLORS[e.classification]}26; color:${TIER_COLORS[e.classification]};">${e.classification}</span>
-                </div>`).join("") || `<p style="color:#64748B;">No high-priority events yet</p>`;
-
-            document.getElementById("fd-det-incidents").innerHTML = incidents.slice(0, 6).map(inc => `
-                <div style="padding:8px 0; border-bottom:1px solid #263042; font-size:12.5px;">
+            document.getElementById("det-incidents-list").innerHTML = incidents.slice(0, 8).map(inc => `
+                <div style="padding:10px 0; border-bottom:1px solid #263042; font-size:13px;">
                     <div><strong>${escapeHtml(inc.host)}</strong> <span style="color:#64748B;">· ${inc.kind}</span></div>
-                    <div style="color:#94A3B8; font-size:11.5px;">${inc.eventCount} event(s), max score ${inc.maxScore}</div>
-                </div>`).join("") || `<p style="color:#64748B;">No correlated incidents</p>`;
+                    <div style="color:#94A3B8; font-size:12px;">${inc.eventCount} event(s), max score ${inc.maxScore}</div>
+                </div>`).join("") || `<div style="color:#64748B; text-align:center; padding:20px 0;"><i class="fas fa-shield" style="font-size:1.4rem; margin-bottom:8px; display:block;"></i>No correlated incidents yet.</div>`;
+
+            const filtered = filteredDetEvents();
+            const pages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+            detPage = Math.min(detPage, pages);
+            const slice = filtered.slice((detPage - 1) * PAGE_SIZE, detPage * PAGE_SIZE);
+            document.getElementById("det-table-body").innerHTML = slice.map((e, idx) => `
+                <tr>
+                    <td>${fmtFull(e.ts)}</td><td>${escapeHtml(e.host)}</td><td>${e.event}</td>
+                    <td class="file">${escapeHtml(e.file.split(/[/\\]/).pop())}</td>
+                    <td><span class="fd-pill" style="background:${TIER_COLORS[e.tier]}26; color:${TIER_COLORS[e.tier]};">${e.tier}</span></td>
+                    <td><span class="fd-score-chip">${e.score}</span></td>
+                    <td><span class="fd-conf-track"><span class="fd-conf-fill" style="width:${e.confidence}%;"></span></span>${e.confidence}%</td>
+                    <td>
+                        <button class="fd-reason-toggle" data-ridx="det-r-${idx}">${e.reasons.length} reason(s) <i class="fas fa-chevron-down"></i></button>
+                        <ul class="fd-reason-list" id="det-r-${idx}">${e.reasons.map(r => `<li>${escapeHtml(r)}</li>`).join("")}</ul>
+                    </td>
+                </tr>`).join("") || `<tr><td colspan="8" style="color:#64748B;">No matching events</td></tr>`;
+            document.getElementById("det-events-count").textContent = `${filtered.length} of ${events.length} events`;
+            document.getElementById("det-hist-count-label").textContent = `${filtered.length} events`;
+            document.getElementById("det-page").textContent = `Page ${detPage} of ${pages}`;
+            document.getElementById("det-prev").disabled = detPage <= 1;
+            document.getElementById("det-next").disabled = detPage >= pages;
+
+            document.querySelectorAll(".fd-reason-toggle").forEach(btn => {
+                btn.onclick = () => document.getElementById(btn.dataset.ridx).classList.toggle("open");
+            });
         }
 
         function renderAll() {
-            refreshKpis();
-            refreshCharts();
-            renderTimeline(false);
-            renderHistory();
+            refreshKpis(); refreshCharts();
+            renderTimeline(false); renderFullTimeline();
+            renderMiniDetections(); renderTopFiles(); renderAgentStatusMini(); renderRecentAlertsMini();
+            renderHistory(); renderEmailList();
             renderAgents();
-            renderAlerts();
             renderDetections();
         }
 
         /* =====================================================
-           4. LIVE SIMULATION
+           8. LIVE SIMULATION
         ===================================================== */
         function showToast(msg, icon) {
             const wrap = document.getElementById("fd-toast-wrap");
-            const el = document.createElement("div");
-            el.className = "fd-toast";
+            const el = document.createElement("div"); el.className = "fd-toast";
             el.innerHTML = `<i class="fas ${icon || 'fa-envelope'}"></i><span>${msg}</span>`;
             wrap.appendChild(el);
             setTimeout(() => { el.style.opacity = "0"; el.style.transition = "opacity .3s"; setTimeout(() => el.remove(), 300); }, 4200);
@@ -998,136 +1120,130 @@
 
         function maybeAlert(evt) {
             if (!settings.emailAlerts) return;
-            const isHigh = HIGH_SEVERITY_EVENTS.has(evt.event) || evt.classification === "Critical" || evt.classification === "High Risk";
+            const isHigh = HIGH_SEVERITY_EVENTS.has(evt.event) || evt.tier === "Critical" || evt.tier === "High Risk";
             if (!isHigh) return;
-
             let fire = false;
-            if (settings.threshold === "immediate") {
-                fire = true;
-            } else {
+            if (settings.threshold === "immediate") fire = true;
+            else {
                 const needed = parseInt(settings.threshold, 10) || 1;
                 hostAlertCounters[evt.host] = (hostAlertCounters[evt.host] || 0) + 1;
-                if (hostAlertCounters[evt.host] >= needed) {
-                    hostAlertCounters[evt.host] = 0;
-                    fire = true;
-                }
+                if (hostAlertCounters[evt.host] >= needed) { hostAlertCounters[evt.host] = 0; fire = true; }
             }
             if (!fire) return;
-
-            const alert = {
-                ts: evt.ts, host: evt.host, event: evt.event, file: evt.file,
-                classification: evt.classification, status: Math.random() < 0.96 ? "sent" : "failed",
-                recipient: "soc-team@falys-demo.io"
-            };
+            const es = emailStatusFor();
+            const alert = { ts: evt.ts, host: evt.host, event: evt.event, file: evt.file, tier: evt.tier, recipient: "soc-team@falys-demo.io", ...es };
             alerts.push(alert);
-            if (alert.status === "sent") {
-                showToast(`Alert email sent for <strong>${escapeHtml(alert.host)}</strong> (${alert.classification})`, "fa-envelope-circle-check");
-            }
+            if (alert.status === "ok") showToast(`Alert email sent for <strong>${escapeHtml(alert.host)}</strong> (${alert.tier})`, "fa-envelope-circle-check");
         }
 
         let simTimer = null;
+        function activePanel() { return document.querySelector(".fd-nav-item.active").dataset.panel; }
         function tickSimulation() {
             if (!settings.monitoring) return;
             const evt = makeEvent(new Date());
             events.push(evt);
-            if (events.length > 4000) events.shift(); // keep memory bounded
+            if (events.length > 4000) events.shift();
             maybeAlert(evt);
 
             renderTimeline(true);
-            refreshKpis();
-            refreshCharts();
-            if (document.querySelector('.fd-panel[data-panel="history"]').classList.contains("active")) renderHistory();
-            if (document.querySelector('.fd-panel[data-panel="agents"]').classList.contains("active")) renderAgents();
-            if (document.querySelector('.fd-panel[data-panel="alerts"]').classList.contains("active")) renderAlerts();
-            if (document.querySelector('.fd-panel[data-panel="detections"]').classList.contains("active")) renderDetections();
+            refreshKpis(); refreshCharts();
+            const p = activePanel();
+            if (p === "history") renderHistory();
+            if (p === "timeline") renderFullTimeline();
+            if (p === "agents") renderAgents();
+            if (p === "detections") renderDetections();
+            if (p === "dashboard") { renderMiniDetections(); renderTopFiles(); renderAgentStatusMini(); renderRecentAlertsMini(); }
         }
-
-        function restartSimTimer() {
-            if (simTimer) clearInterval(simTimer);
-            simTimer = setInterval(tickSimulation, settings.speedMs);
-        }
+        function restartSimTimer() { if (simTimer) clearInterval(simTimer); simTimer = setInterval(tickSimulation, settings.speedMs); }
 
         function injectAttackBurst() {
             const target = pick(endpoints);
             for (let i = 0; i < 6; i++) {
                 const evt = makeEvent(new Date(Date.now() + i * 400), target);
                 evt.event = pick(["deleted", "deleted", "moved", "modified"]);
-                evt.classification = i < 3 ? "Critical" : "High Risk";
+                evt.tier = i < 3 ? "Critical" : "High Risk";
+                evt.score = evt.tier === "Critical" ? 88 + Math.floor(Math.random()*10) : 60 + Math.floor(Math.random()*15);
+                evt.confidence = 80 + Math.floor(Math.random()*19);
+                evt.severity = evt.event === "deleted" ? "Critical" : "High";
                 events.push(evt);
                 maybeAlert(evt);
             }
-            renderTimeline(false);
-            refreshKpis();
-            refreshCharts();
-            renderHistory();
-            renderAlerts();
-            renderDetections();
+            renderAll();
             showToast(`Simulated attack pattern injected on <strong>${escapeHtml(target.host)}</strong>`, "fa-triangle-exclamation");
         }
 
         /* =====================================================
-           5. WIRE UP UI
+           9. WIRE UP UI
         ===================================================== */
+        function switchTab(panel) {
+            document.querySelectorAll(".fd-nav-item").forEach(i => i.classList.remove("active"));
+            document.querySelectorAll(".fd-panel").forEach(p => p.classList.remove("active"));
+            document.querySelector(`.fd-nav-item[data-panel="${panel}"]`).classList.add("active");
+            document.querySelector(`.fd-panel[data-panel="${panel}"]`).classList.add("active");
+            if (panel === "history") renderHistory();
+            if (panel === "timeline") renderFullTimeline();
+            if (panel === "agents") renderAgents();
+            if (panel === "detections") renderDetections();
+        }
+
         function initTabs() {
-            document.querySelectorAll(".fd-nav-item").forEach(item => {
-                item.addEventListener("click", () => {
-                    document.querySelectorAll(".fd-nav-item").forEach(i => i.classList.remove("active"));
-                    document.querySelectorAll(".fd-panel").forEach(p => p.classList.remove("active"));
-                    item.classList.add("active");
-                    document.querySelector(`.fd-panel[data-panel="${item.dataset.panel}"]`).classList.add("active");
-                    if (item.dataset.panel === "history") renderHistory();
-                    if (item.dataset.panel === "agents") renderAgents();
-                    if (item.dataset.panel === "alerts") renderAlerts();
-                    if (item.dataset.panel === "detections") renderDetections();
-                });
-            });
+            document.querySelectorAll(".fd-nav-item").forEach(item => item.addEventListener("click", () => switchTab(item.dataset.panel)));
+            document.getElementById("fd-open-dashboard").addEventListener("click", () => switchTab("dashboard"));
+            document.getElementById("fd-view-detections").addEventListener("click", () => switchTab("detections"));
         }
 
         function initControls() {
             document.getElementById("fd-hist-search").addEventListener("input", () => { historyPage = 1; renderHistory(); });
             document.getElementById("fd-hist-event").addEventListener("change", () => { historyPage = 1; renderHistory(); });
-            document.getElementById("fd-hist-severity").addEventListener("change", () => { historyPage = 1; renderHistory(); });
             document.getElementById("fd-hist-prev").addEventListener("click", () => { historyPage--; renderHistory(); });
             document.getElementById("fd-hist-next").addEventListener("click", () => { historyPage++; renderHistory(); });
+            document.getElementById("fd-toggle-emails").addEventListener("click", () => {
+                const panel = document.getElementById("fd-email-panel");
+                panel.style.display = panel.style.display === "none" ? "block" : "none";
+                if (panel.style.display === "block") renderEmailList();
+            });
+            document.getElementById("fd-close-emails").addEventListener("click", () => { document.getElementById("fd-email-panel").style.display = "none"; });
+            document.getElementById("fd-export-csv").addEventListener("click", exportCsv);
+            document.getElementById("fd-export-json").addEventListener("click", exportJson);
 
             document.getElementById("fd-agent-search").addEventListener("input", renderAgents);
             document.getElementById("fd-agent-status").addEventListener("change", renderAgents);
+            document.getElementById("deploy-generate").addEventListener("click", () => showToast("In the live product this would download a pre-configured FalysAgent binary. Demo mode — nothing to download here.", "fa-circle-info"));
+
+            document.getElementById("det-search").addEventListener("input", () => { detPage = 1; renderDetections(); });
+            document.getElementById("det-filter").addEventListener("change", () => { detPage = 1; renderDetections(); });
+            document.getElementById("det-prev").addEventListener("click", () => { detPage--; renderDetections(); });
+            document.getElementById("det-next").addEventListener("click", () => { detPage++; renderDetections(); });
+            document.getElementById("fd-guide-toggle").addEventListener("click", () => {
+                document.getElementById("fd-guide-body").classList.toggle("open");
+                const open = document.getElementById("fd-guide-body").classList.contains("open");
+                document.getElementById("fd-guide-arrow").innerHTML = open ? '<i class="fas fa-chevron-up"></i> Hide guide' : '<i class="fas fa-chevron-down"></i> Show guide';
+            });
 
             document.getElementById("set-monitoring").addEventListener("change", (e) => {
                 settings.monitoring = e.target.checked;
-                document.getElementById("fd-live-text").textContent = settings.monitoring ? "Live simulation running" : "Monitoring paused";
-                document.querySelector(".fd-live-dot").style.background = settings.monitoring ? "#22C55E" : "#64748B";
+                document.getElementById("fd-live-text").textContent = settings.monitoring ? "Live (real-time)" : "Monitoring paused";
+                document.getElementById("fd-live-dot-dash").classList.toggle("paused", !settings.monitoring);
             });
-            document.getElementById("set-email").addEventListener("change", (e) => {
-                settings.emailAlerts = e.target.checked;
-                refreshKpis();
-            });
+            document.getElementById("set-email").addEventListener("change", (e) => { settings.emailAlerts = e.target.checked; refreshKpis(); });
             document.getElementById("set-threshold").addEventListener("change", (e) => { settings.threshold = e.target.value; });
             document.getElementById("set-speed").addEventListener("change", (e) => { settings.speedMs = parseInt(e.target.value, 10); restartSimTimer(); });
+            document.getElementById("fd-refresh-server").addEventListener("click", () => { renderAll(); showToast("Settings synced (demo)", "fa-rotate"); });
 
             document.getElementById("fd-inject-btn").addEventListener("click", injectAttackBurst);
-            document.getElementById("fd-reset-btn").addEventListener("click", () => {
-                bootstrap();
-                showToast("Demo data regenerated", "fa-rotate");
-            });
+            document.getElementById("fd-reset-btn").addEventListener("click", () => { bootstrap(); showToast("Demo data regenerated", "fa-rotate"); });
         }
 
         function bootstrap() {
-            genEndpoints();
-            genHistoricalEvents();
-            genAlertsFromHistory();
+            genEndpoints(); genHistoricalEvents(); genAlertsFromHistory();
             for (const k in hostAlertCounters) delete hostAlertCounters[k];
-            historyPage = 1;
+            historyPage = 1; detPage = 1;
             if (!charts.trend) initCharts();
             renderAll();
             restartSimTimer();
         }
 
-        document.addEventListener("DOMContentLoaded", () => {
-            initTabs();
-            initControls();
-            bootstrap();
-        });
+        document.addEventListener("DOMContentLoaded", () => { initTabs(); initControls(); bootstrap(); });
     })();
     </script>
 
