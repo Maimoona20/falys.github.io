@@ -23,8 +23,8 @@
     <link rel="icon" href="assets/favicon.svg">
 
     <!-- Chart.js + Font Awesome (self-contained to this page only) -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js" integrity="sha384-dug+JxfBvklEQdJ4AYuBBAIScUz0bVN73xpy273gcAwHjb3qI0fXmuYNaNfdyYJG" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
         /* =====================================================
@@ -665,7 +665,7 @@
         function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
         function weightedPick(weights) { const r = Math.random(); let acc = 0; for (const k in weights) { acc += weights[k]; if (r <= acc) return k; } return Object.keys(weights)[0]; }
         function pad(n) { return n < 10 ? "0" + n : "" + n; }
-        function fmtTime(d) { let h = d.getHours(); const ampm = h >= 12 ? "PM" : "AM"; h = h % 12 || 12; return `pad(h):{pad(d.getMinutes())}:${pad(d.getSeconds())} ${ampm}`; }
+        function fmtTime(d) { let h = d.getHours(); const ampm = h >= 12 ? "PM" : "AM"; h = h % 12 || 12; return `${pad(h)}:${pad(d.getMinutes())}:${pad(d.getSeconds())} ${ampm}`; }
         function fmtFull(d) { return d.toLocaleString(); }
         function fmtDay(d) { return d.toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" }); }
         function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
@@ -702,12 +702,12 @@
                 const dept = pick(DEPTS);
                 const os = pick(OS_LIST);
                 const isServer = os.name.includes("Server") || os.name.includes("RHEL");
-                const host = `isServer?"SRV":"WKS"-{dept}-${String(100 + i)}`;
+                const host = `${isServer ? "SRV" : "WKS"}-${dept}-${String(100 + i)}`;
                 const online = Math.random() < 0.91;
                 const lastSeenMinsAgo = online ? Math.floor(Math.random() * 4) : 20 + Math.floor(Math.random() * 600);
                 endpoints.push({
                     id: i, host, dept, os,
-                    ip: `10.20+(dept.length%5).{Math.floor(Math.random() * 254)}.${Math.floor(Math.random() * 254) + 1}`,
+                    ip: `10.${20 + (dept.length % 5)}.${Math.floor(Math.random() * 254)}.${Math.floor(Math.random() * 254) + 1}`,
                     status: online ? "Online" : "Offline", lastSeenMinsAgo, eventCount: 0
                 });
             }
@@ -854,7 +854,7 @@
             const critical = events.filter(e => e.tier === "Critical").length;
 
             document.getElementById("home-endpoints").textContent = endpoints.length;
-            document.getElementById("home-endpoints-sub").innerHTML = endpoints.length === 0 ? "No agents reporting yet" : `online/{endpoints.length} online <span class="go">●</span>`;
+            document.getElementById("home-endpoints-sub").innerHTML = endpoints.length === 0 ? "No agents reporting yet" : `${online}/${endpoints.length} online <span class="go">●</span>`;
             document.getElementById("home-events").textContent = events.length;
             document.getElementById("home-events-sub").textContent = `${events1h} in the last hour`;
             document.getElementById("home-threats").textContent = threats;
@@ -867,7 +867,7 @@
             document.getElementById("d-events").textContent = events.length;
             document.getElementById("d-threats").textContent = threats;
             document.getElementById("d-alerts").textContent = alerts.length;
-            document.getElementById("d-agents-online").textContent = `online/{endpoints.length}`;
+            document.getElementById("d-agents-online").textContent = `${online}/${endpoints.length}`;
             const lastMin = events.filter(e => e.ts.getTime() >= Date.now() - 60000).length;
             document.getElementById("d-epm").textContent = lastMin;
             document.getElementById("fd-last-updated").textContent = fmtTime(new Date());
@@ -883,8 +883,8 @@
         function timelineRowHtml(e) {
             const color = HIGH_SEVERITY_EVENTS.has(e.event) ? "#EF4444" : (e.event === "modified" ? "#F59E0B" : "#22C55E");
             const fname = e.file.split(/[/\\]/).pop();
-            return `<span class="t">fmtTime(e.ts)</span><spanclass="host">{escapeHtml(e.host)}</span>
-                <span style="color:color;font-weight:600;">{e.event}</span><span class="file">${escapeHtml(fname)}</span>`;
+            return `<span class="t">${fmtTime(e.ts)}</span><span class="host">${escapeHtml(e.host)}</span>
+                <span style="color:${color}; font-weight:600;">${e.event}</span><span class="file">${escapeHtml(fname)}</span>`;
         }
         function renderTimeline(latestOnly) {
             const ul = document.getElementById("fd-timeline");
@@ -915,15 +915,15 @@
             events.forEach(e => counts[e.tier]++);
             document.getElementById("fd-mini-tiers").innerHTML = Object.keys(TIER_COLORS).map(t => `
                 <div class="fd-tier-row"><span class="fd-tier-label">${t}</span>
-                <span class="fd-tier-track"><span class="fd-tier-fill" style="width:Math.min(100,counts[t])%;background:{TIER_COLORS[t]};"></span></span>
-                <span class="fd-tier-count" style="color:TIERCOLORS[t];">{counts[t]}</span></div>`).join("");
+                <span class="fd-tier-track"><span class="fd-tier-fill" style="width:${Math.min(100, counts[t])}%; background:${TIER_COLORS[t]};"></span></span>
+                <span class="fd-tier-count" style="color:${TIER_COLORS[t]};">${counts[t]}</span></div>`).join("");
 
             const priority = { Critical: 0, "High Risk": 1, Suspicious: 2 };
             const recent = [...events].filter(e => e.tier in priority).slice(-40).reverse().slice(0, 5);
             document.getElementById("fd-mini-recent").innerHTML = recent.map(e => `
                 <div style="display:flex; justify-content:space-between; padding:7px 0; border-bottom:1px solid #263042; font-size:12px;">
                     <span style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:60%;"><strong>${escapeHtml(e.host)}</strong> · ${e.event}</span>
-                    <span class="fd-pill" style="background:TIERCOLORS[e.tier]26;color:{TIER_COLORS[e.tier]};">${e.tier}</span>
+                    <span class="fd-pill" style="background:${TIER_COLORS[e.tier]}26; color:${TIER_COLORS[e.tier]};">${e.tier}</span>
                 </div>`).join("") || `<p style="color:#64748B; font-size:12px;">No high-priority events yet</p>`;
 
             document.getElementById("fd-mini-incidents").innerHTML = incidents.slice(0, 5).map(inc => `
@@ -938,12 +938,12 @@
             events.forEach(e => { const f = e.file.split(/[/\\]/).pop(); counts[f] = (counts[f] || 0) + 1; });
             const top = Object.entries(counts).sort((a,b) => b[1]-a[1]).slice(0, 5);
             document.getElementById("fd-top-files").innerHTML = top.map(([f,c]) => `
-                <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #263042;"><span style="color:#CBD5E1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:75%;">escapeHtml(f)</span><strongstyle="color:#06B6D4;">{c}</strong></div>`).join("");
+                <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #263042;"><span style="color:#CBD5E1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:75%;">${escapeHtml(f)}</span><strong style="color:#06B6D4;">${c}</strong></div>`).join("");
         }
         function renderAgentStatusMini() {
             const list = [...endpoints].sort((a,b) => a.host.localeCompare(b.host)).slice(0, 6);
             document.getElementById("fd-agent-status").innerHTML = list.map(a => `
-                <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #263042;"><span>escapeHtml(a.host)</span><spanclass="{a.status==='Online' ? 'go' : 'go-red'}">${a.status}</span></div>`).join("");
+                <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #263042;"><span>${escapeHtml(a.host)}</span><span class="${a.status==='Online' ? 'go' : 'go-red'}">${a.status}</span></div>`).join("");
         }
         function renderRecentAlertsMini() {
             const list = [...alerts].reverse().slice(0, 5);
@@ -972,7 +972,7 @@
             historyPage = Math.min(historyPage, pages);
             const slice = filtered.slice((historyPage - 1) * PAGE_SIZE, historyPage * PAGE_SIZE);
             document.getElementById("fd-hist-body").innerHTML = slice.map(e => `
-                <tr><td>fmtFull(e.ts)</td><td>{escapeHtml(e.host)}</td><td>${escapeHtml(e.event)}</td>
+                <tr><td>${fmtFull(e.ts)}</td><td>${escapeHtml(e.host)}</td><td>${escapeHtml(e.event)}</td>
                 <td class="file">${escapeHtml(e.file)}</td>
                 <td>${escapeHtml(e.user)}<span class="fd-verify-pill">UNVERIFIED</span></td></tr>`).join("")
                 || `<tr><td colspan="5" style="color:#64748B;">No matching events</td></tr>`;
@@ -1040,7 +1040,7 @@
             document.getElementById("fd-agent-list").innerHTML = list.map(e => `
                 <div class="fd-agent-row ${e.status === 'Online' ? 'online' : 'offline'}">
                     <div class="fd-agent-row-top"><i class="${e.os.icon}"></i> ${escapeHtml(e.host)}</div>
-                    <div class="fd-agent-row-mid">e.eventCounteventslogged&nbsp;·&nbsp;<spanclass="{e.status==='Online'?'st-on':'st-off'}">${e.status}</span></div>
+                    <div class="fd-agent-row-mid">${e.eventCount} events logged &nbsp;·&nbsp; <span class="${e.status==='Online'?'st-on':'st-off'}">${e.status}</span></div>
                     <div class="fd-agent-row-bottom">IP: ${escapeHtml(e.ip)} · Last seen ${e.lastSeenMinsAgo < 1 ? "just now" : e.lastSeenMinsAgo + "m ago"}</div>
                 </div>`).join("") || `<div style="color:#64748B;">No matching agents</div>`;
         }
@@ -1080,14 +1080,14 @@
             const slice = filtered.slice((detPage - 1) * PAGE_SIZE, detPage * PAGE_SIZE);
             document.getElementById("det-table-body").innerHTML = slice.map((e, idx) => `
                 <tr>
-                    <td>fmtFull(e.ts)</td><td>{escapeHtml(e.host)}</td><td>${e.event}</td>
+                    <td>${fmtFull(e.ts)}</td><td>${escapeHtml(e.host)}</td><td>${e.event}</td>
                     <td class="file">${escapeHtml(e.file.split(/[/\\]/).pop())}</td>
-                    <td><span class="fd-pill" style="background:TIERCOLORS[e.tier]26;color:{TIER_COLORS[e.tier]};">${e.tier}</span></td>
+                    <td><span class="fd-pill" style="background:${TIER_COLORS[e.tier]}26; color:${TIER_COLORS[e.tier]};">${e.tier}</span></td>
                     <td><span class="fd-score-chip">${e.score}</span></td>
-                    <td><span class="fd-conf-track"><span class="fd-conf-fill" style="width:e.confidence%;"></span></span>{e.confidence}%</td>
+                    <td><span class="fd-conf-track"><span class="fd-conf-fill" style="width:${e.confidence}%;"></span></span>${e.confidence}%</td>
                     <td>
-                        <button class="fd-reason-toggle" data-ridx="det-r-idx">{e.reasons.length} reason(s) <i class="fas fa-chevron-down"></i></button>
-                        <ul class="fd-reason-list" id="det-r-idx">{e.reasons.map(r => `<li>${escapeHtml(r)}</li>`).join("")}</ul>
+                        <button class="fd-reason-toggle" data-ridx="det-r-${idx}">${e.reasons.length} reason(s) <i class="fas fa-chevron-down"></i></button>
+                        <ul class="fd-reason-list" id="det-r-${idx}">${e.reasons.map(r => `<li>${escapeHtml(r)}</li>`).join("")}</ul>
                     </td>
                 </tr>`).join("") || `<tr><td colspan="8" style="color:#64748B;">No matching events</td></tr>`;
             document.getElementById("det-events-count").textContent = `${filtered.length} of ${events.length} events`;
@@ -1116,7 +1116,7 @@
         function showToast(msg, icon) {
             const wrap = document.getElementById("fd-toast-wrap");
             const el = document.createElement("div"); el.className = "fd-toast";
-            el.innerHTML = `<i class="fas icon||'fa-envelope'"></i><span>{msg}</span>`;
+            el.innerHTML = `<i class="fas ${icon || 'fa-envelope'}"></i><span>${msg}</span>`;
             wrap.appendChild(el);
             setTimeout(() => { el.style.opacity = "0"; el.style.transition = "opacity .3s"; setTimeout(() => el.remove(), 300); }, 4200);
         }
@@ -1136,7 +1136,7 @@
             const es = emailStatusFor();
             const alert = { ts: evt.ts, host: evt.host, event: evt.event, file: evt.file, tier: evt.tier, recipient: "soc-team@falys-demo.io", ...es };
             alerts.push(alert);
-            if (alert.status === "ok") showToast(`Alert email sent for <strong>escapeHtml(alert.host)</strong>({alert.tier})`, "fa-envelope-circle-check");
+            if (alert.status === "ok") showToast(`Alert email sent for <strong>${escapeHtml(alert.host)}</strong> (${alert.tier})`, "fa-envelope-circle-check");
         }
 
         let simTimer = null;
