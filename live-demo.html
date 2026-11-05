@@ -275,15 +275,14 @@
     <!-- ================= HERO ================= -->
     <section class="fd-hero-wrap">
         <span class="fd-badge"><i class="fas fa-play"></i>&nbsp; Interactive Demo</span>
-        <h1>See the FALYS SOC console in action</h1>
-        <p>This is the real console layout — Home, Dashboard, Event History, Agents, Detections and Settings —
-            wired up to simulated data instead of a live deployment. Click around freely.</p>
+        <h1>Explore the FALYS Dashboard</h1>
+        <p>Get a closer look at how FALYS works. Explore the dashboard, review file activity,
+            check detections, and see how agents are managed—all in one place.</p>
     </section>
 
     <div class="fd-disclaimer">
         <i class="fas fa-circle-info"></i>
-        Every endpoint, event, alert and email below is synthetically generated in your browser for demonstration
-        purposes and regenerates on reload. No real infrastructure, files or inboxes are involved.
+        This demo uses sample data to show how FALYS works. No real systems or files are connected.
     </div>
 
     <!-- ================= APP SHELL ================= -->
@@ -621,16 +620,7 @@
     <!-- ================= FOOTER (identical to rest of site) ================= -->
     <footer>
         <div><h3>FALYS</h3><p>Enterprise File Integrity Monitoring</p></div>
-        <div>
-  <p><strong>Legal</strong></p>
-  <p>
-    <a href="/assets/documents/FALYS_Buyer_Terms_and_Conditions.pdf"
-   target="_blank"
-   rel="noopener noreferrer">
-   Terms &amp; Conditions
-</a>
-  </p>
-</div>
+        <div><p>Developed by</p><p>Maimoona Shah Khan<br>Sheeza Alam Khan</p></div>
         <div><a href="contact.html">Contact</a></div>
     </footer>
 
@@ -696,7 +686,7 @@
             const confidence = Math.floor(50 + Math.random() * 49);
             const reasonCount = tier === "Critical" ? 3 : tier === "High Risk" ? 2 : tier === "Suspicious" ? 2 : 1;
             const reasons = [...REASONS_POOL].sort(() => Math.random() - 0.5).slice(0, reasonCount);
-            // simple 4-level severity (mirrors the lightweight rules engine, separate from the tier classifier above)
+                // simple 4-level severity (mirrors the lightweight rules engine, separate from the tier classifier above)
             let severity;
             if (evt.event === "deleted") severity = "Critical";
             else if (evt.event === "moved") severity = "High";
