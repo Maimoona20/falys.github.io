@@ -1,78 +1,59 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FALYS 2.2.0 Documentation | falys.io</title>
-<meta name="description" content="Official documentation for FALYS, the real-time file integrity monitoring and threat response platform for Windows and Linux.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;600&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="docs.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Falys 2.3.0 Documentation | falys.io</title>
+<meta content="Official Falys 2.3.0 documentation: installation, agents, file monitoring, detection rules, SMTP, and authenticated server-to-agent commands." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@400;600&amp;family=Unbounded:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="docs.css" rel="stylesheet"/>
 </head>
 <body>
-  
-  <!-- ================= NAVBAR ================= -->
-
+<!-- ================= NAVBAR ================= -->
 <header>
-
 <nav class="navbar">
-
-    <div class="logo">
-        <div class="logo-box">
+<div class="logo">
+<div class="logo-box">
             F
         </div>
-
-        <span>
-            FALYS
+<span>
+            Falys
         </span>
-    </div>
-
-
-    <div class="nav-links">
-
-        <a href="../index.html">
+</div>
+<div class="nav-links">
+<a href="../index.html">
             Home
         </a>
-
-        <a href="../platform.html">
+<a href="../platform.html">
             Platform
         </a>
-
-        <a href="../live-demo.html">
+<a href="../live-demo.html">
             Live Demo
         </a>
-        
-        <a href="../resources.html">
+<a href="../resources.html">
             Resources
         </a>
-
-        <a href="./">
+<a href="./">
             Docs
         </a>
-
-        <a href="../pricing.html">
+<a href="../pricing.html">
             Pricing
         </a>
-        
-        <a href="../contact.html">
+<a href="../contact.html">
             Contact
         </a>
-
-    </div>
-
-
+</div>
 </nav>
-
 </header>
-  <!-- ================= NAVBAR ================= -->
-
-
-<button id="menu" aria-label="Open menu">☰ Menu</button>
+<!-- ================= NAVBAR ================= -->
+<button aria-label="Open menu" id="menu">☰ Menu</button>
 <aside id="side">
-  <div class="brand"><img src="images/falys-logo.png" alt="FALYS"><div><b>DOCS</b><small>v2.2.0</small></div></div>
-  <a class="back" href="../index.html">← Back to falys.io</a>
-  <input id="search" type="search" placeholder="Search sections…" aria-label="Search sections">
-  <nav id="toc">
+<div class="brand"><img alt="FALYS" src="images/falys-logo.png"/><div><b>DOCS</b><small>v2.3.0</small></div></div>
+<a class="back" href="../index.html">← Back to falys.io</a>
+<input aria-label="Search sections" id="search" placeholder="Search sections…" type="search"/>
+<nav id="toc">
 <ul>
 <li><a href="#introduction" id="toc-introduction">Introduction</a>
 <ul>
@@ -168,32 +149,26 @@
 <ul>
 </ul></li>
 </ul>
-  </nav>
+</nav>
 </aside>
 <main>
-  <div class="hero">
-    <h1>FALYS Documentation</h1>
-    <p>Real-time file integrity monitoring and threat response. Everything you need to install, run and tune FALYS.</p>
-    <div class="badges"><span>v2.2.0</span><span>Windows</span><span>Linux</span><span>PostgreSQL</span><span>Python / Flask</span></div>
-  </div>
-  <div class="author">
-    <div><small>Created</small><b>28 September 2026</b></div>
-    <div><small>By</small><b>Sheeza Alam Khan &amp; Maimoona Shah Khan</b></div>
-    <div><small>Contact</small><b><a href="../contact.html">falys.io/contact</a></b></div>
-    <div><small>Item support</small><b>CodeCanyon item page, Support tab</b></div>
-  </div>
-<section id="introduction">
-
-<h1>Introduction</h1>
-<p>Falys is a self-hosted <strong>file integrity monitoring
+<div class="hero">
+<h1>Falys Documentation</h1>
+<p>Real-time file integrity monitoring and threat response. Everything you need to install, run and tune Falys.</p>
+<div class="badges"><span>v2.3.0</span><span>Windows</span><span>Linux</span><span>PostgreSQL</span><span>Python / Flask</span></div>
+</div>
+<div class="author">
+<div><small>Created</small><b>28 September 2026</b></div>
+<div><small>By</small><b>Sheeza Alam Khan &amp; Maimoona Shah Khan</b></div>
+<div><small>Contact</small><b><a href="../contact.html">falys.io/contact</a></b></div>
+<div><small>Item support</small><b>CodeCanyon item page, Support tab</b></div>
+</div>
+<section id="introduction"><h1>Introduction</h1><p>Falys is a self-hosted <strong>file integrity monitoring
 (FIM)</strong> system. A lightweight agent watches folders on Windows or
 Linux endpoints and reports file events to a central dashboard, which
 scores them for risk, correlates related activity, and emails alerts to
-whoever should know. All data is stored in <strong>PostgreSQL</strong> - there are no data files.</p>
-<p><strong>New here?</strong> Read <em>Installation &amp; Setup</em>
-from top to bottom the first time - the steps build on each other.</p>
-<h2 id="what-is-in-the-download">What is in the download</h2>
-<pre><code>Falys/
+whoever should know. All data is stored in <strong>PostgreSQL</strong> - there are no data files.</p><p><strong>New here?</strong> Read <em>Installation &amp; Setup</em>
+from top to bottom the first time - the steps build on each other.</p><h2 id="what-is-in-the-download">What is in the download</h2><pre>Falys/
 |-- Documentation/
 |   |-- index.html               &lt;- this help file
 |   `-- assets/                  &lt;- styles and screenshots used in the help file
@@ -209,9 +184,7 @@ from top to bottom the first time - the steps build on each other.</p>
 |-- Changelog.txt
 |-- Licenses.txt                 &lt;- third-party credits
 `-- README.txt
-</code></pre>
-<h2 id="key-features">Key features</h2>
-<ul>
+</pre><h2 id="key-features">Key features</h2><ul>
 <li>Cross-platform agent (Windows service / Linux systemd unit),
 delivered as a single compiled binary - no Python required on
 endpoints.</li>
@@ -228,12 +201,10 @@ one.</li>
 changes.</li>
 <li>Server-to-agent command tunnel (TCP port 50997, opened by the
 server) for on-demand incident response on a single endpoint: ping,
-status, rescan and file quarantine. Authenticated, TLS-encrypted and
-can be disabled per agent. See <a href="#command-tunnel">Command
+status, rescan and file quarantine. Per-agent secret, challenge-response
+authentication, TLS-encrypted and can be disabled per agent. See <a href="#command-tunnel">Command
 Tunnel</a>.</li>
-</ul>
-<h2 id="requirements">Requirements</h2>
-<ul>
+</ul><h2 id="requirements">Requirements</h2><ul>
 <li><strong>PostgreSQL 12+</strong> (tested on 16) - required; Falys
 keeps all of its data there.</li>
 <li><strong>To run from source:</strong> Python 3.11+ (both server and
@@ -248,100 +219,75 @@ a couple of minutes), but any SMTP provider works - steps in
 <em>Installation &amp; Setup</em>.</li>
 <li><strong>Agent endpoints:</strong> Windows (x86-64) or Linux
 (x86-64). Agents need no Python.</li>
-</ul>
-<h2 id="support">Support</h2>
-<p>Support for this item is provided through the item's <strong>Comments
+</ul><h2 id="support">Support</h2><p>Support for this item is provided through the item's <strong>Comments
 / Support</strong> tab on CodeCanyon. Please include your operating
 system, the Falys version (<code>server/build_output/VERSION.txt</code>)
-and the relevant console output.</p>
-</section>
-<section id="installation">
-
-<h1>Installation &amp; Setup</h1>
-<p>This covers getting the Falys server running, configuring email
+and the relevant console output.</p></section>
+<section id="installation"><h1>Installation &amp; Setup</h1><p>This covers getting the Falys server running, configuring email
 alerts, logging in, and deploying your first agent. Read it top to
-bottom the first time - the steps build on each other.</p>
-
-<h2 id="1-choose-how-youll-run-the-server">1. Choose how you'll run the
-server</h2>
-<h3 id="first-postgresql">First: PostgreSQL</h3>
-<p>Falys stores <strong>all</strong> of its data - events, agent keys,
+bottom the first time - the steps build on each other.</p><h2 id="1-choose-how-youll-run-the-server">1. Choose how you'll run the
+server</h2><h3 id="first-postgresql">First: PostgreSQL</h3><p>Falys stores <strong>all</strong> of its data - events, agent keys,
 settings, risk rules, alert history - in PostgreSQL. There are no data
 files, so a database has to exist before the server starts. Any
-PostgreSQL 12+ works (tested on 16), on this machine or another one.</p>
-<p>Quickest way to get one (needs Docker):</p>
-<pre><code>cd server
+PostgreSQL 12+ works (tested on 16), on this machine or another one.</p><p>Quickest way to get one (needs Docker):</p><pre>cd server
 docker compose -f docker-compose.postgres.yml up -d
-</code></pre>
-<p>Or use an existing PostgreSQL server - create an empty database and
+</pre><p>Or use an existing PostgreSQL server - create an empty database and
 a role that can create tables in it. The exact commands, connection
 options and backups are in <a href="#postgresql-setup">PostgreSQL
-Setup</a>.</p>
-<p>Then tell Falys where it is, in <code>server/.env</code> (copy
-<code>.env.example</code>):</p>
-<pre><code>FALYS_DATABASE_URL=postgresql://falys:change-me@localhost:5432/falys
-</code></pre>
-<p>The server creates its tables automatically on first start, and exits
-with a clear message if it can't reach the database.</p>
-<p>You have two ways to run the server itself. Pick one.</p>
-<h3 id="option-a----build-the-server-binary-once-windows-or-linux">Option A - Build the server binary once (Windows or Linux)</h3>
-<p>The server is delivered as <strong>source</strong>. A server binary
+Setup</a>.</p><p>Then tell Falys where it is, in <code>server/.env</code> (copy
+<code>.env.example</code>):</p><pre>FALYS_DATABASE_URL=postgresql://falys:change-me@localhost:5432/falys
+</pre><p>The server creates its tables automatically on first start, and exits
+with a clear message if it can't reach the database.</p><p>You have two ways to run the server itself. Pick one.</p><h3 id="option-a----build-the-server-binary-once-windows-or-linux">Option A - Build the server binary once (Windows or Linux)</h3><p>The server is delivered as <strong>source</strong>. A server binary
 has to be built on the operating system it will run on, and this is a
-one-time step (on a Windows machine with Python 3.11+):</p>
-<pre><code>cd server
+one-time step (on a Windows machine with Python 3.11+):</p><pre>cd server
 .\build_server_exe.ps1
-</code></pre>
-<p>Output: <code>server\dist\FalysServer.exe</code> - self-contained,
+</pre><p>Output: <code>server\dist\FalysServer.exe</code> - self-contained,
 no Python needed on the machine that runs it. The <code>dist</code>
-folder is created by the build and has no <code>.env</code> yet: copy
+folder is created by the build (it is not part of this download) and has no <code>.env</code> yet: copy
 <code>server\.env.example</code> into <code>server\dist\</code>, rename the
 copy to <code>.env</code>, and fill in your database settings. The
 <code>.env</code> file must sit in the same folder as the .exe. Then run
-it:</p>
-<pre><code>.\FalysServer.exe
-</code></pre>
-<p>The dashboard will be reachable at
+it:</p><pre>.\FalysServer.exe
+</pre><p>The dashboard will be reachable at
 <code>https://localhost:8088</code> (see the note on TLS in Section
-4).</p>
-<blockquote>
+4).</p><blockquote>
 <p>Linux server binary instead? Run
 <code>server/build_server_exe_linux.sh</code> once on a Linux machine
 with Python 3.11+ - see that script's header comment for details.
-Output: <code>server/dist/falys-server</code>. As on Windows, copy
+Output: <code>server/dist/falys-server</code> (also created by the build). As on Windows, copy
 <code>server/.env.example</code> to <code>server/dist/.env</code> and fill it in,
 so the <code>.env</code> file sits next to the binary.</p>
-</blockquote>
-<p><strong>Agent binaries are included.</strong> The dashboard's
-<strong>Agents -&gt; Generate &amp; Download</strong> button zips a
-compiled agent binary together with a fresh, per-deployment
-<code>config.json</code> and the server's <code>cert.pem</code>.
-Ready-made agent binaries for Windows (<code>FalysAgent.exe</code>) and
-Linux (<code>falys-agent</code>) are already in
-<code>Falys-server/server/build_output/</code>, so the button works
-immediately for both platforms. They were compiled from the agent source
-in <code>Falys-server/agent/</code> - see <a href="#building-the-agent-binaries">Building the agent binaries</a> if
-you want to verify or rebuild them.</p>
-<h3 id="option-b----run-from-source-windows-linux-or-macos">Option B - Run from source (Windows, Linux, or macOS)</h3>
-<p>Requires Python 3.11 or newer.</p>
-<pre><code>cd server
+</blockquote><p><strong>The compiled agents (<code>FalysAgent.exe</code> for Windows and <code>falys-agent</code> for Linux, version 2.3.0) are included in
+<code>Falys-server/server/build_output/</code>.</strong>
+The dashboard's <strong>Agents -&gt; Generate &amp; Download</strong> uses the
+version-matched compiled binary from that folder by default, packaging it with fresh per-agent
+credentials and the server certificate. The endpoint needs no Python, pip or NSSM.
+If a current binary is ever absent (for example after you modify the agent source and
+the version no longer matches), the dashboard downloads a <strong>build kit instead</strong>;
+the kit is not ready to install on an endpoint and needs Python and build tools on a build machine.
+Rebuild with <code>agent/build_exe.ps1</code> (Windows) or <code>agent/build_exe_linux.sh</code> (Linux)
+and install the result and its <code>VERSION.txt</code> into <code>server/build_output/</code>.</p><h3 id="option-b----run-from-source-windows-linux-or-macos">Option B - Run from source (Windows, Linux, or macOS)</h3><p>Requires Python 3.11 or newer.</p><pre>cd server
 python3 -m venv venv
 source venv/bin/activate        # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 python3 server.py
-</code></pre>
-<p>Make sure the database settings are in <code>.env</code> first (see
+</pre><p>Make sure the database settings are in <code>.env</code> first (see
 above), and configure email alerts (Section 2) before your first
-run.</p>
-
-<h2 id="2-configure-email-alerts">2. Configure email alerts</h2>
-<p>Falys sends alert emails over SMTP. <strong>Gmail is the default and
+run.</p><h2 id="2-configure-email-alerts">2. Configure email alerts</h2><p>Falys sends alert emails over SMTP. <strong>Gmail is the default and
 is not required</strong>: any SMTP server works (Microsoft 365, Amazon
 SES, SendGrid, Mailgun, a company mail relay, ...). Use a dedicated
 sending account either way - <strong>don't use your personal
 inbox</strong>, since the credential lives in a config file on the
-server.</p>
-<h3>Option A: Gmail (default)</h3>
-<ol type="1">
+server.</p><p><strong>Email is an external service.</strong> Falys does not include a mail
+server or mail credentials. Gmail, Microsoft 365, Amazon SES, SendGrid and
+similar providers are third-party services that you set up and pay for (if
+they charge) yourself. Depending on the provider, this can involve costs
+(for example per-message or per-user fees), account requirements (such as
+2-Step Verification and an App Password for Gmail, or SMTP AUTH for Microsoft
+365) and sending limits that apply to your account. Falys is not affiliated
+with these providers and cannot change their terms, prices or limits. Without
+working SMTP credentials the dashboard keeps working, but alert emails are
+recorded as failed.</p><h3>Option A: Gmail (default)</h3><ol type="1">
 <li>Create (or choose) a Gmail account that exists only to send Falys
 alerts.</li>
 <li>Turn on 2-Step Verification on that account:
@@ -352,28 +298,23 @@ Security -&gt; App Passwords -&gt; create one named "Falys". Google
 gives you a 16-character password - copy it.</li>
 <li>In <code>server/</code>, copy <code>.env.example</code> to
 <code>.env</code>:
-<pre><code>cd server
+<pre>cd server
 cp .env.example .env        # Windows: copy .env.example .env
-</code></pre></li>
+</pre></li>
 <li>Open <code>.env</code> and fill in:
-<pre><code>FALYS_GMAIL_SENDER=your-dedicated-account@gmail.com
+<pre>FALYS_GMAIL_SENDER=your-dedicated-account@gmail.com
 FALYS_GMAIL_APP_PASSWORD=the16characterapppassword
-</code></pre></li>
+</pre></li>
 <li>Save. <code>server.py</code> loads <code>.env</code> automatically - no extra steps.</li>
-</ol>
-<h3>Option B: any other SMTP provider</h3>
-<p>Set the <code>FALYS_SMTP_*</code> variables in <code>.env</code>
-instead of the two Gmail ones. Restart the server afterwards.</p>
-<pre><code>FALYS_SMTP_HOST=smtp.example.com
+</ol><h3>Option B: any other SMTP provider</h3><p>Set the <code>FALYS_SMTP_*</code> variables in <code>.env</code>
+instead of the two Gmail ones. Restart the server afterwards.</p><pre>FALYS_SMTP_HOST=smtp.example.com
 FALYS_SMTP_PORT=587
 FALYS_SMTP_SECURITY=starttls     # starttls (port 587), ssl (port 465) or none
 FALYS_SMTP_USER=alerts@example.com
 FALYS_SMTP_PASSWORD=the-smtp-password
 FALYS_SMTP_FROM=alerts@example.com   # optional; defaults to FALYS_SMTP_USER
-</code></pre>
-<p>Typical values (check your provider's current documentation, these are
-set by them, not by Falys):</p>
-<table class="doc">
+</pre><p>Typical values (check your provider's current documentation, these are
+set by them, not by Falys):</p><table class="doc">
 <thead>
 <tr class="header">
 <th>Provider</th>
@@ -408,105 +349,79 @@ permission</td>
 logging in</td>
 </tr>
 </tbody>
-</table>
-<p>With <code>FALYS_SMTP_SECURITY=none</code> the connection is not
+</table><p>With <code>FALYS_SMTP_SECURITY=none</code> the connection is not
 encrypted, so use it only to reach a relay on a trusted network. The
 Settings page shows alerting as <em>Not configured</em> until a user and
-password are set (Gmail and SMTP variables are equivalent for this).</p>
-
-<h2 id="3-first-run-and-login">3. First run and login</h2>
-<p>Start the server (whichever option you chose in Section 1). On first
-run, watch the console output:</p>
-<pre><code>========================================================================
-[FALYS][FIRST RUN] The following secret(s) were not set via the
+password are set (Gmail and SMTP variables are equivalent for this).</p><h2 id="3-first-run-and-login">3. First run and login</h2><p>Start the server (whichever option you chose in Section 1). On first
+run, watch the console output:</p><pre>========================================================================
+[Falys][FIRST RUN] The following secret(s) were not set via the
 environment, so a new random value was generated and saved to
 the PostgreSQL database (table server_kv) for reuse on future restarts:
     FALYS_ADMIN_PASSWORD  (admin console password):  &lt;random value&gt;
     FALYS_DISCOVERY_TOKEN  (LAN discovery token):  &lt;random value&gt;
 Set these explicitly via your environment for any real deployment
 instead of relying on the auto-generated value.
-[FALYS] Log in to the dashboard with username 'admin' and
+[Falys] Log in to the dashboard with username 'admin' and
 the auto-generated password printed above.
 ========================================================================
-</code></pre>
-<p>Copy that generated password (or set
+</pre><p>Copy that generated password (or set
 <code>FALYS_ADMIN_PASSWORD</code> yourself in <code>.env</code>
 beforehand to skip this). Open the dashboard URL shown in the console
-and log in with:</p>
-<ul>
+and log in with:</p><ul>
 <li>Username: <code>admin</code> (or your
 <code>FALYS_ADMIN_USERNAME</code>, if set)</li>
 <li>Password: the value from the console, or your
 <code>FALYS_ADMIN_PASSWORD</code></li>
-</ul>
-<p>The generated password is saved in the PostgreSQL database so it
+</ul><p>The generated password is saved in the PostgreSQL database so it
 survives a restart - but set <code>FALYS_ADMIN_PASSWORD</code>
 explicitly in <code>.env</code> for any real deployment rather than
-relying on that.</p>
-
-<h2 id="4-tls-https">4. TLS (HTTPS)</h2>
-<p>TLS is on by default. The server generates its own self-signed
+relying on that.</p><h2 id="4-tls-https">4. TLS (HTTPS)</h2><p>TLS is on by default. The server generates its own self-signed
 certificate on first run under <code>server/certs/</code>. This is
 expected - there's no public certificate authority for a LAN-only
 server, so your browser will show a certificate warning the first time
 you visit the dashboard; that's normal for a self-signed cert and safe
-to proceed through on your own network.</p>
-<p>Each deployed agent pins the server's exact certificate (shipped as
+to proceed through on your own network.</p><p>Each deployed agent pins the server's exact certificate (shipped as
 <code>cert.pem</code> inside its deployment package) rather than relying
 on a browser-style trust chain. If you ever regenerate the server's
 certificate (e.g. its LAN IP changes enough that the old certificate no
 longer covers it), redeploy affected agents so they pick up the new
-<code>cert.pem</code>.</p>
-<p>If your organization has a real internal CA-issued certificate, point
+<code>cert.pem</code>.</p><p>If your organization has a real internal CA-issued certificate, point
 <code>FALYS_TLS_CERT</code> / <code>FALYS_TLS_KEY</code> at it in
 <code>.env</code> instead of using the self-signed default. To disable
 TLS entirely for a throwaway local test (never for a real deployment),
-set <code>FALYS_TLS_ENABLED=0</code>.</p>
-
-<h2 id="5-deploy-your-first-agent">5. Deploy your first agent</h2>
-<p>From the dashboard, go to <strong>Agents</strong> -&gt;
-<strong>Deploy a New Agent</strong>:</p>
-<ol type="1">
+set <code>FALYS_TLS_ENABLED=0</code>.</p><h2 id="5-deploy-your-first-agent">5. Deploy your first agent</h2><p>From the dashboard, go to <strong>Agents</strong> -&gt;
+<strong>Deploy a New Agent</strong>:</p><ol type="1">
 <li>Choose the platform (Windows or Linux).</li>
 <li>Enter the folder on the target machine you want watched (e.g.
 <code>C:\Monitor</code> or <code>/var/data</code>).</li>
 <li>Enter the alert email for this agent - the address that should
 receive alerts for events from this specific endpoint.</li>
 <li>Click <strong>Generate &amp; Download</strong>.</li>
-</ol>
-<p>This produces a zip containing the compiled agent binary, a
+</ol><p>This produces a zip containing the compiled agent binary, a
 <code>config.json</code> pre-filled for this deployment, the
 server's <code>cert.pem</code> and a short <code>README.txt</code>. Copy the extracted folder to the target
-machine and:</p>
-<ul>
+machine and:</p><ul>
 <li><strong>Windows:</strong> double-click <code>FalysAgent.exe</code>,
 accept the one admin prompt. It installs and starts itself as a Windows
 service.</li>
 <li><strong>Linux:</strong> <code>sudo ./falys-agent</code>. It installs
 and starts itself as a systemd service.</li>
-</ul>
-<p>That's the whole install - no Python, no manual service setup on the
-endpoint either way.</p>
-<p>The compiled agent binaries are already in
-<code>server/build_output/</code>, so the button works instantly for
-both platforms. Rebuild an agent binary whenever you modify the agent
-source: run <code>agent/build_exe.ps1</code> (Windows) or
+</ul><p>That's the whole install - no Python, no manual service setup on the
+endpoint either way.</p><p>This archive contains the compiled Windows and Linux agents (version 2.3.0).
+If a version-matched binary is not present in <code>server/build_output/</code>,
+Generate &amp; Download returns a build kit instead of a deployable agent.
+Build or rebuild an agent binary whenever you modify the agent source: run <code>agent/build_exe.ps1</code> (Windows) or
 <code>agent/build_exe_linux.sh</code> (Linux) and drop the result, with
 its <code>VERSION.txt</code>, into <code>server/build_output/</code>.
 Full details are in <a href="#agent-deployment">Agent
-Deployment</a>.</p>
-<p>For verified (not just process-owner) attribution of who touched a
-file, see <a href="#file-event-attribution">File Event Attribution</a> - the compiled agents set this up for you during install (see that section for when a manual step is still needed).</p>
-<p>Always deploy agents through the dashboard's <strong>Agents</strong>
+Deployment</a>.</p><p>For verified (not just process-owner) attribution of who touched a
+file, see <a href="#file-event-attribution">File Event Attribution</a> - the compiled agents set this up for you during install (see that section for when a manual step is still needed).</p><p>Always deploy agents through the dashboard's <strong>Agents</strong>
 page - it's the only supported way to get a correctly-configured
 <code>config.json</code> (server URL, certificate, and a unique
-per-agent key) onto an endpoint.</p>
-<h2 id="6-environment-variable-reference">6. Environment variable
-reference</h2>
-<p>All variables below can be set in <code>server/.env</code> (copy from
+per-agent key) onto an endpoint.</p><h2 id="6-environment-variable-reference">6. Environment variable
+reference</h2><p>All variables below can be set in <code>server/.env</code> (copy from
 <code>.env.example</code>) or as real environment variables. See
-<code>.env.example</code> for the full commented version.</p>
-<table class="doc">
+<code>.env.example</code> for the full commented version.</p><table class="doc">
 <thead>
 <tr class="header">
 <th>Variable</th>
@@ -646,7 +561,7 @@ reference</h2>
 <tr class="odd">
 <td><code>FALYS_SENDER_NAME</code></td>
 <td>No</td>
-<td><code>FALYS</code></td>
+<td><code>Falys</code></td>
 <td>Display name on alert emails</td>
 </tr>
 <tr class="even">
@@ -692,10 +607,7 @@ reference</h2>
 <td>Use your own certificate instead</td>
 </tr>
 </tbody>
-</table>
-
-<h2 id="7-troubleshooting">7. Troubleshooting</h2>
-<ul>
+</table><h2 id="7-troubleshooting">7. Troubleshooting</h2><ul>
 <li><strong>"Email alerting is not configured" warning at
 startup</strong> - expected until you complete Section 2. Alerts are
 logged as skipped, not sent, until then.</li>
@@ -719,58 +631,32 @@ you copied the whole extracted deployment folder, not just the
 executable.</li>
 <li><strong>Windows service won't start (Error 1053) / other agent build
 issues</strong> - see the troubleshooting notes in <a href="#agent-deployment">Agent Deployment</a>.</li>
-</ul>
-</section>
-<section id="using-the-dashboard">
-
-<h1>Using the Dashboard</h1>
-<p>After you log in (see <em>First run and login</em> in Installation
+</ul></section>
+<section id="using-the-dashboard"><h1>Using the Dashboard</h1><p>After you log in (see <em>First run and login</em> in Installation
 &amp; Setup) you land on the <strong>Home</strong> page. The menu on the
 left takes you to every other page. The screenshots below use example
-data from two test machines.</p>
-<h2 id="home">Home</h2>
-<p><img alt="Home page with summary cards" src="images/01-home.png"/></p>
-<p>The Home page shows four summary cards: endpoints protected (and how
+data from two test machines.</p><h2 id="home">Home</h2><p><img alt="Home page with summary cards" src="images/01-home.png" style="max-width:100%;border:1px solid #ddd;margin-bottom:15px"/></p><p>The Home page shows four summary cards: endpoints protected (and how
 many are online right now), total events logged, threats detected, and
 email alerts sent. Click <strong>Open Dashboard</strong> to see the live
-view.</p>
-<h2 id="dashboard">Dashboard</h2>
-<p><img alt="Dashboard with live event timeline" src="images/02-dashboard-overview.png"/></p>
-<p>The Dashboard updates in real time. The tiles at the top show
+view.</p><h2 id="dashboard">Dashboard</h2><p><img alt="Dashboard with live event timeline" src="images/02-dashboard-overview.png" style="max-width:100%;border:1px solid #ddd;margin-bottom:15px"/></p><p>The Dashboard updates in real time. The tiles at the top show
 endpoints protected, events today, threats detected, alerts sent, agents
 online and events per minute. Below them, the <strong>Live Event
-Timeline</strong> lists the newest file events as they arrive.</p>
-<p><img alt="Dashboard charts" src="images/03-dashboard-charts.png"/></p>
-<p>Scroll down for the 24-hour event trend, the event distribution
+Timeline</strong> lists the newest file events as they arrive.</p><p><img alt="Dashboard charts" src="images/03-dashboard-charts.png" style="max-width:100%;border:1px solid #ddd;margin-bottom:15px"/></p><p>Scroll down for the 24-hour event trend, the event distribution
 (created, modified, deleted, moved), events per host, and the severity
 breakdown. The <strong>Threat Detections</strong> panel summarises how
 many events fall into each risk class and lists the most recent
-high-priority events and any active incidents.</p>
-<p><img alt="Dashboard status panels" src="images/04-dashboard-status.png"/></p>
-<p>At the bottom you will find the most frequently modified files, live
-agent status, recent alerts and a small system-health summary.</p>
-<h2 id="event-history">Event History</h2>
-<p><img alt="Event history with alert email log" src="images/05-event-history-alerts.png"/></p>
-<p>Click <strong>Emails</strong> to open the alert-email log. Each entry
+high-priority events and any active incidents.</p><p><img alt="Dashboard status panels" src="images/04-dashboard-status.png" style="max-width:100%;border:1px solid #ddd;margin-bottom:15px"/></p><p>At the bottom you will find the most frequently modified files, live
+agent status, recent alerts and a small system-health summary.</p><h2 id="event-history">Event History</h2><p><img alt="Event history with alert email log" src="images/05-event-history-alerts.png" style="max-width:100%;border:1px solid #ddd;margin-bottom:15px"/></p><p>Click <strong>Emails</strong> to open the alert-email log. Each entry
 shows the recipient and whether the email was sent or
 <em>throttled</em>. Throttling limits alerts to one per recipient every
 30 seconds so a burst of activity does not flood an inbox; throttled
-events are still logged and still visible in the dashboard.</p>
-<p><img alt="Event history table" src="images/06-event-history-table.png"/></p>
-<p><strong>All Events</strong> lists every event the agents have
+events are still logged and still visible in the dashboard.</p><p><img alt="Event history table" src="images/06-event-history-table.png" style="max-width:100%;border:1px solid #ddd;margin-bottom:15px"/></p><p><strong>All Events</strong> lists every event the agents have
 reported. Use <strong>Export CSV</strong> or <strong>Export
 JSON</strong> to download the data. The <em>User</em> column shows who
 touched the file; it is marked <strong>UNVERIFIED</strong> until you
 enable OS-level auditing on the endpoint (see <em>File Event
-Attribution</em>).</p>
-<h2 id="timeline">Timeline</h2>
-<p><img alt="Activity timeline" src="images/07-timeline.png"/></p>
-<p>The Timeline shows the same events in chronological order,
-colour-coded by type (created, modified, moved, deleted).</p>
-<h2 id="agents">Agents</h2>
-<p><img alt="Agents page" src="images/08-agents.png"/></p>
-<p>This is where you deploy and monitor agents.</p>
-<ol type="1">
+Attribution</em>).</p><h2 id="timeline">Timeline</h2><p><img alt="Activity timeline" src="images/07-timeline.png" style="max-width:100%;border:1px solid #ddd;margin-bottom:15px"/></p><p>The Timeline shows the same events in chronological order,
+colour-coded by type (created, modified, moved, deleted).</p><h2 id="agents">Agents</h2><p><img alt="Agents page" src="images/08-agents.png" style="max-width:100%;border:1px solid #ddd;margin-bottom:15px"/></p><p>This is where you deploy and monitor agents.</p><ol type="1">
 <li>Choose the <strong>Platform</strong> (Windows or Linux).</li>
 <li>Enter the <strong>folder to watch</strong> on the target
 machine.</li>
@@ -779,26 +665,17 @@ for that agent.</li>
 <li>Click <strong>Generate &amp; Download</strong>, copy the downloaded
 package to the endpoint, and run it as described in <em>Agent
 Deployment</em>.</li>
-</ol>
-<p>Every connected agent is listed below the form with its event count,
-IP address, online/offline status and the time it was last seen.</p>
-<h2 id="detections">Detections</h2>
-<p><img alt="Detections overview" src="images/09-detections.png"/></p>
-<p>The Detections page shows how the detection engine classified every
+</ol><p>Every connected agent is listed below the form with its event count,
+IP address, online/offline status and the time it was last seen.</p><h2 id="detections">Detections</h2><p><img alt="Detections overview" src="images/09-detections.png" style="max-width:100%;border:1px solid #ddd;margin-bottom:15px"/></p><p>The Detections page shows how the detection engine classified every
 event as <strong>Critical</strong>, <strong>High Risk</strong>,
 <strong>Suspicious</strong>, <strong>Low Risk</strong> or
 <strong>Legitimate</strong>. Click <em>Show guide</em> under <em>What do
 these labels mean?</em> for a plain-language explanation. Related events
 that the engine has linked together (for example a burst of changes on
-one host) appear as <strong>Correlated Incidents</strong>.</p>
-<p><img alt="Classified events" src="images/10-detections-events.png"/></p>
-<p><strong>Classified Events</strong> lists each event with its
+one host) appear as <strong>Correlated Incidents</strong>.</p><p><img alt="Classified events" src="images/10-detections-events.png" style="max-width:100%;border:1px solid #ddd;margin-bottom:15px"/></p><p><strong>Classified Events</strong> lists each event with its
 classification, score, confidence and the reasons behind the score. You
 can search by host or file and filter by classification. See
-<em>Detection Engine</em> for how scores are calculated.</p>
-<h2 id="settings">Settings</h2>
-<p><img alt="Settings page" src="images/11-settings.png"/></p>
-<table class="doc">
+<em>Detection Engine</em> for how scores are calculated.</p><h2 id="settings">Settings</h2><p><img alt="Settings page" src="images/11-settings.png" style="max-width:100%;border:1px solid #ddd;margin-bottom:15px"/></p><table class="doc">
 <thead>
 <tr class="header">
 <th>Setting</th>
@@ -831,36 +708,24 @@ minutes, 15 minutes or 1 hour.</td>
 or 10 seconds).</td>
 </tr>
 </tbody>
-</table>
-<p>Changes are saved immediately. Use <strong>Reset these settings to
+</table><p>Changes are saved immediately. Use <strong>Reset these settings to
 defaults</strong> to undo them. Below these switches the page also has the
 <strong>Detection Rules</strong> and <strong>Detection Engine
-Tuning</strong> editors (see <em>Customization</em>).</p>
-</section>
-<section id="customization">
-
-<h1>Customization</h1>
-<p>This chapter explains what you can change and how, from no-code
+Tuning</strong> editors (see <em>Customization</em>).</p></section>
+<section id="customization"><h1>Customization</h1><p>This chapter explains what you can change and how, from no-code
 settings to editing the source. Most changes need <strong>no
-restart</strong>.</p>
-<h2 id="1-settings-page-no-code">1. Settings page (no code)</h2>
-<p>Alerting, thresholds, the offline timeout and the refresh interval
+restart</strong>.</p><h2 id="1-settings-page-no-code">1. Settings page (no code)</h2><p>Alerting, thresholds, the offline timeout and the refresh interval
 are all on the <strong>Settings</strong> page (see <em>Using the
-Dashboard</em>).</p>
-<h2 id="2-configuration-file-env">2. Configuration file
-(<code>.env</code>)</h2>
-<p>Ports, the admin login, email credentials, TLS and the database are
+Dashboard</em>).</p><h2 id="2-configuration-file-env">2. Configuration file
+(<code>.env</code>)</h2><p>Ports, the admin login, email credentials, TLS and the database are
 set in <code>Falys-server/server/.env</code>. Every variable is listed
 in the <em>Environment variable reference</em> in Installation &amp;
-Setup. Restart the server after editing.</p>
-<h2 id="3-detection-rules-no-restart">3. Detection rules (no
-restart)</h2>
-<p>The rules that decide how risky an event is are edited on the
+Setup. Restart the server after editing.</p><h2 id="3-detection-rules-no-restart">3. Detection rules (no
+restart)</h2><p>The rules that decide how risky an event is are edited on the
 <strong>Settings</strong> page, in the <strong>Detection Rules</strong>
 card. Change a value, press <strong>Save rules</strong>, and it applies
 within a couple of seconds. A message next to the button confirms the
-save or explains what is wrong (for example a blank path pattern).</p>
-<table class="doc">
+save or explains what is wrong (for example a blank path pattern).</p><table class="doc">
 <thead>
 <tr class="header">
 <th>Control</th>
@@ -881,7 +746,18 @@ events</td>
 wildcards matched against the full path. Use <strong>Add path
 rule</strong> and the trash icon to add and remove rows</td>
 <td>built-in list (e.g. <code>*shadow</code>, <code>*.pem</code>,
-<code>*id_rsa*</code>, cron and log paths)</td>
+<code>*id_rsa*</code>, cron and log paths), plus new executables and scripts
+(<code>*.exe</code>, <code>*.dll</code>, <code>*.msi</code>, <code>*.ps1</code>, ...;
+only for <em>created</em> and <em>moved</em> events) and ransomware extensions
+and ransom-note names (<code>*.locked</code>, <code>*.encrypted</code>,
+<code>*.lockbit</code>, <code>*how_to_decrypt*</code>, ...; Critical)</td>
+</tr>
+<tr class="odd">
+<td>Mass-rename rule</td>
+<td>If one host renames more files than the threshold inside the window, every
+further rename in the burst is escalated. Edit it through
+<code>/api/risk-rules</code> (<code>mass_rename_rule</code>)</td>
+<td>10 renames / 60 s -&gt; Critical</td>
 </tr>
 <tr class="odd">
 <td>Permission change severity</td>
@@ -911,26 +787,18 @@ assets</td>
 <td>empty</td>
 </tr>
 </tbody>
-</table>
-<p>Severity values are Low, Medium, High and Critical. Rules can only
+</table><p>Severity values are Low, Medium, High and Critical. Rules can only
 raise attention: the highest severity that any rule assigns always
-wins. A default path rule that you delete stays deleted.</p>
-<p><strong>Example - treat a folder as critical.</strong> Press
+wins. A default path rule that you delete stays deleted.</p><p><strong>Example - treat a folder as critical.</strong> Press
 <strong>Add path rule</strong>, enter <code>*/finance/*</code>, choose
-<em>Critical</em>, then <strong>Save rules</strong>.</p>
-<p><img alt="Detection Rules card" src="images/12-settings-detection-rules.png"/></p>
-<p><img alt="Sensitive path rules" src="images/13-settings-sensitive-paths.png"/></p>
-<p><strong>Reset:</strong> <strong>Reset rules to defaults</strong>
-(with a confirmation) discards every customization in this card.</p>
-<h2 id="4-detection-engine-tuning-no-restart">4. Detection engine tuning
-(no restart)</h2>
-<p>The scoring weights and class boundaries are in the
+<em>Critical</em>, then <strong>Save rules</strong>.</p><p><img alt="Detection Rules card" src="images/12-settings-detection-rules.png" style="max-width:100%;border:1px solid #ddd;margin-bottom:15px"/></p><p><img alt="Sensitive path rules" src="images/13-settings-sensitive-paths.png" style="max-width:100%;border:1px solid #ddd;margin-bottom:15px"/></p><p><strong>Reset:</strong> <strong>Reset rules to defaults</strong>
+(with a confirmation) discards every customization in this card.</p><h2 id="4-detection-engine-tuning-no-restart">4. Detection engine tuning
+(no restart)</h2><p>The scoring weights and class boundaries are in the
 <strong>Detection Engine Tuning</strong> card on the Settings page.
 Values are checked when you save: out-of-range numbers and class
 boundaries that are not in increasing order are rejected with a
 message. Weights that do not add up to about 1.00 are allowed, but a
-warning is shown.</p>
-<table class="doc">
+warning is shown.</p><table class="doc">
 <thead>
 <tr class="header">
 <th>Section</th>
@@ -950,25 +818,30 @@ warning is shown.</p>
 <td>10 / 30 / 55 / 80</td>
 </tr>
 <tr class="odd">
+<td>Rule floor</td>
+<td>The lowest class a rule hit guarantees on its own: a rule score of at least
+the first value is never shown below Suspicious, at least the second never below
+High Risk. This is why a new <code>.exe</code> or a <code>.locked</code> rename is
+flagged even on a host with no history. Set a value to 101 to switch a floor off
+(<code>rule_floor</code> in <code>/api/engine-config</code>)</td>
+<td>60 / 85</td>
+</tr>
+<tr class="even">
 <td>Anomaly detection</td>
 <td>event-rate z-score threshold, business hours start and end</td>
 <td>3.0 / 7 / 20</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Correlation</td>
 <td>incident window (seconds), burst event threshold, burst minimum
 score</td>
 <td>120 / 5 / 30</td>
 </tr>
 </tbody>
-</table>
-<p><img alt="Detection Engine Tuning card" src="images/14-settings-engine-tuning.png"/></p>
-<p><strong>Example:</strong> to use working hours 09:00-18:00, set
+</table><p><img alt="Detection Engine Tuning card" src="images/14-settings-engine-tuning.png" style="max-width:100%;border:1px solid #ddd;margin-bottom:15px"/></p><p><strong>Example:</strong> to use working hours 09:00-18:00, set
 <em>Business hours start</em> to 9 and <em>end</em> to 18, then press
 <strong>Save engine tuning</strong>. <strong>Reset tuning to
-defaults</strong> restores the table above.</p>
-<h3>Scripting the same changes (advanced)</h3>
-<p>The page uses these authenticated endpoints, so you can also change
+defaults</strong> restores the table above.</p><h3>Scripting the same changes (advanced)</h3><p>The page uses these authenticated endpoints, so you can also change
 settings from a script: <code>GET/POST /api/risk-rules</code>,
 <code>GET/POST /api/engine-config</code> and <code>GET/POST
 /api/settings</code>, plus <code>POST /api/risk-rules/reset</code>,
@@ -977,14 +850,11 @@ settings from a script: <code>GET/POST /api/risk-rules</code>,
 <code>X-CSRFToken</code> header (the token is in the page's
 <code>csrf-token</code> meta tag). Posting a list such as
 <code>sensitive_path_rules</code> <em>replaces</em> the whole list;
-nested objects in the engine config are merged.</p>
-<h2 id="5-what-each-agent-watches-configjson">5. What each agent watches
-(<code>config.json</code>)</h2>
-<p>Each downloaded agent package contains a <code>config.json</code>.
+nested objects in the engine config are merged.</p><h2 id="5-what-each-agent-watches-configjson">5. What each agent watches
+(<code>config.json</code>)</h2><p>Each downloaded agent package contains a <code>config.json</code>.
 You can edit it on the endpoint and restart the agent service
 (<code>FalysAgent</code> on Windows,
-<code>sudo systemctl restart falys-agent</code> on Linux).</p>
-<table class="doc">
+<code>sudo systemctl restart falys-agent</code> on Linux).</p><table class="doc">
 <thead>
 <tr class="header">
 <th>Key</th>
@@ -1026,48 +896,49 @@ You can edit it on the endpoint and restart the agent service
 </tr>
 <tr class="odd">
 <td><code>discovery_token</code></td>
-<td>Shared secret for LAN discovery and the command tunnel. Setting it
-to <code>""</code> turns both off for this agent (see <a href="#disabling-the-command-tunnel">Command Tunnel</a>)</td>
-<td>set when you generate the package</td>
+<td>Shared secret for LAN discovery only (finding the server and answering
+its discovery broadcast). It cannot authenticate a tunnel command. Setting it
+to <code>""</code> turns discovery off for this agent</td>
+<td>set when you generate the package (same in every agent)</td>
+</tr>
+<tr class="even">
+<td><code>tunnel_key_id</code>, <code>tunnel_secret</code></td>
+<td>This agent's own command-tunnel credentials, different for every agent.
+Setting <code>tunnel_secret</code> to <code>""</code> turns the tunnel off for this agent (see
+<a href="#disabling-the-command-tunnel">Command Tunnel</a>). Treat the file like a password:
+it also holds the agent's API key</td>
+<td>generated per package</td>
 </tr>
 </tbody>
-</table>
-<p>Do not change <code>server</code> or <code>api_key</code>; they tie the
-agent to your server. Leave <code>discovery_token</code> as it is unless
-you want to turn off discovery and the command tunnel on that agent.
+</table><p>Do not change <code>server</code> or <code>api_key</code>; they tie the
+agent to your server. Leave <code>discovery_token</code>,
+<code>tunnel_key_id</code> and <code>tunnel_secret</code> as they are unless
+you want to turn off discovery or the command tunnel on that agent.
 Temporary folders, caches, <code>node_modules</code> and
-<code>.git</code> are already excluded by default.</p>
-<p><strong>Do not put the watched folder inside an excluded path.</strong>
+<code>.git</code> are already excluded by default.</p><p><strong>Do not put the watched folder inside an excluded path.</strong>
 The default exclusions match the whole path, so a <code>watch_dir</code>
 that contains a folder named <code>tmp</code> or <code>temp</code>, or any folder
 whose name contains <code>cache</code> (for example
 <code>/srv/cachedata/payroll</code> or <code>C:\Users\bob\Temp\Monitor</code>),
-reports nothing. The agent prints a warning at start-up when this happens.</p>
-<p><strong>Agent environment variable.</strong> The agent reads one
+reports nothing. The agent prints a warning at start-up when this happens.</p><p><strong>Agent environment variable.</strong> The agent reads one
 optional environment variable, <code>FALYS_AGENT_INSECURE_TLS</code>. If
 the package's <code>cert.pem</code> is missing, setting it to
 <code>1</code> makes the agent skip verification of the server's
 certificate. That accepts any certificate, including an attacker's, so
 use it only for throwaway testing; for a real deployment, redeploy the
-agent from the dashboard so <code>cert.pem</code> is included.</p>
-<h2 id="6-email-alerts">6. Email alerts</h2>
-<p>In <code>server/email_service.py</code>:</p>
-<ul>
+agent from the dashboard so <code>cert.pem</code> is included.</p><h2 id="6-email-alerts">6. Email alerts</h2><p>In <code>server/email_service.py</code>:</p><ul>
 <li><code>ALERT_THROTTLE_SECONDS</code> (default 30) - minimum gap
 between alerts to the same recipient.</li>
 <li><code>build_email_body()</code> - the plain-text body of the alert
 email.</li>
 <li>The subject line is built as
-<code>FALYS Alert - &lt;event&gt;</code> (two places in the file).</li>
-</ul>
-<p>Per-agent recipients are set when you generate a deployment package;
+<code>Falys Alert - &lt;event&gt;</code> (two places in the file).</li>
+</ul><p>Per-agent recipients are set when you generate a deployment package;
 <code>FALYS_ALERT_RECIPIENTS</code> in <code>.env</code> is the
 server-wide fallback list: alerts for an agent that has no valid email
-address go to every address in it.</p>
-<h2 id="7-branding-and-look">7. Branding and look</h2>
-<ul>
+address go to every address in it.</p><h2 id="7-branding-and-look">7. Branding and look</h2><ul>
 <li><p><strong>Name and logo:</strong> the page title and the shield
-icon/<code>FALYS</code> text in the top bar are in each file in
+icon/<code>Falys</code> text in the top bar are in each file in
 <code>server/templates/</code> (search for <code>class="logo"</code>).
 Replace the Font Awesome icon class or the text.</p></li>
 <li><p><strong>Colours:</strong> all styling is in
@@ -1109,9 +980,7 @@ for these values and replace them everywhere:</p>
 </table>
 <p>Chart colours are set inside the <code>&lt;script&gt;</code> blocks
 of <code>index.html</code> and <code>detections.html</code>.</p></li>
-</ul>
-<h2 id="8-changing-the-source-code">8. Changing the source code</h2>
-<ul>
+</ul><h2 id="8-changing-the-source-code">8. Changing the source code</h2><ul>
 <li><strong>Running from source:</strong> stop the server and start it
 again.</li>
 <li><strong>Using a compiled server binary:</strong> rebuild it after
@@ -1125,23 +994,15 @@ change the agent version, update <code>AGENT_SOURCE_VERSION</code> in
 <li>Run the tests in <code>server/tests/</code> after larger changes
 (the PostgreSQL tests need <code>FALYS_TEST_DATABASE_URL</code> pointing at a
 throwaway database and are skipped without it; see Running the tests).</li>
-</ul>
-<h2 id="9-retention">9. Retention</h2>
-<p>Events are kept until you delete them. See <em>Retention</em> in
-PostgreSQL Setup for the pruning command.</p>
-</section>
-<section id="postgresql-setup">
-
-<h1>PostgreSQL Setup</h1>
-<p>Falys keeps <strong>all</strong> of its data in PostgreSQL. There are
+</ul><h2 id="9-retention">9. Retention</h2><p>Events are kept until you delete them. See <em>Retention</em> in
+PostgreSQL Setup for the pruning command.</p></section>
+<section id="postgresql-setup"><h1>PostgreSQL Setup</h1><p>Falys keeps <strong>all</strong> of its data in PostgreSQL. There are
 no event files, JSON settings files or key files anywhere. The only
 things the server writes to disk are its TLS certificate and key
 (<code>server/certs/</code>, or the files you point
 <code>FALYS_TLS_CERT</code> / <code>FALYS_TLS_KEY</code> at) - the TLS
 libraries need real file paths, and many teams supply their own
-CA-issued certificate anyway.</p>
-<h2 id="what-is-stored-where">What is stored where</h2>
-<table class="doc">
+CA-issued certificate anyway.</p><h2 id="what-is-stored-where">What is stored where</h2><table class="doc">
 <thead>
 <tr class="header">
 <th>Table</th>
@@ -1167,47 +1028,33 @@ itself.</td>
 <td><code>server_kv</code></td>
 <td>Small admin-editable documents: <code>settings</code>,
 <code>risk_rules</code>, <code>engine_config</code>,
-<code>tunnel_trust</code>, <code>generated_secrets</code>.</td>
+<code>generated_secrets</code>.</td>
 </tr>
 <tr class="even">
 <td><code>server_email_logs</code></td>
 <td>One row per alert email attempt (sent / skipped / failed).</td>
 </tr>
 </tbody>
-</table>
-<p><code>server/schema.sql</code> is the exact DDL. The server applies
+</table><p><code>server/schema.sql</code> is the exact DDL. The server applies
 it automatically (<code>CREATE TABLE IF NOT EXISTS</code>) on start, so
 you normally never run it yourself - it is there for teams that prefer
-to apply schema with their own tooling or a privileged account.</p>
-<p>All tables are prefixed <code>server_</code>, so the same database
-can safely be shared with other applications.</p>
-<h2 id="setting-it-up">Setting it up</h2>
-<p><strong>Docker (quickest):</strong></p>
-<pre><code>cd server
+to apply schema with their own tooling or a privileged account.</p><p>All tables are prefixed <code>server_</code>, so the same database
+can safely be shared with other applications.</p><h2 id="setting-it-up">Setting it up</h2><p><strong>Docker (quickest):</strong></p><pre>cd server
 docker compose -f docker-compose.postgres.yml up -d
-</code></pre>
-<p><strong>Existing PostgreSQL server</strong> (PostgreSQL 12+, tested
-on 16) - as a superuser:</p>
-<pre><code>CREATE ROLE falys LOGIN PASSWORD 'choose-a-strong-password';
+</pre><p><strong>Existing PostgreSQL server</strong> (PostgreSQL 12+, tested
+on 16) - as a superuser:</p><pre>CREATE ROLE falys LOGIN PASSWORD 'choose-a-strong-password';
 CREATE DATABASE falys OWNER falys;
-</code></pre>
-<p>On PostgreSQL 15+ the owner of a database can create tables in it. If
+</pre><p>On PostgreSQL 15+ the owner of a database can create tables in it. If
 you use a different setup, make sure the role has <code>CREATE</code> on
-the schema it will use:</p>
-<pre><code>\c falys
+the schema it will use:</p><pre>\c falys
 GRANT USAGE, CREATE ON SCHEMA public TO falys;
-</code></pre>
-<p>Then set the connection in <code>server/.env</code>:</p>
-<pre><code>FALYS_DATABASE_URL=postgresql://falys:choose-a-strong-password@db-host:5432/falys?sslmode=require
-</code></pre>
-<p>or the separate <code>FALYS_DB_HOST</code>,
+</pre><p>Then set the connection in <code>server/.env</code>:</p><pre>FALYS_DATABASE_URL=postgresql://falys:choose-a-strong-password@db-host:5432/falys?sslmode=require
+</pre><p>or the separate <code>FALYS_DB_HOST</code>,
 <code>FALYS_DB_PORT</code>, <code>FALYS_DB_NAME</code>,
 <code>FALYS_DB_USER</code>, <code>FALYS_DB_PASSWORD</code>,
 <code>FALYS_DB_SSLMODE</code> variables. Use
 <code>sslmode=require</code> (or stricter) whenever the database is on
-another machine.</p>
-<h2 id="behaviour-to-know-about">Behaviour to know about</h2>
-<ul>
+another machine.</p><h2 id="behaviour-to-know-about">Behaviour to know about</h2><ul>
 <li><strong>Startup:</strong> the server retries the connection for up
 to 30 seconds (<code>FALYS_DB_CONNECT_TIMEOUT_SECONDS</code>), so it can
 start alongside PostgreSQL, then exits with a clear message if it still
@@ -1227,34 +1074,21 @@ does not grow with the size of <code>server_events</code>.</li>
 <li><strong>Settings/rules changes</strong> made in the dashboard take
 effect within about 2 seconds (short in-process cache); key revocation
 is immediate.</li>
-</ul>
-<h2 id="backups">Backups</h2>
-<p>Everything is in the one database, so a standard PostgreSQL backup is
-a complete Falys backup:</p>
-<pre><code>pg_dump -Fc -h db-host -U falys falys &gt; falys-$(date +%F).dump
+</ul><h2 id="backups">Backups</h2><p>Everything is in the one database, so a standard PostgreSQL backup is
+a complete Falys backup:</p><pre>pg_dump -Fc -h db-host -U falys falys &gt; falys-$(date +%F).dump
 # restore into an empty database:
 pg_restore -h db-host -U falys -d falys --clean --if-exists falys-2026-09-24.dump
-</code></pre>
-<h2 id="retention">Retention</h2>
-<p>Events are kept forever unless you prune them. To drop events older
+</pre><h2 id="retention">Retention</h2><p>Events are kept forever unless you prune them. To drop events older
 than, say, 400 days (the dashboard's live counters are rebuilt from the
-table at the next server restart):</p>
-<pre><code>DELETE FROM server_events WHERE event_time &lt; now() - interval '400 days';
-</code></pre>
-<h2 id="running-the-tests">Running the tests</h2>
-<pre><code>createdb falys_test        # a throwaway database -- its Falys tables are emptied
+table at the next server restart):</p><pre>DELETE FROM server_events WHERE event_time &lt; now() - interval '400 days';
+</pre><h2 id="running-the-tests">Running the tests</h2><pre>createdb falys_test        # a throwaway database - its Falys tables are emptied
 cd server
 FALYS_TEST_DATABASE_URL=postgresql://falys:pw@localhost:5432/falys_test \
   python -m unittest discover -s tests -p "test_postgres_store.py" -v
-</code></pre>
-</section>
-<section id="agent-deployment">
-
-<h1>Agent Deployment</h1>
-<p>Endpoints on <strong>both</strong> Windows and Linux receive a single
+</pre></section>
+<section id="agent-deployment"><h1>Agent Deployment</h1><p>Endpoints on <strong>both</strong> Windows and Linux receive a single
 compiled binary and don't need Python installed - the same "just run
-the file" model as most compiled agents.</p>
-<ul>
+the file" model as most compiled agents.</p><ul>
 <li><strong>Windows</strong> (<code>FalysAgent.exe</code>): applies the
 required Windows audit policy silently, registers and starts itself as a
 Windows service, starts monitoring immediately and on every subsequent
@@ -1266,17 +1100,13 @@ required auditd policy, installs itself to
 starts monitoring immediately and on every subsequent boot. Entire
 install: <strong>download, unzip,
 <code>sudo ./falys-agent</code>.</strong></li>
-</ul>
-<p>No PowerShell, no batch files, no <code>pip install</code>, no manual
-<code>python agent.py</code> on either platform.</p>
-<p>The monitoring logic itself (<code>agent.py</code>,
+</ul><p>No PowerShell, no batch files, no <code>pip install</code>, no manual
+<code>python agent.py</code> on either platform.</p><p>The monitoring logic itself (<code>agent.py</code>,
 <code>attribution.py</code>, <code>discovery.py</code>, <code>tunnel.py</code>,
 <code>tunnel_tls.py</code>) is identical on
 both platforms - it's compiled into each binary as-is. Communication
 with the server and the registration model are the same regardless of
-platform.</p>
-<h2 id="architecture">Architecture</h2>
-<pre><code>agent/agent.py                &lt;- monitoring logic (main()/stop())
+platform.</p><h2 id="architecture">Architecture</h2><pre>agent/agent.py                &lt;- monitoring logic (main()/stop())
 agent/tunnel.py               &lt;- command tunnel listener (section J)
 agent/tunnel_tls.py           &lt;- generates the agent's tunnel certificate
 
@@ -1292,27 +1122,23 @@ agent/FalysAgentLinux.spec    &lt;- PyInstaller build spec (Linux)
 agent/build_exe_linux.sh      &lt;- one-time build script (Linux, IT-run)
 
 server/tunnel_client.py       &lt;- server side of the command tunnel
-server/tunnel_trust_store.py  &lt;- pinned agent tunnel certificates
+server/tunnel_proof.py        &lt;- the tunnel handshake HMAC (shared with the agent)
 
 server/deployment_builder.py  &lt;- packages the prebuilt binary (either
                                   platform) + a fresh per-deployment
                                   config.json
 server/build_output/          &lt;- the compiled FalysAgent.exe and
                                   falys-agent binaries go here (build
-                                  them once -- see below)
-</code></pre>
-<h2 id="building-the-agent-binaries">Building the agent binaries</h2>
-<p>Ready-made agent binaries - <code>FalysAgent.exe</code> (Windows,
+                                  them once - see below)
+</pre><h2 id="building-the-agent-binaries">Building the agent binaries</h2><p>Ready-made agent binaries - <code>FalysAgent.exe</code> (Windows,
 x86-64) and <code>falys-agent</code> (Linux, x86-64) - are included in
 <code>server/build_output/</code>, together with a
-<code>VERSION.txt</code> (<code>2.2.0</code>) that the dashboard checks.
-The dashboard's <strong>Agents</strong> page hands them out
-directly.</p>
-<p>They were built from the agent source in <code>agent/</code> using
+<code>VERSION.txt</code> (<code>2.3.0</code>) that the dashboard checks and a
+<code>SHA256SUMS.txt</code>. The dashboard's <strong>Agents</strong> page hands them out
+directly.</p><p>They were built from the agent source in <code>agent/</code> using
 the included PyInstaller build scripts (<code>agent/build_exe.ps1</code>
 and <code>agent/build_exe_linux.sh</code>). SHA-256 checksums of the
-shipped binaries:</p>
-<table class="doc">
+shipped binaries:</p><table class="doc">
 <thead>
 <tr class="header">
 <th>File</th>
@@ -1322,21 +1148,23 @@ shipped binaries:</p>
 <tbody>
 <tr class="odd">
 <td><code>FalysAgent.exe</code></td>
-<td><code>ad611624380ea1e47458203461d42a0b821fc632a21268a7648739981e613817</code></td>
+<td><code>90523352eb9f4060d688e4264287f8df48ff4e0efbadbc24dccfff48916ae618</code></td>
 </tr>
 <tr class="even">
 <td><code>falys-agent</code></td>
-<td><code>871bd88fa7f45536c7d66cd575dc3457c17d52bb9a471242856123e3fb51ffaf</code></td>
+<td><code>38b0ef83986b4d3e5ae53529e3c7d7a74e82c50b4e3477b7048b1bc6b1e24391</code></td>
 </tr>
 </tbody>
-</table>
-<p>If you would rather not use the shipped binaries, delete them from
+</table><p><strong>Code signing.</strong> <code>FalysAgent.exe</code> is signed with a self-signed
+code-signing certificate (<em>Falys Development Self-Signed (Untrusted)</em>). The signature shows the file
+has not been altered since it was signed, but Windows does not trust that publisher, so SmartScreen or your
+endpoint-protection software may show an “unknown publisher” warning. For production use, sign
+the executable with a certificate from a public certificate authority (or your organisation's own CA,
+distributed to your endpoints) after building it with <code>agent/build_exe.ps1</code>.</p><p>If you would rather not use the shipped binaries, delete them from
 <code>server/build_output/</code> and build your own as described below;
 until a binary for a platform exists, the Agents page gives you a
 <em>build kit</em> for that platform (source + instructions)
-instead.</p>
-<p>To build (and again whenever you modify the agent source):</p>
-<ul>
+instead.</p><p>To build (and again whenever you modify the agent source):</p><ul>
 <li>Compiling <code>FalysAgent.exe</code> requires running
 <code>agent/build_exe.ps1</code> on a Windows machine with Python 3.11 or newer
 installed; compiling <code>falys-agent</code> requires running
@@ -1349,35 +1177,27 @@ immediately for that platform. No compiler ever runs on the server
 itself.</li>
 <li>The two platforms are independent: you can rebuild one without
 touching the other.</li>
-</ul>
-<p><strong>Linux-specific note:</strong> unlike a statically-linked
+</ul><p><strong>Linux-specific note:</strong> unlike a statically-linked
 Go/Rust binary, a PyInstaller binary is only portable across machines
 with a compatible-or-newer glibc than the one it was built on. Build
 <code>falys-agent</code> on the oldest distro version you need to
 support (see <code>build_exe_linux.sh</code>'s header comment) so that
 endpoints on older distros don't hit a <code>GLIBC_2.XX not found</code>
-error. Windows has no equivalent concern.</p>
-<h2 id="why-a-self-installing-exe-instead-of-an-msi">Why a
-self-installing EXE instead of an MSI</h2>
-<p>A self-installing exe gets you the same practical end-user experience
+error. Windows has no equivalent concern.</p><h2 id="why-a-self-installing-exe-instead-of-an-msi">Why a
+self-installing EXE instead of an MSI</h2><p>A self-installing exe gets you the same practical end-user experience
 as an <code>.msi</code> - double-click, one admin prompt, done - without requiring the WiX Toolset to build and maintain an
-installer.</p>
-<p>If your organization specifically needs <code>.msi</code> for a
+installer.</p><p>If your organization specifically needs <code>.msi</code> for a
 software-push tool (SCCM/Intune/GPO), the cleanest path is to wrap the
 existing <code>FalysAgent.exe</code> in a thin WiX or Inno Setup
 installer whose only job is to lay the exe + config.json on disk and run
-<code>FalysAgent.exe</code> once.</p>
-<h2 id="tls-certpem">TLS (cert.pem)</h2>
-<p>The server terminates HTTPS itself using a self-signed certificate it
+<code>FalysAgent.exe</code> once.</p><h2 id="tls-certpem">TLS (cert.pem)</h2><p>The server terminates HTTPS itself using a self-signed certificate it
 generates on first run under <code>server/certs/</code>. There's no
 public CA for a LAN-only server, so instead of a browser-style
 certificate chain, each agent pins the server's exact certificate: it
 ships as <code>cert.pem</code> inside the deployment package, next to
 <code>config.json</code>, and <code>agent.py</code> verifies every
 connection against that specific file (see <code>agent.py</code>'s
-<code>CERT_PATH</code>/<code>_verify_param()</code>).</p>
-<p>Practical implications:</p>
-<ul>
+<code>CERT_PATH</code>/<code>_verify_param()</code>).</p><p>Practical implications:</p><ul>
 <li><code>config.json</code>'s <code>"server"</code> field is
 <code>https://...</code> for every generated package.</li>
 <li>If the server's certificate is ever regenerated - e.g. its LAN IP
@@ -1392,9 +1212,7 @@ requirement.</li>
 <li><code>FALYS_TLS_ENABLED=0</code> reverts to plaintext HTTP (shared
 API key only, no encryption) - for a throwaway local test only, never a
 real deployment.</li>
-</ul>
-<h2 id="windows-service-startup">Windows service startup</h2>
-<p>The compiled Windows agent is started by the Service Control Manager
+</ul><h2 id="windows-service-startup">Windows service startup</h2><p>The compiled Windows agent is started by the Service Control Manager
 (SCM) on boot, exactly like any other Windows service:
 <code>SvcDoRun</code> reports <code>SERVICE_RUNNING</code> immediately,
 then does its actual work (loading config, connecting to the server) on
@@ -1405,24 +1223,16 @@ if a config or network issue is hit right at startup. A zero-argument
 launch is routed to <code>StartServiceCtrlDispatcher()</code> (the SCM's
 own launch signature), falling back to the interactive double-click
 installer flow only when that call fails - the one reliable signal that
-the process wasn't started by the SCM.</p>
-<p>Linux has no equivalent handshake to get right: systemd's
+the process wasn't started by the SCM.</p><p>Linux has no equivalent handshake to get right: systemd's
 <code>--service-run</code> path is a straightforward foreground run with
 its own retry-with-backoff loop (see <code>linux_service.py</code>'s
-module docstring for the full comparison).</p>
-</section>
-<section id="file-event-attribution">
-
-<h1>File Event Attribution</h1>
-<h2 id="what-this-is">What this is</h2>
-<p>By default, every Falys agent reports the OS user its own process is
+module docstring for the full comparison).</p></section>
+<section id="file-event-attribution"><h1>File Event Attribution</h1><h2 id="what-this-is">What this is</h2><p>By default, every Falys agent reports the OS user its own process is
 running as (<code>getpass.getuser()</code>). That is
 <strong>not</strong> the same thing as "the user who touched the file" - a service, a scheduled task, or an agent running under a shared/service
 account can all touch files on behalf of someone else, and the
-process-level user won't reflect that.</p>
-<p>To get a trustworthy answer to "who actually did this", Falys queries
-the operating system's own audit trail:</p>
-<table class="doc">
+process-level user won't reflect that.</p><p>To get a trustworthy answer to "who actually did this", Falys queries
+the operating system's own audit trail:</p><table class="doc">
 <thead>
 <tr class="header">
 <th>Platform</th>
@@ -1442,8 +1252,7 @@ the operating system's own audit trail:</p>
 <td>Object Access auditing + a SACL on the monitored folder</td>
 </tr>
 </tbody>
-</table>
-<p>Neither is enabled by default on a fresh OS install. The compiled
+</table><p>Neither is enabled by default on a fresh OS install. The compiled
 agent binaries apply this audit setup automatically while they install
 themselves (Windows: the one admin prompt; Linux: <code>sudo</code>),
 <strong>provided the watched folder already exists on the endpoint at
@@ -1452,23 +1261,17 @@ change <code>watch_dir</code>, create the folder and re-run the agent
 installer, or run the setup script below for that folder. Until
 auditing is in place for the watched folder, attribution lookups will
 consistently return <strong>unverified</strong> - this is expected, not
-a bug, and the dashboard labels it as such rather than guessing.</p>
-<h2 id="how-to-tell-if-its-working">How to tell if it's working</h2>
-<p>Every event the agent sends includes:</p>
-<pre><code>{
+a bug, and the dashboard labels it as such rather than guessing.</p><h2 id="how-to-tell-if-its-working">How to tell if it's working</h2><p>Every event the agent sends includes:</p><pre>{
   "user": "alice",                  // process-level user (always present)
   "attributed_user": "jdoe",           // OS-audit-verified user, or null
   "attribution_verified": true,        // true only if a real audit record was found
   "attribution_source": "auditd"       // or "security_log", or a reason code if unverified
 }
-</code></pre>
-<p>In the Event History page, the <strong>User</strong> column shows a
+</pre><p>In the Event History page, the <strong>User</strong> column shows a
 green "Verified" badge with the audited account when
 <code>attribution_verified</code> is true, and an amber "Unverified"
-badge with the process-level fallback otherwise.</p>
-<p><code>attribution_source</code> when unverified tells you why,
-e.g.:</p>
-<ul>
+badge with the process-level fallback otherwise.</p><p><code>attribution_source</code> when unverified tells you why,
+e.g.:</p><ul>
 <li><code>ausearch_not_installed</code> /
 <code>wevtutil_not_available</code> - the OS audit tool isn't
 present</li>
@@ -1477,34 +1280,21 @@ tool is present, but no matching record was found (most commonly: the
 setup script below hasn't been run yet for this path)</li>
 <li><code>unresolvable_uid</code> / <code>unparseable_event</code> - a
 record was found but couldn't be fully parsed</li>
-</ul>
-<h2 id="linux-setup">Linux setup</h2>
-<pre><code>sudo ./agent/setup_audit_linux.sh /path/to/watched/dir
-</code></pre>
-<p>This installs <code>auditd</code> if needed, adds a persistent watch
+</ul><h2 id="linux-setup">Linux setup</h2><pre>sudo ./agent/setup_audit_linux.sh /path/to/watched/dir
+</pre><p>This installs <code>auditd</code> if needed, adds a persistent watch
 rule (<code>-w &lt;dir&gt; -p wa -k falys_watch</code>), and loads it
-immediately.</p>
-<p>Verify manually:</p>
-<pre><code>sudo auditctl -l | grep falys_watch
+immediately.</p><p>Verify manually:</p><pre>sudo auditctl -l | grep falys_watch
 touch /path/to/watched/dir/test.txt
 sudo ausearch -f /path/to/watched/dir/test.txt -ts recent
-</code></pre>
-<h2 id="windows-setup">Windows setup</h2>
-<p>Run from an <strong>elevated</strong> PowerShell prompt:</p>
-<pre><code>.\agent\setup_audit_windows.ps1 -WatchDir "C:\watch_falys\monitor"
-</code></pre>
-<p>This enables Object Access → File System auditing
+</pre><h2 id="windows-setup">Windows setup</h2><p>Run from an <strong>elevated</strong> PowerShell prompt:</p><pre>.\agent\setup_audit_windows.ps1 -WatchDir "C:\watch_falys\monitor"
+</pre><p>This enables Object Access → File System auditing
 (<code>auditpol</code>) and applies a SACL to the watched folder so
 access to files inside it actually gets logged (auditing policy alone
-does nothing without a SACL on the object).</p>
-<p>Verify manually:</p>
-<pre><code>auditpol /get /subcategory:"File System"
+does nothing without a SACL on the object).</p><p>Verify manually:</p><pre>auditpol /get /subcategory:"File System"
 Get-Acl -Path "C:\watch_falys\monitor" -Audit | Format-List
 New-Item -Path "C:\watch_falys\monitor\test.txt" -ItemType File
 Get-WinEvent -FilterHashtable @{LogName='Security'; Id=4663} -MaxEvents 5
-</code></pre>
-<h2 id="technical-notes">Technical notes</h2>
-<ul>
+</pre><h2 id="technical-notes">Technical notes</h2><ul>
 <li>Windows event ID 4663 is only generated when a process opens the
 file with a monitored access right (write, delete, permission change,
 etc.) - a plain directory listing won't trigger it.</li>
@@ -1517,24 +1307,16 @@ avoid being brittle to that variance.</li>
 <code>agent/agent.py</code>) so they never block the filesystem watcher,
 but they still add a few hundred ms to a few seconds of latency between
 a file event happening and it appearing in the dashboard.</li>
-</ul>
-</section>
-<section id="detection-engine">
-
-<h1>Detection Engine</h1>
-<h2 id="what-this-is-1">What this is</h2>
-<p>Every event an agent reports to the <code>/log</code> route passes
+</ul></section>
+<section id="detection-engine"><h1>Detection Engine</h1><h2 id="what-this-is-1">What this is</h2><p>Every event an agent reports to the <code>/log</code> route passes
 through a detection engine, which works in five stages:
 collect context, score from multiple independent angles, correlate across
 events, and classify with an explicit confidence value plus explainable
 reasons - not just a bare severity string. The deterministic rule pass
 (<code>engine/rule_scoring.py</code>) is one of the three signals the engine
-combines.</p>
-<p>Agents <code>POST</code> a JSON payload to <code>/log</code> with an
+combines.</p><p>Agents <code>POST</code> a JSON payload to <code>/log</code> with an
 <code>X-API-Key</code> header. The engine runs entirely on the server, so
-nothing about it needs to be configured on the agents.</p>
-<h2 id="architecture-1">Architecture</h2>
-<pre><code>server/
+nothing about it needs to be configured on the agents.</p><h2 id="architecture-1">Architecture</h2><pre>server/
   engine/
     __init__.py       &lt;- public entry point: analyze_event()
     engine.py          &lt;- orchestrator, wires the stages below together
@@ -1553,9 +1335,7 @@ nothing about it needs to be configured on the agents.</p>
                               severities, critical_hosts, ...)
   server.py                &lt;- /log calls engine.analyze_event() once per
                                event
-</code></pre>
-<h3 id="the-five-stages-per-event">The five stages, per event</h3>
-<ol type="1">
+</pre><h3 id="the-five-stages-per-event">The five stages, per event</h3><ol type="1">
 <li><strong>Context Collection</strong> (<code>context.py</code>) - is
 this host/user new, is it business hours, is this the first time this
 user has touched this directory, is the host tagged as a critical asset.
@@ -1583,18 +1363,13 @@ admin-tunable) into one 0-100 score, maps it to a tier
 Critical</strong>), and computes a separate 0-100
 <strong>confidence</strong> value driven by how mature the anomaly
 baseline is and how many independent signals agree.</li>
-</ol>
-<h3 id="fault-tolerance">Fault tolerance</h3>
-<p><code>engine.py</code>'s orchestrator wraps every stage individually.
+</ol><h3 id="fault-tolerance">Fault tolerance</h3><p><code>engine.py</code>'s orchestrator wraps every stage individually.
 If any one stage raises (bad data, an edge case in a statistical
 calculation, whatever), that stage's contribution degrades to a safe
 default and a warning is logged - ingestion never stops because a
 single detector failed. A fault in one stage reduces detection quality; it
-does not stop events from being stored.</p>
-<h3 id="what-gets-stored-per-event">What gets stored per event</h3>
-<p>Besides the standard event fields, <code>server.py</code>'s
-<code>/log</code> route stores:</p>
-<pre><code>{
+does not stop events from being stored.</p><h3 id="what-gets-stored-per-event">What gets stored per event</h3><p>Besides the standard event fields, <code>server.py</code>'s
+<code>/log</code> route stores:</p><pre>{
   "severity": "high",                  // low / medium / high / critical
   "classification": "High Risk",
   "confidence": 82,
@@ -1607,16 +1382,13 @@ does not stop events from being stored.</p>
   "correlation_id": "INC-11b2ad78e6",
   "signals": {"rule": 65, "anomaly": 35, "correlation": 55}
 }
-</code></pre>
-<p><code>should_alert()</code> (<code>rules.py</code>) decides whether an
+</pre><p><code>should_alert()</code> (<code>rules.py</code>) decides whether an
 event sends an alert email. It compares the four-tier
 <code>severity</code> field with the admin-configured
 <code>alert_threshold</code>, and - when
 <code>alert_on_new_correlated_incidents</code> is true - also alerts once
 for the event that opens a new correlated incident. It never alerts while
-<strong>Real-time File Monitoring</strong> is switched off in Settings.</p>
-<h2 id="api-routes">API routes</h2>
-<table class="doc">
+<strong>Real-time File Monitoring</strong> is switched off in Settings.</p><h2 id="api-routes">API routes</h2><table class="doc">
 <thead>
 <tr class="header">
 <th>Route</th>
@@ -1642,17 +1414,12 @@ for the event that opens a new correlated incident. It never alerts while
 <td>Recent correlated incidents (<code>?limit=N</code>)</td>
 </tr>
 </tbody>
-</table>
-<p><code>/api/stats</code> returns a <code>classification_counts</code>
+</table><p><code>/api/stats</code> returns a <code>classification_counts</code>
 field (5-tier breakdown) alongside <code>severity_counts</code>
-(4-tier); both are populated from every event.</p>
-<p>The <strong>Detections</strong> page (<code>/detections</code>) shows
+(4-tier); both are populated from every event.</p><p>The <strong>Detections</strong> page (<code>/detections</code>) shows
 the classified event table (with expandable reasons and a confidence
-bar) and the correlated-incidents feed.</p>
-<h2 id="tuning">Tuning</h2>
-<p>Everything scoring-related is data, not code, editable at
-runtime:</p>
-<ul>
+bar) and the correlated-incidents feed.</p><h2 id="tuning">Tuning</h2><p>Everything scoring-related is data, not code, editable at
+runtime:</p><ul>
 <li><strong><code>risk_rules_store.py</code></strong>
 (<code>/api/risk-rules</code>) - sensitive-path globs, event-type
 baseline severities, permission-change severity, the frequency-burst
@@ -1664,30 +1431,20 @@ rule, <code>alert_threshold</code>, and the
 classification-tier score boundaries, the anomaly stage's z-score
 threshold and business-hours window, and the correlation stage's
 window/burst thresholds.</li>
-</ul>
-<p>Both follow the same pattern: a <code>DEFAULT_*</code> dict, a JSON
+</ul><p>Both follow the same pattern: a <code>DEFAULT_*</code> dict, a JSON
 document in PostgreSQL (table <code>server_kv</code>), and a
 <code>set_*()</code> that only accepts known keys and merges rather than
-overwrites nested sub-dicts.</p>
-</section>
-<section id="dynamic-ip-discovery">
-
-<h1>Dynamic IP Discovery</h1>
-<h2 id="the-problem">The problem</h2>
-<p>Both the central server and the agent endpoints are on DHCP, so their
+overwrites nested sub-dicts.</p></section>
+<section id="dynamic-ip-discovery"><h1>Dynamic IP Discovery</h1><h2 id="the-problem">The problem</h2><p>Both the central server and the agent endpoints are on DHCP, so their
 IPs change over time. An agent that only knows the server by a fixed IP
 in its <code>config.json</code> would lose connectivity completely the
 moment that IP changed, until someone manually updated
 <code>config.json</code> with the new address. Falys avoids this with
-automatic discovery.</p>
-<h2 id="the-solution">The solution</h2>
-<p>Since the server and all agents share the same enterprise LAN (same
+automatic discovery.</p><h2 id="the-solution">The solution</h2><p>Since the server and all agents share the same enterprise LAN (same
 broadcast domain/subnet), this uses a small UDP broadcast discovery
 protocol - no extra infrastructure (no DNS server, no dependency on
-internet access) required.</p>
-<h3 id="what-happens-on-serverpy-startup">What happens on
-<code>server.py</code> startup</h3>
-<ol type="1">
+internet access) required.</p><h3 id="what-happens-on-serverpy-startup">What happens on
+<code>server.py</code> startup</h3><ol type="1">
 <li>Resolves its own current LAN IP
 (<code>discovery.get_local_ip()</code>).</li>
 <li>Immediately broadcasts a <code>falys_announce</code> UDP packet on
@@ -1697,10 +1454,8 @@ away.</li>
 <code>falys_discover</code> broadcast directly with its current IP.</li>
 <li>Starts a background watchdog that re-checks its own IP every 30s; if
 it ever changes while running, it re-broadcasts immediately.</li>
-</ol>
-<h3 id="what-happens-on-agentpy-startup">What happens on
-<code>agent.py</code> startup</h3>
-<ol type="1">
+</ol><h3 id="what-happens-on-agentpy-startup">What happens on
+<code>agent.py</code> startup</h3><ol type="1">
 <li>Resolves its own current LAN IP the same way (used in every event's
 <code>ip</code> field; a plain hostname lookup is unreliable here,
 because it commonly returns <code>127.0.1.1</code> or the wrong
@@ -1720,24 +1475,22 @@ background until the server is found.</li>
 server announcing itself again (step 2 of the server's startup, or its
 periodic re-announce if its IP changes later) and updates immediately - <strong>so a live agent recovers from a server IP change without needing
 to be restarted.</strong></li>
-</ol>
-<h2 id="authentication-is-this-really-the-server">Authentication ("is
-this really the server?")</h2>
-<p>Broadcast discovery on its own just tells you <em>something</em>
+</ol><h2 id="authentication-is-this-really-the-server">Authentication ("is
+this really the server?")</h2><p>Broadcast discovery on its own just tells you <em>something</em>
 answered on a port - not that it's genuinely the Falys server and not
 some other device. Both sides are configured with the same shared secret
 (<code>FALYS_DISCOVERY_TOKEN</code> on the server, and
-<code>discovery_token</code> in every agent's <code>config.json</code>). Every discovery message carries
+<code>discovery_token</code> in every agent's <code>config.json</code>). This
+secret only controls discovery; the command tunnel uses a separate secret per
+agent. Every discovery message carries
 a one-way hash of that secret
 (<code>sha256("FALYS_DISCOVERY_V1:" + token + ":" + time-bucket)</code>,
 where the time bucket changes every 5 minutes so a captured packet
-cannot be replayed indefinitely) - never the secret itself - so:</p>
-<ul>
+cannot be replayed indefinitely) - never the secret itself - so:</p><ul>
 <li>A device that doesn't know the token gets ignored, even if it
 responds on the same port.</li>
 <li>Packet-sniffing the LAN doesn't reveal the secret.</li>
-</ul>
-<p><strong>There is no shared default token.</strong> If
+</ul><p><strong>There is no shared default token.</strong> If
 <code>FALYS_DISCOVERY_TOKEN</code> is not set in <code>.env</code>, the
 server generates a random token on first start and keeps it in
 PostgreSQL (see <a href="#3-first-run-and-login">First run and
@@ -1748,10 +1501,8 @@ automatically. To use a value of your own, set
 <em>before</em> generating agent packages. If the token is changed
 later, agents built with the old one keep working while the server's
 address stays the same, but they can no longer re-find the server
-automatically until they are redeployed.</p>
-<h2 id="network-requirements-and-behavior-notes">Network requirements
-and behavior notes</h2>
-<ul>
+automatically until they are redeployed.</p><h2 id="network-requirements-and-behavior-notes">Network requirements
+and behavior notes</h2><ul>
 <li><strong>Same broadcast domain.</strong> Discovery works within a
 single broadcast domain by default. To span routed subnets/VLANs, add a
 broadcast relay (e.g. a UDP relay agent, or multicast DNS with proper
@@ -1767,34 +1518,26 @@ agent startup can take a few seconds (multiple broadcast attempts with
 timeouts) - this is intentional, to tolerate a slow/busy network. Events
 from that window are queued locally and flushed once the server is
 found, so nothing is lost.</li>
-</ul>
-</section>
-<section id="command-tunnel">
-
-<h1>Command Tunnel</h1>
-<h2 id="what-the-tunnel-does">What the tunnel does</h2>
-<p>The command tunnel lets the Falys server run one specific action on one
+</ul></section>
+<section id="command-tunnel"><h1>Command Tunnel</h1><h2 id="what-the-tunnel-does">What the tunnel does</h2><p>The command tunnel lets the Falys server run one specific action on one
 endpoint, on demand, while an operator is responding to an alert - for
 example to confirm the endpoint is alive, force an immediate rescan of its
 watched folder, or move a suspicious file out of that folder. Routine
 monitoring does not depend on it: file events always travel from the agent
-to the server over HTTPS, and the tunnel carries none of that traffic.</p>
-<p><strong>The connection is opened by the server, not by the
+to the server over HTTPS, and the tunnel carries none of that traffic.</p><p><strong>The connection is opened by the server, not by the
 agent.</strong> When an agent starts, it opens a listener on <strong>TCP
 port 50997</strong> (on all of its IPv4 interfaces). When an operator
 issues a command, the server connects to that port, authenticates, sends
 one command, reads the reply and disconnects; nothing stays connected
 between commands. Because the server connects in, the agent's address must
 be reachable from the server. The tunnel does not provide a path to
-endpoints that the server cannot reach.</p>
-<p>The tunnel is <strong>on by default</strong> for every agent deployed
+endpoints that the server cannot reach.</p><p>The tunnel is <strong>on by default</strong> for every agent deployed
 from the dashboard, because each package's <code>config.json</code>
-contains the shared <code>discovery_token</code> that the tunnel needs. An
-agent whose <code>discovery_token</code> is empty or missing does not start
-the tunnel (see <a href="#disabling-the-command-tunnel">Disabling the
-tunnel</a>).</p>
-<h2 id="supported-commands">Supported commands</h2>
-<table class="doc">
+contains that agent's own <code>tunnel_key_id</code> and
+<code>tunnel_secret</code>. An agent without them does not start the
+tunnel (see <a href="#disabling-the-command-tunnel">Disabling the
+tunnel</a>). An agent whose <code>config.json</code> was not produced by the
+Agents page has no tunnel credentials and cannot use the tunnel.</p><h2 id="supported-commands">Supported commands</h2><table class="doc">
 <thead>
 <tr class="header">
 <th>Command</th>
@@ -1838,20 +1581,14 @@ folder is a drive root (<code>C:\</code> or <code>/</code>), it has no parent, s
 <code>falys_quarantine</code> is created at the root, inside the watched tree.</td>
 </tr>
 </tbody>
-</table>
-<p>Any other command name is rejected with an <code>unknown_command</code>
-error. The tunnel has no command that runs programs or shell commands.</p>
-<h2 id="running-a-command">Running a command</h2>
-<p>The dashboard has no command buttons; commands are sent through the API
+</table><p>Any other command name is rejected with an <code>unknown_command</code>
+error. The tunnel has no command that runs programs or shell commands.</p><h2 id="running-a-command">Running a command</h2><p>The dashboard has no command buttons; commands are sent through the API
 route <code>POST /api/agents/&lt;agent_id&gt;/command</code>, where
 <code>&lt;agent_id&gt;</code> is the endpoint's hostname as listed on the
-<strong>Agents</strong> page. The request body is JSON:</p>
-<pre><code>{"command": "quarantine_file", "params": {"path": "/var/data/payroll/report.xlsx"}}
-</code></pre>
-<p>The route requires a logged-in dashboard session and the dashboard's CSRF
+<strong>Agents</strong> page. The request body is JSON:</p><pre>{"command": "quarantine_file", "params": {"path": "/var/data/payroll/report.xlsx"}}
+</pre><p>The route requires a logged-in dashboard session and the dashboard's CSRF
 token. The simplest way to try it is from your browser's developer console
-while you are signed in and on the <strong>Agents</strong> page:</p>
-<pre><code>fetch('/api/agents/WS-0042/command', {
+while you are signed in and on the <strong>Agents</strong> page:</p><pre>fetch('/api/agents/WS-0042/command', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -1859,8 +1596,7 @@ while you are signed in and on the <strong>Agents</strong> page:</p>
   },
   body: JSON.stringify({command: 'ping'})
 }).then(r =&gt; r.json()).then(console.log)
-</code></pre>
-<table class="doc">
+</pre><table class="doc">
 <thead>
 <tr class="header">
 <th>HTTP status</th>
@@ -1891,13 +1627,22 @@ command (for example <code>unknown_command:...</code> or a missing
 <code>message</code> says why (see Troubleshooting below).</td>
 </tr>
 </tbody>
-</table>
-<p>To locate an agent, the server first broadcasts a discovery request on
-its LAN (UDP port 50999); an agent that answers reports its current address
-and tunnel port. If no answer arrives, the server uses the IP address from
-that agent's most recent event and the default port 50997.</p>
-<h2 id="tunnel-network-and-firewall">Network and firewall rules</h2>
-<table class="doc">
+</table><p>The server decides where to connect from information it observed
+itself, never from an address an agent claims. The host name in the URL is
+mapped to the API key that owns that name, and the destination is the source
+address of that agent's most recent authenticated request (the tunnel port is
+the one the agent registered, default 50997). If the agent answers the server's
+LAN discovery broadcast (UDP port 50999), the datagram's real source address
+replaces it, but only for the same agent. The <code>ip</code> field inside an
+event is kept as <code>reported_ip</code> for reference and is never used for a
+connection. Loopback, link-local, multicast and unspecified addresses are always
+refused. To confine the tunnel to your own networks set
+<code>FALYS_TUNNEL_ALLOWED_NETWORKS</code> in the server's <code>.env</code>
+(comma-separated CIDRs such as <code>10.0.0.0/8,192.168.0.0/16</code>);
+<code>FALYS_TUNNEL_ALLOW_LOOPBACK=1</code> allows loopback for local testing only.</p><p>A host name is tied to the first API key that reports it. If another key
+reports the same name, its events are shown as <em>name [unverified:xxxxxx]</em>
+and commands for the real name still go to the real agent. Revoke a key to
+release its name, for example when you reinstall a machine with a new package.</p><h2 id="tunnel-network-and-firewall">Network and firewall rules</h2><table class="doc">
 <thead>
 <tr class="header">
 <th>Direction</th>
@@ -1907,32 +1652,27 @@ that agent's most recent event and the default port 50997.</p>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Falys server &rarr; each agent</td>
+<td>Falys server → each agent</td>
 <td>TCP 50997</td>
 <td>The command tunnel. Allow it <strong>inbound on every agent, from the
 Falys server's address only</strong>. If your server restricts outbound
 traffic, allow outbound TCP 50997 to the agents as well.</td>
 </tr>
 <tr class="even">
-<td>Falys server &harr; agents</td>
+<td>Falys server ↔ agents</td>
 <td>UDP 50999</td>
 <td>Locating agents (see <a href="#dynamic-ip-discovery">Dynamic IP
 Discovery</a>). Commands still work without it as long as the agent's
 last-known address is correct.</td>
 </tr>
 </tbody>
-</table>
-<p>The agent listens on all of its IPv4 interfaces, so your firewall is what
+</table><p>The agent listens on all of its IPv4 interfaces, so your firewall is what
 limits who can reach it. Neither the Windows nor the Linux agent installer
 creates a firewall rule: on a host whose firewall blocks inbound traffic by
 default, the port stays closed until you open it; on a host with no
 firewall, it is open to anything that can reach the machine. Replace
-<code>192.0.2.10</code> below with your Falys server's address.</p>
-<p><strong>Windows</strong> (elevated Command Prompt):</p>
-<pre><code>netsh advfirewall firewall add rule name="Falys agent tunnel" dir=in action=allow protocol=TCP localport=50997 remoteip=192.0.2.10
-</code></pre>
-<p><strong>Linux</strong> - use the one that matches your firewall:</p>
-<pre><code># ufw
+<code>192.0.2.10</code> below with your Falys server's address.</p><p><strong>Windows</strong> (elevated Command Prompt):</p><pre>netsh advfirewall firewall add rule name="Falys agent tunnel" dir=in action=allow protocol=TCP localport=50997 remoteip=192.0.2.10
+</pre><p><strong>Linux</strong> - use the one that matches your firewall:</p><pre># ufw
 sudo ufw allow from 192.0.2.10 to any port 50997 proto tcp
 
 # firewalld
@@ -1942,77 +1682,67 @@ sudo firewall-cmd --reload
 # iptables (make it persistent with your distribution's method)
 sudo iptables -A INPUT -p tcp --dport 50997 -s 192.0.2.10 -j ACCEPT
 sudo iptables -A INPUT -p tcp --dport 50997 -j DROP
-</code></pre>
-<h2 id="tunnel-authentication">Authentication and encryption</h2>
-<p>A command is carried out only if it passes the following checks:</p>
-<ol type="1">
-<li><p><strong>Shared secret.</strong> Before the agent accepts any command,
-the server must prove that it knows the agent's
-<code>discovery_token</code> - the same secret used for <a href="#dynamic-ip-discovery">Dynamic IP Discovery</a>
-(<code>FALYS_DISCOVERY_TOKEN</code> on the server). The proof is
-<code>sha256("FALYS_TUNNEL_V1:" + token + ":" + time-bucket)</code>, where
-the time bucket changes every 5 minutes (the agent accepts the current and
-the previous bucket). The token itself is never sent. The tunnel uses its
-own prefix, so a discovery packet cannot be replayed as a tunnel proof. A
-connection with a missing or wrong proof is closed immediately and gets no
-reply.</p></li>
-<li><p><strong>TLS encryption.</strong> Every tunnel connection is wrapped
-in TLS, and the agent refuses to start the tunnel without its certificate.
-On first start the agent generates its own self-signed certificate and
-private key (<code>tunnel_cert.pem</code> and
-<code>tunnel_key.pem</code> in the agent's folder; valid for 10 years; the
-key is readable by its owner only on Linux) and reuses them on every
-restart.</p></li>
-<li><p><strong>Certificate pinning.</strong> There is no certificate
-authority to validate an agent's self-signed certificate against, so the
-server pins it instead. The first time the server connects to an agent, it
-records the SHA-256 fingerprint of the certificate that agent presents; from
-then on it refuses to talk to that agent if a different certificate is
-presented. Pins are stored in PostgreSQL (<code>server_kv</code>, key
-<code>tunnel_trust</code>). This works like an SSH client's known-hosts
-check: it cannot detect an impostor on the very first connection, so after
-deploying an agent, send it a <code>ping</code> from the Falys server while
-you trust the network.</p></li>
-<li><p><strong>Dashboard login.</strong> The server's command route
-requires a logged-in dashboard session and a valid CSRF token.</p></li>
-</ol>
-<p><strong>Connection limits.</strong> A new connection must finish the TLS
-handshake and send a valid proof within 10 seconds, or the agent drops it.
-An authenticated connection that sits idle for 60 seconds is closed, and any
-request line longer than 64 KB closes the connection. This keeps a client that
-connects and says nothing from tying up the agent. If the agent cannot start
-the tunnel (for example it cannot write its certificate), it logs
+</pre><h2 id="tunnel-authentication">Authentication and encryption</h2><p>A command is carried out only if it passes the following checks:</p><ol type="1">
+<li><p><strong>A secret that belongs to one agent.</strong> Every agent has its
+own <code>tunnel_secret</code> and <code>tunnel_key_id</code>, generated by the
+server when you build its package and stored in that agent's
+<code>config.json</code> only. The server keeps the secret in its database (it
+needs it to compute the proof), never shows it in the dashboard, and deletes it
+when the agent's key is revoked. Taking over one endpoint gives no ability to
+command any other endpoint.</p></li>
+<li><p><strong>Challenge-response with fresh nonces.</strong> After the TLS
+handshake the agent sends a random nonce. The server answers with its own random
+nonce and an HMAC-SHA256, keyed with the agent's secret, over both nonces, the
+agent's id, the agent's tunnel-certificate fingerprint and the fingerprint of the
+server's TLS certificate. The agent checks it and only then proves the same
+knowledge back (with a different role label, so the two proofs cannot be
+swapped). The server sends no command until it has checked the agent's proof.
+Every connection uses new nonces, so a captured exchange cannot be replayed. A
+connection that fails any step is closed without a reply.</p></li>
+<li><p><strong>The server's identity is part of the proof.</strong> The agent
+holds the server's certificate (<code>cert.pem</code>, bundled in every package)
+and requires the proof to include that certificate's fingerprint, so a different
+server cannot command the agent even if it somehow obtained the secret.</p></li>
+<li><p><strong>TLS encryption.</strong> Every tunnel connection is wrapped in
+TLS (1.2 or later), and the agent refuses to start the tunnel without its
+certificate. On first start the agent generates its own self-signed certificate
+and private key (<code>tunnel_cert.pem</code> and <code>tunnel_key.pem</code> in
+the agent's folder; valid for 10 years; the key is readable by its owner only on
+Linux) and reuses them on every restart.</p></li>
+<li><p><strong>Certificate pinning without trust-on-first-use.</strong> At
+start-up each agent reports its certificate's SHA-256 fingerprint to the server
+over its own API-key-authenticated HTTPS connection
+(<code>POST /api/agent/register</code>). The server refuses a tunnel connection
+that presents any other certificate, so there is no first connection in which an
+impostor could get itself pinned.</p></li>
+<li><p><strong>Dashboard login.</strong> The server's command route requires a
+logged-in dashboard session and a valid CSRF token.</p></li>
+</ol><p><strong>Connection limits.</strong> A new connection must finish the TLS
+handshake and the proofs within 10 seconds, or the agent drops it, and at most 8
+unauthenticated connections are held open at once. An authenticated connection
+that sits idle for 60 seconds is closed, and any request line longer than 64 KB
+closes the connection. If the agent cannot start the tunnel (for example it
+cannot write its certificate), it logs
 <code>command tunnel could not start and is disabled</code> and carries on
-monitoring files.</p>
-<p><strong>Treat the discovery token as a credential.</strong> It is the
-only secret an agent checks, and the agent does not ask the server for a
-client certificate. Anyone who has the token and can reach TCP port 50997
-on an agent can issue these commands, which is why the firewall rule above
-should allow the server's address only. If you change
-<code>FALYS_DISCOVERY_TOKEN</code>, agents built with the old token stop
-accepting commands until they are redeployed.</p>
-<h2 id="when-an-agents-certificate-changes">When an agent's certificate
-changes</h2>
-<p>An agent keeps its tunnel certificate for as long as
-<code>tunnel_cert.pem</code> and <code>tunnel_key.pem</code> exist in its
-folder. If an agent is reinstalled into a fresh folder, or those files are
-deleted, it generates a new certificate and the server refuses its commands
-with a message that begins <em>REFUSING connection</em>. Once you have
-confirmed that the change is expected, remove that agent's pin so the next
-connection pins the new certificate. There is no dashboard control for
-this; run in <code>psql</code>, replacing <code>WS-0042</code> with the
-agent's hostname:</p>
-<pre><code>UPDATE server_kv SET value = value - 'WS-0042' WHERE key = 'tunnel_trust';
-</code></pre>
-<p>Pins are kept per hostname, so no two endpoints should share a
-hostname.</p>
-<h2 id="disabling-the-command-tunnel">Disabling the tunnel</h2>
-<p><strong>On an agent (the listener is not started):</strong></p>
-<ol type="1">
+monitoring files.</p><p><strong>Treat <code>config.json</code> as a credential.</strong> Anyone who
+holds an agent's <code>tunnel_secret</code> and can reach TCP port 50997 on
+<em>that</em> agent can issue its commands, which is why the firewall rule above
+should allow the server's address only. The shared <code>discovery_token</code>
+is not a tunnel credential: knowing it lets a device take part in LAN discovery,
+nothing more (an agent still verifies the server's HTTPS certificate before it
+trusts a discovery announcement).</p><h2 id="when-an-agents-certificate-changes">When an agent's certificate
+changes</h2><p>An agent keeps its tunnel certificate for as long as
+<code>tunnel_cert.pem</code> and <code>tunnel_key.pem</code> exist in its folder.
+If those files are deleted, the agent generates a new certificate and registers
+the new fingerprint the next time it starts, so no manual step is needed. Until
+it has registered, commands for it fail with a message that begins
+<em>REFUSING connection</em>. If you suspect an agent was tampered with, revoke
+its key on the Settings page: that deletes its tunnel secret, releases its host
+name and stops it sending events.</p><h2 id="disabling-the-command-tunnel">Disabling the tunnel</h2><p><strong>On an agent (the listener is not started):</strong></p><ol type="1">
 <li><p>Open <code>config.json</code> in the agent's folder - the folder
 that contains <code>FalysAgent.exe</code> on Windows, or
 <code>/opt/falys-agent</code> on Linux - and set
-<code>"discovery_token": ""</code>.</p></li>
+<code>"tunnel_secret": ""</code>.</p></li>
 <li><p>Restart the agent: the <code>FalysAgent</code> service on Windows,
 or <code>sudo systemctl restart falys-agent</code> on Linux. At start-up
 the agent logs that the command tunnel is disabled.</p></li>
@@ -2020,25 +1750,17 @@ the agent logs that the command tunnel is disabled.</p></li>
 <code>sudo ss -ltn | grep 50997</code> (Linux) or
 <code>netstat -an | findstr 50997</code> (Windows) should print
 nothing.</p></li>
-</ol>
-<p>The same token also drives LAN discovery, so an agent without it does not
-take part in discovery either: it keeps sending events to the server address
-in its <code>config.json</code> as usual, but it will not find the server
-again on its own if the server's IP changes, and it does not answer the
-server's discovery broadcast. To turn the tunnel back on, put the server's
-current discovery token back into <code>discovery_token</code> and restart
-the agent.</p>
-<p><strong>At the firewall (keeps discovery working):</strong> do not open
+</ol><p>Discovery keeps working: the agent still finds the server again if its IP
+changes. To turn the tunnel back on, redeploy the agent from the dashboard (the
+secret cannot be recreated by hand, because the server holds the matching copy)
+or restore the original <code>tunnel_secret</code> and restart the agent.</p><p><strong>At the firewall (keeps discovery working):</strong> do not open
 TCP 50997 on the agent, or add a rule that blocks it. The listener still
 runs on the endpoint, but the server cannot reach it, so commands for that
-agent fail with a <em>tunnel command failed</em> error.</p>
-<p><strong>For the whole deployment:</strong> the server has no separate
+agent fail with a <em>tunnel command failed</em> error.</p><p><strong>For the whole deployment:</strong> the server has no separate
 on/off setting for the command route. A command can only succeed against an
 agent whose tunnel is running and reachable, so disabling the tunnel on
 every agent, or blocking TCP 50997 to every agent, turns the feature off
-completely.</p>
-<h2 id="tunnel-troubleshooting">Troubleshooting</h2>
-<table class="doc">
+completely.</p><h2 id="tunnel-troubleshooting">Troubleshooting</h2><table class="doc">
 <thead>
 <tr class="header">
 <th>What you see</th>
@@ -2060,33 +1782,42 @@ disabled on that agent. The server waits 5 seconds before giving up.</td>
 </tr>
 <tr class="odd">
 <td>502 <em>agent closed the tunnel during handshake</em></td>
-<td>The agent rejected the proof because its <code>discovery_token</code>
-differs from the server's. Redeploy the agent from the dashboard.</td>
+<td>The agent rejected the proof because its <code>tunnel_secret</code>
+differs from the one the server holds for it (for example the key was revoked
+and the old package is still installed). Redeploy the agent from the
+dashboard.</td>
 </tr>
 <tr class="even">
-<td>502 <em>REFUSING connection ... does not match the one pinned</em></td>
-<td>The agent's tunnel certificate changed, or something else is answering
-at that address. See <em>When an agent's certificate changes</em>
-above.</td>
+<td>409 <em>has not registered its tunnel yet</em></td>
+<td>The agent reports its tunnel certificate a few seconds after start-up.
+Check that it is running, is version 2.3.0 or later and can reach the server
+over HTTPS.</td>
+</tr>
+<tr class="even">
+<td>502 <em>REFUSING connection ... does not match the fingerprint</em></td>
+<td>The agent's tunnel certificate changed and it has not re-registered yet, or
+something else is answering at that address. See <em>When an agent's
+certificate changes</em> above.</td>
+</tr>
+<tr class="even">
+<td>502 <em>refusing to connect to loopback address</em> / <em>outside
+FALYS_TUNNEL_ALLOWED_NETWORKS</em></td>
+<td>The address the server observed for that agent is not an allowed
+destination. Expected when an agent runs on the server machine itself (use
+<code>FALYS_TUNNEL_ALLOW_LOOPBACK=1</code> for testing) or when your allow list
+does not cover the agent's network.</td>
 </tr>
 </tbody>
-</table>
-<h2 id="tunnel-logging">Logging</h2>
-<p>On Linux, the agent's journal (<code>sudo journalctl -u falys-agent</code>)
+</table><h2 id="tunnel-logging">Logging</h2><p>On Linux, the agent's journal (<code>sudo journalctl -u falys-agent</code>)
 has a line for every authenticated command connection and for every
 rejected one (bad proof or failed TLS handshake), each with the connecting
 IP address. The server does not record the commands it sends in its
-database.</p>
-</section>
-<section id="credits">
-
-<h1>Credits &amp; Third-Party Licenses</h1>
-<p>Falys is sold under the standard Envato Market license you selected
+database.</p></section>
+<section id="credits"><h1>Credits &amp; Third-Party Licenses</h1><p>Falys is sold under the standard Envato Market license you selected
 when you purchased it (see <a href="https://codecanyon.net/licenses/standard">https://codecanyon.net/licenses/standard</a>).
 It bundles or depends on the following third-party open-source
 components, each of which remains under its own license. The same list
-is in <code>Licenses.txt</code>.</p>
-<table class="doc">
+is in <code>Licenses.txt</code>.</p><table class="doc">
 <thead>
 <tr class="header">
 <th>Component</th>
@@ -2185,20 +1916,17 @@ Free</a></td>
 <td>Dashboard charts (served from <code>server/static/chart.umd.js</code>)</td>
 </tr>
 </tbody>
-</table>
-<p>Python itself is used under the <a href="https://docs.python.org/3/license.html">PSF License</a>. The
+</table><p>Python itself is used under the <a href="https://docs.python.org/3/license.html">PSF License</a>. The
 dashboard pages load Font Awesome from a public CDN (cdnjs.cloudflare.com);
 it is pinned to version 6.5.1 with a Subresource Integrity (SRI) hash and
 is not bundled in the download. Chart.js 4.4.1 is bundled
 (<code>server/static/chart.umd.js</code>), so the charts need no internet
 access, and its script tags carry an SRI hash too. In both cases the browser
 refuses the file if it does not match the hash. Without internet access the
-icons do not load, but the dashboard still works.</p>
-</section>
-
-  <footer>Made with 💙 by the <b>FALYS</b> team · <a href="../index.html">falys.io</a></footer>
+icons do not load, but the dashboard still works.</p><p>Once again, thank you for purchasing Falys. If you have any questions relating to this item, please email <a href="mailto:shizaalam50@gmail.com">shizaalam50@gmail.com</a> or <a href="mailto:khanmaimoonashah@gmail.com">khanmaimoonashah@gmail.com</a>. This documentation is also online at <a href="https://falys.io/docs/">https://falys.io/docs/</a>.</p><p class="append-bottom alt large"><strong>Sheeza Alam Khan &amp; Maimoona Shah Khan</strong></p><p><a href="#toc">Go To Table of Contents</a></p></section>
+<footer>Made with 💙 by the <b>Falys</b> team · <a href="../index.html">falys.io</a></footer>
 </main>
-<button id="top" aria-label="Back to top">↑</button>
+<button aria-label="Back to top" id="top">↑</button>
 <script src="docs.js"></script>
 </body>
 </html>
