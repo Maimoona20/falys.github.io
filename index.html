@@ -106,6 +106,49 @@ footer{border-top:1px solid var(--l);padding:48px 0;color:var(--m);font-size:.9r
 @media(max-width:960px){.hg,.tr{grid-template-columns:minmax(0,1fr)}.tr.rev>:first-child{order:0}.cols,.pls{grid-template-columns:minmax(0,1fr);max-width:540px;margin-inline:auto}.cols{max-width:none}.steps,.cp.c4{grid-template-columns:repeat(2,minmax(0,1fr))}.cp{grid-template-columns:repeat(2,minmax(0,1fr))}.ft{grid-template-columns:1fr 1fr}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stats div:nth-child(3){border-left:0}.stats div:nth-child(n+3){border-top:1px solid var(--l)}}
 @media(max-width:860px){.bgr{display:block}.nl{display:none;position:fixed;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;padding:8px 20px 22px;background:#080d18;border-bottom:1px solid var(--l)}.open .nl{display:flex}.nl a{padding:15px 2px;border-bottom:1px solid #121b2d;font-size:1.05rem}.nl .btn{margin-top:16px;border:0}}
 @media(max-width:640px){.steps,.cp,.cp.c4{grid-template-columns:minmax(0,1fr)}.row .btn{width:100%}.sc img,.hero .sc img{width:100%;max-width:100%;height:auto;object-fit:contain}.sc{overflow-x:hidden}.sh{width:100%;max-width:100%}.hint{display:block}.tr li,.cols p{font-size:.95rem}body{padding-bottom:70px}.stk{display:flex;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:#080d18;border-top:1px solid var(--l);transform:translateY(110%);transition:transform .35s}.stk.s{transform:none}.stk .btn{flex:1;padding:12px 8px}.ft{grid-template-columns:1fr}}
+/* Phone layout: turn the comparison table into readable cards. */
+@media (max-width: 640px) {
+  .tw { overflow: visible; border: 0; border-radius: 0; }
+  .tw table { display: block; width: 100%; min-width: 0; }
+  .tw thead { display: none; }
+  .tw tbody { display: grid; gap: 12px; }
+  .tw tr {
+    display: grid;
+    width: 100%;
+    border: 1px solid var(--l);
+    border-radius: 10px;
+    background: var(--p);
+    overflow: hidden;
+  }
+  .tw td {
+    display: block;
+    min-width: 0;
+    width: 100%;
+    padding: 12px 14px;
+    font-size: .88rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+  .tw td:first-child {
+    font-weight: 600;
+    color: var(--t);
+    background: #131d30;
+  }
+  .tw td:nth-child(2)::before,
+  .tw td:nth-child(3)::before {
+    display: block;
+    margin-bottom: 3px;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--m);
+  }
+  .tw td:nth-child(2)::before { content: "Basic file logging"; }
+  .tw td:nth-child(3)::before { content: "FALYS"; color: var(--a); }
+  .tw tr:last-child td { border-bottom: 1px solid var(--l); }
+  .tw tr td:last-child { border-bottom: 0; }
+}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
 </style>
 </head>
