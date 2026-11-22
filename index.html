@@ -72,15 +72,6 @@ header{position:sticky;top:0;z-index:50;background:rgba(8,13,24,.94);border-bott
 .steps>div{padding-top:26px}.steps .mo{font:600 .8rem var(--mo);color:var(--a)}
 .steps h3{margin:10px 0}.steps p{color:var(--m);font-size:.95rem}
 code{font:.82rem var(--mo);color:var(--a);background:rgba(34,211,238,.08);padding:2px 6px;border-radius:4px}
-.sim{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:20px}
-.tm{background:#050912;border:1px solid var(--l);border-radius:10px;overflow:hidden;font:.82rem var(--mo)}
-.tm .t{display:flex;justify-content:space-between;padding:11px 16px;background:#0a111f;border-bottom:1px solid var(--l);color:#64748b;font-size:.72rem}
-.fd{min-height:240px;padding:16px;display:grid;gap:10px;align-content:start}
-.fd p{color:#cbd5e1;word-break:break-word;animation:up .5s both}.fd em{color:#64748b;margin-right:10px;font-style:normal}.fd b{color:#fb923c}.fd .r b{color:var(--r)}.fd .ok b{color:var(--g)}.fd .i{color:#475569}
-.gz{background:var(--p);border:1px solid var(--l);border-radius:10px;padding:28px;display:flex;flex-direction:column;justify-content:center;gap:14px}
-.gz small{letter-spacing:.14em;color:#64748b;font-size:.7rem}.gz strong{font:400 4.2rem/1 var(--s)}
-.gz .m{height:6px;border-radius:4px;background:#17213a;overflow:hidden}.gz .m span{display:block;height:100%;width:0;background:var(--g);transition:width .9s cubic-bezier(.2,.7,.2,1),background .5s}
-.gz .lv{font-weight:700;color:var(--g);transition:color .5s}
 .tr{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.25fr);gap:clamp(28px,5vw,60px);align-items:center;margin-bottom:clamp(56px,8vw,96px)}
 .tr:last-child{margin-bottom:0}.tr.rev>:first-child{order:2}
 .tr h3{font-size:clamp(1.8rem,3.4vw,2.5rem);margin-bottom:14px}.tr>div>p{color:var(--m)}
@@ -112,9 +103,9 @@ footer{border-top:1px solid var(--l);padding:48px 0;color:var(--m);font-size:.9r
 .stk{display:none}
 .lb{position:fixed;inset:0;z-index:200;background:rgba(4,8,16,.94);display:none;overflow:auto;padding:20px;cursor:zoom-out}.lb.o{display:block}.lb img{width:max(100%,900px);max-width:none;margin:auto;border-radius:8px;border:1px solid var(--l)}
 .js .rv{opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}.js .rv.in{opacity:1;transform:none}
-@media(max-width:960px){.hg,.tr,.sim{grid-template-columns:minmax(0,1fr)}.tr.rev>:first-child{order:0}.cols,.pls{grid-template-columns:minmax(0,1fr);max-width:540px;margin-inline:auto}.cols{max-width:none}.steps,.cp.c4{grid-template-columns:repeat(2,minmax(0,1fr))}.cp{grid-template-columns:repeat(2,minmax(0,1fr))}.ft{grid-template-columns:1fr 1fr}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stats div:nth-child(3){border-left:0}.stats div:nth-child(n+3){border-top:1px solid var(--l)}}
+@media(max-width:960px){.hg,.tr.tr.rev>:first-child{order:0}.cols,.pls{grid-template-columns:minmax(0,1fr);max-width:540px;margin-inline:auto}.cols{max-width:none}.steps,.cp.c4{grid-template-columns:repeat(2,minmax(0,1fr))}.cp{grid-template-columns:repeat(2,minmax(0,1fr))}.ft{grid-template-columns:1fr 1fr}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stats div:nth-child(3){border-left:0}.stats div:nth-child(n+3){border-top:1px solid var(--l)}}
 @media(max-width:860px){.bgr{display:block}.nl{display:none;position:fixed;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;padding:8px 20px 22px;background:#080d18;border-bottom:1px solid var(--l)}.open .nl{display:flex}.nl a{padding:15px 2px;border-bottom:1px solid #121b2d;font-size:1.05rem}.nl .btn{margin-top:16px;border:0}}
-@media(max-width:640px){.steps,.cp,.cp.c4{grid-template-columns:minmax(0,1fr)}.row .btn{width:100%}.sc img{width:860px;max-width:none}.hero .sc img{width:760px}.hint{display:block}.tr li,.cols p{font-size:.95rem}body{padding-bottom:70px}.stk{display:flex;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:#080d18;border-top:1px solid var(--l);transform:translateY(110%);transition:transform .35s}.stk.s{transform:none}.stk .btn{flex:1;padding:12px 8px}.gz strong{font-size:3.4rem}.ft{grid-template-columns:1fr}}
+@media(max-width:640px){.steps,.cp,.cp.c4{grid-template-columns:minmax(0,1fr)}.row .btn{width:100%}.sc img{width:860px;max-width:none}.hero .sc img{width:760px}.hint{display:block}.tr li,.cols p{font-size:.95rem}body{padding-bottom:70px}.stk{display:flex;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:#080d18;border-top:1px solid var(--l);transform:translateY(110%);transition:transform .35s}.stk.s{transform:none}.stk .btn{flex:1;padding:12px 8px}.ft{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
 </style>
 </head>
@@ -163,15 +154,6 @@ footer{border-top:1px solid var(--l);padding:48px 0;color:var(--m);font-size:.9r
 <div><span class="mo">04</span><h3>Get alerts that explain themselves</h3><p>Every change is scored, classified and logged. The right person gets an email when something looks wrong.</p></div>
 </div>
 <p class="nt">Self-hosted on your servers, or on a VM inside your own AWS, Azure or GCP account.</p>
-</div></section>
-
-<section><div class="w">
-<div class="hd c rv"><span class="k">See it work</span><h2>Watch FALYS catch an attack, <em>step by step.</em></h2><p class="lead">A short simulation on sample data. No install, no sign-up.</p></div>
-<div class="sim rv">
-<div class="tm"><div class="t"><span>WEB-01 · live event feed</span><span>SIMULATION</span></div><div class="fd" id="fd"><p class="i">Waiting for events… press “Simulate an attack”.</p></div></div>
-<div class="gz"><small>CURRENT RISK</small><strong id="sc">0</strong><div class="m"><span id="mt"></span></div><div class="lv" id="lv">Legitimate</div><small id="nt">No alerts sent</small></div>
-</div>
-<div class="row" style="justify-content:center"><button class="btn p" id="sb" data-c="simulate">Simulate an attack <i>→</i></button></div>
 </div></section>
 
 <section class="alt"><div class="w">
@@ -295,13 +277,6 @@ $$('.cu').forEach(function(el){var to=+el.dataset.to,d=0;if(!('IntersectionObser
 var lb=$('#lb'),li=$('img',lb);
 $$('.sc img').forEach(function(i){i.onclick=function(){li.src=i.src;lb.classList.add('o');tr('screenshot_zoom',{image:i.alt})}});
 lb.onclick=function(){lb.classList.remove('o')};addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList.remove('o')});
-/* simulator */
-var fd=$('#fd'),sc=$('#sc'),mt=$('#mt'),lv=$('#lv'),nt=$('#nt'),sb=$('#sb'),run=0;
-var S=[[0,'created','C:\\inetpub\\wwwroot\\upload.aspx · user Unverified',34,''],[1500,'modified','C:\\Windows\\System32\\drivers\\etc\\hosts · permissions changed',58,''],[3000,'burst','14 changes in 2 minutes on WEB-01',78,''],[4500,'incident','Events correlated into 1 incident',93,'r'],[6000,'alert','Email sent to IT on-call with reasons and file hashes',93,'ok']];
-var tier=function(v){return v<25?['Low Risk','#4ade80']:v<50?['Suspicious','#fbbf24']:v<75?['High Risk','#fb923c']:['Critical','#f87171']};
-function set(v){var t=tier(v);lv.textContent=t[0];lv.style.color=t[1];mt.style.width=v+'%';mt.style.background=t[1];var t0=performance.now(),f=+sc.textContent;(function s(n){var p=Math.min((n-t0)/800,1);sc.textContent=Math.round(f+(v-f)*p);if(p<1)requestAnimationFrame(s)})(t0)}
-sb.onclick=function(){if(run)return;run=1;sb.textContent='Running…';fd.innerHTML='';sc.textContent='0';set(8);nt.textContent='No alerts sent';tr('simulate');
-S.forEach(function(x,i){setTimeout(function(){var p=document.createElement('p');p.className=x[4];p.innerHTML='<em>00:0'+i+'</em><b>'+x[1].toUpperCase()+'</b>  '+x[2];fd.appendChild(p);set(x[3]);if(x[4]==='ok')nt.textContent='Alert sent to IT on-call';if(i===S.length-1)setTimeout(function(){run=0;sb.innerHTML='Run it again <i>→</i>'},900)},x[0]+400)})};
 /* analytics */
 document.addEventListener('click',function(e){var a=e.target.closest('[data-c]');if(a)tr('cta_click',{cta_name:a.dataset.c,page:'home'})});
 $$('details').forEach(function(d){d.addEventListener('toggle',function(){if(d.open)tr('faq_open',{question:$('summary',d).textContent})})});
