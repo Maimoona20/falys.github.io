@@ -1085,7 +1085,51 @@
     }
 }
 
-    </style>
+    
+/* ===== RICH UPGRADE ===== */
+body::before,body::after{content:"";position:fixed;z-index:-1;width:60vw;height:60vw;border-radius:50%;filter:blur(110px);opacity:.16;pointer-events:none;animation:lpDrift 22s ease-in-out infinite alternate}
+body::before{background:#00eaff;top:-20vw;left:-15vw}
+body::after{background:#a855f7;bottom:-25vw;right:-15vw;animation-delay:-9s}
+@keyframes lpDrift{to{transform:translate(8vw,6vw) scale(1.15)}}
+#lpProg{position:fixed;top:0;left:0;height:3px;width:0;z-index:999;background:linear-gradient(90deg,#00eaff,#a855f7)}
+.lp-hero h1{text-shadow:0 0 60px rgba(0,234,255,.15)}
+.lp-hero-visual{perspective:1400px}
+.lp-hero-visual .lp-shot{transition:transform .25s ease-out;transform-style:preserve-3d;box-shadow:0 40px 120px rgba(0,234,255,.22),0 0 0 1px rgba(0,234,255,.18)}
+.lp-hero-visual .lp-shot img{image-rendering:auto}
+.lp-chip{position:absolute;z-index:3;padding:9px 14px;border-radius:999px;font-size:.78rem;font-weight:600;color:#e2e8f0;background:rgba(15,23,42,.88);backdrop-filter:blur(10px);border:1px solid rgba(0,234,255,.35);box-shadow:0 12px 34px rgba(0,0,0,.45);animation:lpFloat 6s ease-in-out infinite}
+.lp-chip i{font-style:normal;color:#22c55e;margin-right:6px}
+.lp-chip.a{top:-16px;right:24px}.lp-chip.b{top:44%;right:-22px;animation-delay:-2s}.lp-chip.c{bottom:-18px;right:90px;animation-delay:-4s}
+@keyframes lpFloat{50%{transform:translateY(-10px)}}
+.btn.primary{position:relative;overflow:hidden;box-shadow:0 10px 34px rgba(0,234,255,.28)}
+.btn.primary::after{content:"";position:absolute;top:0;left:-70%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:lpShine 3.6s infinite}
+@keyframes lpShine{60%,100%{left:130%}}
+.lp-card,.lp-step,.lp-plan,.lp-faq details,.lp-cap{background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.015));backdrop-filter:blur(8px)}
+.lp-card:hover,.lp-cap:hover{box-shadow:0 18px 50px rgba(0,234,255,.12)}
+.lp-head h2{position:relative;padding-bottom:18px}
+.lp-head h2::after{content:"";position:absolute;left:50%;bottom:0;width:70px;height:3px;border-radius:3px;transform:translateX(-50%);background:linear-gradient(90deg,#00eaff,#a855f7)}
+.lp-marq{overflow:hidden;padding:20px 0;border-bottom:1px solid var(--border);-webkit-mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.lp-marq div{display:flex;gap:46px;width:max-content;animation:lpMarq 38s linear infinite}
+.lp-marq span{font-family:"Space Grotesk",sans-serif;font-size:1.05rem;color:#94a3b8;white-space:nowrap}
+.lp-marq span::before{content:"◆";color:#00eaff;margin-right:14px;font-size:.7rem}
+@keyframes lpMarq{to{transform:translateX(-50%)}}
+.lp-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;text-align:center}
+.lp-stat{padding:34px 18px;border-radius:20px;border:1px solid rgba(0,234,255,.22);background:radial-gradient(circle at 50% 0,rgba(0,234,255,.12),transparent 70%),rgba(15,23,42,.6)}
+.lp-stat b{display:block;font-family:"Space Grotesk",sans-serif;font-size:clamp(2.4rem,5vw,3.6rem);line-height:1;background:linear-gradient(90deg,#00eaff,#a855f7);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lp-stat span{display:block;margin-top:10px;color:#cbd5e1;font-size:.95rem}
+.lp-caps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.lp-cap{padding:24px 22px;border-radius:16px;border:1px solid var(--border);transition:.3s}
+.lp-cap:hover{transform:translateY(-5px);border-color:rgba(0,234,255,.45)}
+.lp-cap b{display:block;color:#fff;margin-bottom:6px;font-size:1rem}
+.lp-cap b::before{content:"✦";color:#00eaff;margin-right:9px}
+.lp-cap p{font-size:.9rem}
+.lp-sec{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.lp-sec .lp-card .ic{font-size:1.4rem}
+.lp-final{position:relative;overflow:hidden}
+.lp-final::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 50% 100%,rgba(0,234,255,.22),transparent 60%),radial-gradient(ellipse at 20% 0,rgba(168,85,247,.2),transparent 55%)}
+@media(max-width:1000px){.lp-caps,.lp-stats{grid-template-columns:repeat(2,1fr)}.lp-sec{grid-template-columns:1fr}.lp-chip.b{right:8px}}
+@media(max-width:600px){.lp-caps,.lp-stats{grid-template-columns:1fr}.lp-chip{display:none}}
+@media(prefers-reduced-motion:reduce){body::before,body::after,.lp-chip,.btn.primary::after,.lp-marq div{animation:none}}
+</style>
 
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2300eaff'/%3E%3Cstop offset='1' stop-color='%23a855f7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='46' font-family='Arial' font-weight='900' font-size='40' text-anchor='middle' fill='%23020617'%3EF%3C/text%3E%3C/svg%3E">
 
@@ -1093,6 +1137,7 @@
 
 
 <body>
+<div id="lpProg"></div>
 
 
 <!-- ================= NAVBAR ================= -->
@@ -1166,6 +1211,9 @@
                 alt="The FALYS dashboard showing endpoints protected, events today, threats detected, alerts sent and a live event timeline">
         </div>
 
+        <span class="lp-chip a"><i>●</i>Real-time monitoring</span>
+        <span class="lp-chip b"><i>✓</i>Verified user attribution</span>
+        <span class="lp-chip c"><i>✓</i>0–100 risk score</span>
         <div class="lp-float">
             <b>EXAMPLE ALERT · HIGH RISK</b>
             <span>Sensitive file modified outside business hours, 14 changes in 2 minutes.</span>
@@ -1192,6 +1240,8 @@
 </div>
 </section>
 
+
+<div class="lp-marq"><div><span>Real-time file monitoring</span><span>SHA-256 hashing</span><span>Permission tracking</span><span>User attribution</span><span>Five-stage detection</span><span>Behavior baselines</span><span>Correlated incidents</span><span>Per-agent email alerts</span><span>Searchable audit trail</span><span>CSV / JSON export</span><span>Windows + Linux</span><span>Self-hosted</span><span>Real-time file monitoring</span><span>SHA-256 hashing</span><span>Permission tracking</span><span>User attribution</span><span>Five-stage detection</span><span>Behavior baselines</span><span>Correlated incidents</span><span>Per-agent email alerts</span><span>Searchable audit trail</span><span>CSV / JSON export</span><span>Windows + Linux</span><span>Self-hosted</span></div></div>
 
 <!-- ================= PROBLEM ================= -->
 
@@ -1231,6 +1281,13 @@
 </div>
 </section>
 
+
+<section class="lp-section" style="padding:70px 0 20px"><div class="lp-wrap"><div class="lp-stats">
+<div class="lp-stat lp-reveal"><b><span class="lp-count" data-to="5">5</span></b><span>detection stages combined into one verdict</span></div>
+<div class="lp-stat lp-reveal"><b>0–<span class="lp-count" data-to="100">100</span></b><span>risk score on every single event</span></div>
+<div class="lp-stat lp-reveal"><b><span class="lp-count" data-to="256">256</span></b><span>bit SHA-256 fingerprint of each change</span></div>
+<div class="lp-stat lp-reveal"><b><span class="lp-count" data-to="2">2</span></b><span>operating systems: Windows &amp; Linux</span></div>
+</div></div></section>
 
 <!-- ================= HOW IT WORKS ================= -->
 
@@ -1433,6 +1490,8 @@
 </section>
 
 
+<section class="lp-section"><div class="lp-wrap"><div class="lp-head lp-reveal"><p class="tag">COMPLETE FEATURE LIST</p><h2>Everything included, <span class="lp-grad">nothing to bolt on.</span></h2><p>The full monitoring core ships with every plan.</p></div><div class="lp-caps"><div class="lp-cap lp-reveal"><b>Real-time events</b><p>Created, modified, deleted and moved files appear as they happen.</p></div><div class="lp-cap lp-reveal"><b>SHA-256 hashing</b><p>A cryptographic fingerprint is stored with every change.</p></div><div class="lp-cap lp-reveal"><b>Permission tracking</b><p>Spot risky permission changes, not just content edits.</p></div><div class="lp-cap lp-reveal"><b>User attribution</b><p>See the account behind a change, Verified or Unverified.</p></div><div class="lp-cap lp-reveal"><b>Risk scoring</b><p>Every event scored 0–100 across five clear tiers.</p></div><div class="lp-cap lp-reveal"><b>Confidence levels</b><p>Know how sure FALYS is, based on that host’s history.</p></div><div class="lp-cap lp-reveal"><b>Behavior baselines</b><p>Each machine’s own normal, so unusual stands out.</p></div><div class="lp-cap lp-reveal"><b>Correlated incidents</b><p>Related events grouped instead of flooding you.</p></div><div class="lp-cap lp-reveal"><b>Email alerts</b><p>Each agent notifies its own focal person.</p></div><div class="lp-cap lp-reveal"><b>Audit trail &amp; export</b><p>Filter, search and export to CSV or JSON.</p></div><div class="lp-cap lp-reveal"><b>Editable rules</b><p>Tune sensitive paths and thresholds, no code.</p></div><div class="lp-cap lp-reveal"><b>Offline resilience</b><p>Agents queue events and sync when reconnected.</p></div></div></div></section>
+
 <!-- ================= COMPARISON ================= -->
 
 <section class="lp-section">
@@ -1592,6 +1651,8 @@
 </div>
 </section>
 
+
+<section class="lp-section alt"><div class="lp-wrap"><div class="lp-head lp-reveal"><p class="tag">BUILT TO BE TRUSTED</p><h2>A security tool that is secure itself.</h2><p>Monitoring only helps if the monitor can be trusted.</p></div><div class="lp-sec"><div class="lp-card lp-reveal"><div class="ic">🔒</div><h3>HTTPS by default</h3><p>Agent-to-server traffic is encrypted out of the box.</p></div><div class="lp-card lp-reveal"><div class="ic">📌</div><h3>Certificate pinning</h3><p>Every agent pins the server certificate to resist impersonation.</p></div><div class="lp-card lp-reveal"><div class="ic">🔑</div><h3>Per-agent API keys</h3><p>Revoke one endpoint instantly without touching the rest.</p></div><div class="lp-card lp-reveal"><div class="ic">🏠</div><h3>Self-hosted</h3><p>On your servers or your own AWS, Azure or GCP VM. Your data stays yours.</p></div><div class="lp-card lp-reveal"><div class="ic">🧾</div><h3>Tamper-evident trail</h3><p>Hash and permissions recorded for every change, ready for audits.</p></div><div class="lp-card lp-reveal"><div class="ic">📦</div><h3>No dependencies</h3><p>Single compiled binaries: nothing extra to install on endpoints.</p></div></div></div></section>
 
 <!-- ================= FAQ ================= -->
 
@@ -1814,6 +1875,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+
+document.addEventListener("DOMContentLoaded",()=>{
+const pr=document.getElementById("lpProg");
+addEventListener("scroll",()=>{const d=document.documentElement;pr.style.width=(d.scrollTop/(d.scrollHeight-innerHeight)*100)+"%"},{passive:true});
+document.querySelectorAll(".lp-count").forEach(el=>{const to=+el.dataset.to;let done=false;
+new IntersectionObserver((e,o)=>{if(e[0].isIntersecting&&!done){done=true;o.disconnect();const t0=performance.now();
+(function s(t){const p=Math.min((t-t0)/1400,1);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(s)})(t0)}},{threshold:.5}).observe(el)});
+const sh=document.querySelector(".lp-hero-visual .lp-shot");
+if(sh&&matchMedia("(hover:hover)").matches){sh.parentNode.addEventListener("mousemove",e=>{const r=sh.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;sh.style.transform=`rotateY(${x*8}deg) rotateX(${-y*6}deg)`});
+sh.parentNode.addEventListener("mouseleave",()=>sh.style.transform="")}
+});
 </script>
 
 </body>
