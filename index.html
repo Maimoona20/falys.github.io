@@ -15,9 +15,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>FALYS | File Integrity Monitoring System</title>
+    <title>FALYS | Know who changed your critical files, the moment it happens</title>
     <meta name="description"
-        content="FALYS is an enterprise File Integrity Monitoring platform providing real-time filesystem visibility, endpoint monitoring, behavioral detection and centralized security analysis.">
+        content="FALYS is a self-hosted File Integrity Monitoring platform for Windows and Linux. See who changed which file, get a 0–100 risk score with reasons, and alert the right person instantly. Try the live demo.">
+
+    <meta property="og:title" content="FALYS | Know who changed your critical files, the moment it happens">
+    <meta property="og:description"
+        content="Self-hosted File Integrity Monitoring for Windows and Linux. Who changed what, how risky it is, and why, explained in plain English.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://falys.io/">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,8 +36,1058 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <style>
+/* =====================================================
+   FALYS LANDING PAGE — conversion layout
+   Additive only: every class is prefixed `lp-`, so this file
+   never overrides style.css / animations.css / responsive.css.
+   Reuses the existing tokens (--cyan, --blue, --purple, --card,
+   --border, --muted, --radius).
+   ===================================================== */
 
-    <link rel="icon" href="assets/favicon.svg">
+:root {
+    --lp-green: #22c55e;
+    --lp-amber: #f59e0b;
+    --lp-orange: #fb923c;
+    --lp-red: #f87171;
+    --lp-max: 1180px;
+}
+
+.lp-wrap {
+    width: 90%;
+    max-width: var(--lp-max);
+    margin: 0 auto;
+}
+
+.lp-section {
+    padding: 100px 0;
+}
+
+.lp-section.alt {
+    background: linear-gradient(180deg, rgba(8, 13, 31, 0), var(--bg-secondary) 15%, var(--bg-secondary) 85%, rgba(8, 13, 31, 0));
+}
+
+.lp-head {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 56px;
+}
+
+.lp-head .tag {
+    margin-bottom: 16px;
+}
+
+.lp-head h2 {
+    font-size: clamp(2rem, 4.2vw, 3rem);
+    line-height: 1.12;
+    margin-bottom: 18px;
+}
+
+.lp-head p {
+    font-size: 1.08rem;
+}
+
+.lp-grad {
+    background: linear-gradient(90deg, var(--cyan), var(--purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* ---------- nav CTA ---------- */
+.nav-links a.lp-nav-cta {
+    color: #020617;
+    background: linear-gradient(135deg, var(--cyan), var(--blue));
+    padding: 8px 18px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.nav-links a.lp-nav-cta:hover {
+    color: #020617;
+    box-shadow: 0 8px 24px rgba(0, 234, 255, .25);
+}
+
+/* ---------- HERO ---------- */
+.lp-hero {
+    position: relative;
+    padding: 50px 0 90px;
+}
+
+.lp-hero-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+}
+
+.lp-hero h1 {
+    font-size: clamp(2.3rem, 4vw, 3.4rem);
+    line-height: 1.1;
+    margin-bottom: 24px;
+}
+
+.lp-hero .lp-sub {
+    font-size: 1.15rem;
+    max-width: 560px;
+    color: #cbd5e1;
+}
+
+.lp-hero .lp-sub strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+.lp-cta-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 34px;
+}
+
+.lp-cta-row .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.lp-micro {
+    margin-top: 20px;
+    font-size: .88rem;
+    display: flex;
+    gap: 8px 18px;
+    flex-wrap: wrap;
+}
+
+.lp-micro span::before {
+    content: "✓";
+    color: var(--lp-green);
+    font-weight: 800;
+    margin-right: 7px;
+}
+
+.lp-shot {
+    position: relative;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: #0b1120;
+    box-shadow: 0 30px 90px rgba(0, 234, 255, .14), 0 0 0 1px rgba(255, 255, 255, .02);
+    overflow: hidden;
+}
+
+.lp-shot .bar {
+    height: 34px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding-left: 16px;
+    background: #0f172a;
+    border-bottom: 1px solid var(--border);
+}
+
+.lp-shot .bar i {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #334155;
+    display: block;
+}
+
+.lp-shot .bar em {
+    margin-left: 14px;
+    font-style: normal;
+    font-size: .74rem;
+    color: #64748b;
+}
+
+.lp-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.lp-hero-visual {
+    position: relative;
+}
+
+.lp-float {
+    position: absolute;
+    left: -26px;
+    bottom: -26px;
+    max-width: 270px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: rgba(15, 23, 42, .96);
+    border: 1px solid rgba(248, 113, 113, .45);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, .5);
+    font-size: .8rem;
+}
+
+.lp-float b {
+    display: block;
+    color: var(--lp-red);
+    font-size: .72rem;
+    letter-spacing: .08em;
+    margin-bottom: 4px;
+}
+
+.lp-float span {
+    color: #cbd5e1;
+}
+
+/* ---------- TRUST BAR ---------- */
+.lp-trust {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, .02);
+    padding: 22px 0;
+}
+
+.lp-trust ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px 22px;
+    flex-wrap: wrap;
+}
+
+.lp-trust li {
+    color: #cbd5e1;
+    font-size: .88rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+}
+
+.lp-trust li::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 10px var(--cyan);
+    flex-shrink: 0;
+}
+
+/* ---------- PROBLEM ---------- */
+.lp-cards3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.lp-cards4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.lp-card {
+    padding: 32px 28px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: .3s;
+}
+
+.lp-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0, 234, 255, .4);
+}
+
+.lp-card .ic {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    font-size: 1.3rem;
+    margin-bottom: 18px;
+    background: rgba(0, 234, 255, .1);
+    border: 1px solid rgba(0, 234, 255, .25);
+}
+
+.lp-card.bad .ic {
+    background: rgba(248, 113, 113, .1);
+    border-color: rgba(248, 113, 113, .3);
+}
+
+.lp-card h3 {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.lp-card p {
+    font-size: .97rem;
+}
+
+.lp-bridge {
+    text-align: center;
+    margin-top: 48px;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(1.3rem, 2.6vw, 1.8rem);
+    color: #fff;
+}
+
+/* ---------- STEPS ---------- */
+.lp-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    counter-reset: step;
+}
+
+.lp-step {
+    position: relative;
+    padding: 30px 24px 28px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.lp-step::before {
+    counter-increment: step;
+    content: counter(step);
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    margin-bottom: 18px;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    color: #020617;
+    background: linear-gradient(135deg, var(--cyan), var(--purple));
+}
+
+.lp-step h3 {
+    color: #fff;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.lp-step p {
+    font-size: .93rem;
+}
+
+.lp-step code {
+    font-size: .8rem;
+    color: var(--cyan);
+    background: rgba(0, 234, 255, .08);
+    padding: 2px 7px;
+    border-radius: 6px;
+}
+
+.lp-note {
+    text-align: center;
+    margin-top: 30px;
+    font-size: .95rem;
+}
+
+/* ---------- EXAMPLE ALERT ---------- */
+.lp-split {
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 64px;
+    align-items: center;
+}
+
+.lp-split.rev .lp-split-text {
+    order: 2;
+}
+
+.lp-split-text .tag {
+    margin-bottom: 16px;
+}
+
+.lp-split-text h2 {
+    font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+    line-height: 1.13;
+    margin-bottom: 18px;
+}
+
+.lp-split-text > p {
+    font-size: 1.05rem;
+    margin-bottom: 22px;
+}
+
+.lp-checks {
+    list-style: none;
+    display: grid;
+    gap: 13px;
+}
+
+.lp-checks li {
+    padding-left: 30px;
+    position: relative;
+    color: #cbd5e1;
+    font-size: .98rem;
+}
+
+.lp-checks li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 1px;
+    width: 20px;
+    height: 20px;
+    display: grid;
+    place-items: center;
+    font-size: .72rem;
+    font-weight: 800;
+    border-radius: 50%;
+    color: #020617;
+    background: var(--cyan);
+}
+
+.lp-checks b {
+    color: #fff;
+    font-weight: 600;
+}
+
+.lp-alert {
+    background: #0b1120;
+    border: 1px solid #263042;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, .45);
+    font-family: "Inter", sans-serif;
+}
+
+.lp-alert-top {
+    padding: 14px 20px;
+    background: #0f172a;
+    border-bottom: 1px solid #263042;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    font-size: .78rem;
+    color: #94a3b8;
+}
+
+.lp-pill {
+    display: inline-block;
+    padding: 3px 11px;
+    border-radius: 999px;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+}
+
+.lp-pill.high {
+    color: var(--lp-orange);
+    background: rgba(251, 146, 60, .14);
+    border: 1px solid rgba(251, 146, 60, .4);
+}
+
+.lp-pill.ok {
+    color: var(--lp-green);
+    background: rgba(34, 197, 94, .12);
+    border: 1px solid rgba(34, 197, 94, .35);
+}
+
+.lp-alert-body {
+    padding: 22px 22px 8px;
+}
+
+.lp-alert-file {
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-size: .88rem;
+    color: #e2e8f0;
+    word-break: break-all;
+    margin: 4px 0 18px;
+}
+
+.lp-alert-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.lp-alert-grid > div {
+    background: #111827;
+    border: 1px solid #263042;
+    border-radius: 12px;
+    padding: 12px 14px;
+}
+
+.lp-alert-grid small {
+    display: block;
+    font-size: .66rem;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: #64748b;
+    margin-bottom: 5px;
+}
+
+.lp-alert-grid strong {
+    font-size: 1.15rem;
+    color: #fff;
+}
+
+.lp-bar {
+    height: 6px;
+    border-radius: 4px;
+    background: #1e2937;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.lp-bar span {
+    display: block;
+    height: 100%;
+    background: var(--cyan);
+}
+
+.lp-bar.risk span {
+    background: linear-gradient(90deg, var(--lp-amber), var(--lp-orange));
+}
+
+.lp-why {
+    border-top: 1px dashed #263042;
+    padding: 16px 22px 22px;
+}
+
+.lp-why h4 {
+    font-size: .72rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-bottom: 10px;
+}
+
+.lp-why ul {
+    list-style: none;
+    display: grid;
+    gap: 8px;
+}
+
+.lp-why li {
+    font-size: .88rem;
+    color: #cbd5e1;
+    padding-left: 18px;
+    position: relative;
+}
+
+.lp-why li::before {
+    content: "›";
+    position: absolute;
+    left: 4px;
+    color: var(--cyan);
+    font-weight: 800;
+}
+
+.lp-alert-foot {
+    padding: 10px 20px;
+    font-size: .72rem;
+    color: #64748b;
+    background: #0f172a;
+    border-top: 1px solid #263042;
+    text-align: center;
+}
+
+/* ---------- FEATURE SHOWCASE ---------- */
+.lp-feature {
+    margin-bottom: 90px;
+    grid-template-columns: 0.8fr 1.25fr;
+    gap: 56px;
+}
+
+.lp-feature.rev {
+    grid-template-columns: 1.25fr 0.8fr;
+}
+
+.lp-feature .lp-shot img {
+    cursor: zoom-in;
+}
+
+.lp-feature .lp-shot::after {
+    content: "Click to enlarge";
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    font-size: .7rem;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(2, 6, 23, .8);
+    border: 1px solid var(--border);
+    color: #cbd5e1;
+    pointer-events: none;
+}
+
+/* lightbox */
+.lp-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(2, 6, 23, .92);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 28px;
+    cursor: zoom-out;
+}
+
+.lp-lightbox.open {
+    display: flex;
+}
+
+.lp-lightbox img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: 0 30px 100px rgba(0, 0, 0, .7);
+}
+
+.lp-feature:last-child {
+    margin-bottom: 0;
+}
+
+/* ---------- COMPARISON ---------- */
+.lp-compare-wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    overflow-x: auto;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background: var(--card);
+}
+
+.lp-compare {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 620px;
+}
+
+.lp-compare th,
+.lp-compare td {
+    padding: 16px 20px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-size: .96rem;
+}
+
+.lp-compare tr:last-child td {
+    border-bottom: none;
+}
+
+.lp-compare thead th {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1rem;
+    color: #fff;
+    background: rgba(255, 255, 255, .03);
+}
+
+.lp-compare thead th.us {
+    color: var(--cyan);
+    background: rgba(0, 234, 255, .07);
+}
+
+.lp-compare td:first-child {
+    color: #e2e8f0;
+    font-weight: 500;
+}
+
+.lp-compare td.us {
+    background: rgba(0, 234, 255, .04);
+    color: #e2e8f0;
+}
+
+.lp-compare .no {
+    color: #64748b;
+}
+
+.lp-compare .yes {
+    color: var(--lp-green);
+    font-weight: 700;
+}
+
+/* ---------- AUDIENCE ---------- */
+.lp-card .who {
+    font-size: .72rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* ---------- DEMO BAND ---------- */
+.lp-demo {
+    position: relative;
+    border-radius: 28px;
+    padding: 64px 48px;
+    text-align: center;
+    background:
+        radial-gradient(circle at 20% 0%, rgba(0, 234, 255, .18), transparent 50%),
+        radial-gradient(circle at 90% 100%, rgba(168, 85, 247, .22), transparent 50%),
+        linear-gradient(135deg, rgba(37, 99, 235, .16), rgba(168, 85, 247, .14));
+    border: 1px solid rgba(0, 234, 255, .25);
+}
+
+.lp-demo h2 {
+    line-height: 1.15;
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    margin-bottom: 16px;
+}
+
+.lp-demo p {
+    max-width: 620px;
+    margin: 0 auto;
+    font-size: 1.08rem;
+    color: #cbd5e1;
+}
+
+.lp-demo .lp-cta-row {
+    justify-content: center;
+}
+
+/* ---------- PRICING TEASER ---------- */
+.lp-plans {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.lp-plan {
+    padding: 34px 28px;
+    border-radius: var(--radius);
+    background: var(--card);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.lp-plan.hot {
+    border-color: var(--cyan);
+    box-shadow: 0 0 50px rgba(0, 234, 255, .15);
+}
+
+.lp-plan .badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: .68rem;
+    font-weight: 800;
+    letter-spacing: .1em;
+    padding: 4px 14px;
+    border-radius: 999px;
+    color: #020617;
+    background: linear-gradient(135deg, var(--cyan), var(--blue));
+}
+
+.lp-plan h3 {
+    color: #fff;
+    font-size: 1.15rem;
+}
+
+.lp-plan .for {
+    font-size: .9rem;
+    margin: 6px 0 18px;
+    min-height: 44px;
+}
+
+.lp-plan .price {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+}
+
+.lp-plan .price small {
+    font-size: 1rem;
+    color: var(--muted);
+    font-weight: 500;
+}
+
+.lp-plan .ep {
+    margin: 14px 0 20px;
+    font-size: .74rem;
+    letter-spacing: .1em;
+    color: var(--cyan);
+    font-weight: 700;
+}
+
+.lp-plan ul {
+    list-style: none;
+    display: grid;
+    gap: 9px;
+    margin-bottom: 26px;
+    flex: 1;
+}
+
+.lp-plan li {
+    font-size: .92rem;
+    color: #cbd5e1;
+    padding-left: 22px;
+    position: relative;
+}
+
+.lp-plan li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--lp-green);
+    font-weight: 800;
+}
+
+.lp-plan .btn {
+    text-align: center;
+}
+
+.lp-plan-note {
+    text-align: center;
+    margin-top: 26px;
+    font-size: .93rem;
+}
+
+.lp-plan-note a {
+    color: var(--cyan);
+    text-decoration: underline;
+}
+
+/* ---------- FAQ ---------- */
+.lp-faq {
+    max-width: 820px;
+    margin: 0 auto;
+    display: grid;
+    gap: 12px;
+}
+
+.lp-faq details {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    transition: border-color .3s;
+}
+
+.lp-faq details[open] {
+    border-color: rgba(0, 234, 255, .4);
+}
+
+.lp-faq summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 20px 56px 20px 24px;
+    font-weight: 600;
+    color: #fff;
+    position: relative;
+    font-size: 1.02rem;
+}
+
+.lp-faq summary::-webkit-details-marker {
+    display: none;
+}
+
+.lp-faq summary::after {
+    content: "+";
+    position: absolute;
+    right: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: var(--cyan);
+    transition: transform .25s;
+}
+
+.lp-faq details[open] summary::after {
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.lp-faq details p {
+    padding: 0 24px 22px;
+    font-size: .98rem;
+}
+
+/* ---------- FINAL CTA ---------- */
+.lp-final {
+    text-align: center;
+    padding: 110px 20px 120px;
+}
+
+.lp-final h2 {
+    font-size: clamp(2.1rem, 4.6vw, 3.4rem);
+    line-height: 1.1;
+    max-width: 820px;
+    margin: 0 auto 18px;
+}
+
+.lp-final p {
+    max-width: 560px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+}
+
+.lp-final .lp-cta-row {
+    justify-content: center;
+}
+
+.lp-final .contact-line {
+    margin-top: 26px;
+    font-size: .95rem;
+}
+
+.lp-final .contact-line a {
+    color: var(--cyan);
+}
+
+/* ---------- STICKY MOBILE BAR ---------- */
+.lp-sticky {
+    display: none;
+}
+
+/* ---------- REVEAL ---------- */
+.lp-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .7s ease, transform .7s ease;
+}
+
+.lp-reveal.in {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .lp-reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 1000px) {
+    .lp-hero-inner,
+    .lp-split {
+        grid-template-columns: 1fr;
+        gap: 44px;
+    }
+
+    .lp-split.rev .lp-split-text {
+        order: 0;
+    }
+
+    .lp-feature,
+    .lp-feature.rev {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+
+    .lp-trust li {
+        white-space: normal;
+    }
+
+    .lp-hero {
+        padding-top: 30px;
+    }
+
+    .lp-float {
+        left: 12px;
+        bottom: -22px;
+    }
+
+    .lp-cards3,
+    .lp-plans {
+        grid-template-columns: 1fr;
+        max-width: 520px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .lp-cards4,
+    .lp-steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .lp-section {
+        padding: 76px 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .lp-cards4,
+    .lp-steps {
+        grid-template-columns: 1fr;
+    }
+
+    .lp-cta-row .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .lp-trust ul {
+        justify-content: flex-start;
+    }
+
+    .lp-demo {
+        padding: 44px 22px;
+    }
+
+    .lp-alert-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .lp-float {
+        position: static;
+        max-width: none;
+        margin-top: 14px;
+    }
+
+    .lp-feature {
+        margin-bottom: 64px;
+    }
+
+    .lp-sticky {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 200;
+        display: flex;
+        gap: 10px;
+        padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px));
+        background: rgba(5, 8, 22, .94);
+        backdrop-filter: blur(14px);
+        border-top: 1px solid var(--border);
+        transform: translateY(110%);
+        transition: transform .35s ease;
+    }
+
+    .lp-sticky.show {
+        transform: none;
+    }
+
+    .lp-sticky .btn {
+        flex: 1;
+        text-align: center;
+        padding: 12px 10px;
+        font-size: .9rem;
+    }
+
+    body {
+        padding-bottom: 72px;
+    }
+}
+
+    </style>
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2300eaff'/%3E%3Cstop offset='1' stop-color='%23a855f7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='46' font-family='Arial' font-weight='900' font-size='40' text-anchor='middle' fill='%23020617'%3EF%3C/text%3E%3C/svg%3E">
 
 </head>
 
@@ -46,48 +1102,19 @@
 <nav class="navbar">
 
     <div class="logo">
-        <div class="logo-box">
-            F
-        </div>
-
-        <span>
-            FALYS
-        </span>
+        <div class="logo-box">F</div>
+        <span>FALYS</span>
     </div>
-
 
     <div class="nav-links">
-
-        <a href="index.html">
-            Home
-        </a>
-
-        <a href="platform.html">
-            Platform
-        </a>
-
-        <a href="live-demo.html">
-            Live Demo
-        </a>
-        
-        <a href="resources.html">
-            Resources
-        </a>
-
-        <a href="docs/">
-            Docs
-        </a>
-
-        <a href="pricing.html">
-            Pricing
-        </a>
-        
-        <a href="contact.html">
-            Contact
-        </a>
-
+        <a href="index.html">Home</a>
+        <a href="platform.html">Platform</a>
+        <a href="resources.html">Resources</a>
+        <a href="docs/">Docs</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="contact.html">Contact</a>
+        <a href="live-demo.html" class="lp-nav-cta" data-cta="nav_live_demo">Try Live Demo</a>
     </div>
-
 
 </nav>
 
@@ -97,465 +1124,697 @@
 
 <!-- ================= HERO ================= -->
 
-
-<section class="hero">
-
+<section class="lp-hero">
 
 <div class="hero-grid"></div>
 
+<div class="lp-wrap lp-hero-inner">
 
-<div class="hero-content">
+    <div>
 
+        <p class="tag">FILE INTEGRITY MONITORING FOR WINDOWS &amp; LINUX</p>
 
-<p class="tag">
-    FILE ACTIVITY LOGGING & ANALYSIS SYSTEM
-</p>
+        <h1>
+            Know the moment a critical file changes,
+            <span class="lp-grad">and exactly who changed it.</span>
+        </h1>
 
+        <p class="lp-sub">
+            FALYS watches the folders you choose, shows <strong>who changed what</strong>,
+            scores how risky it is from <strong>0 to 100</strong>, and emails the right person,
+            with the reasons spelled out in plain English. No log digging.
+        </p>
 
-<h1>
+        <div class="lp-cta-row">
+            <a href="live-demo.html" class="btn primary" data-cta="hero_live_demo">▶&nbsp; Try the live demo</a>
+            <a href="pricing.html" class="btn secondary" data-cta="hero_pricing">See pricing, from $29/mo</a>
+        </div>
 
-Know what changed.
-<br>
+        <div class="lp-micro">
+            <span>Self-hosted, your data stays with you</span>
+            <span>No Python needed on endpoints</span>
+            <span>Demo needs no sign-up</span>
+        </div>
 
-<span>
-Know who changed it.
-</span>
+    </div>
 
-<br>
+    <div class="lp-hero-visual">
 
-Know why it matters.
+        <div class="lp-shot">
+            <div class="bar"><i></i><i></i><i></i><em>FALYS Security Operations Center</em></div>
+            <img src="docs/images/02-dashboard-overview.png" width="1886" height="902"
+                alt="The FALYS dashboard showing endpoints protected, events today, threats detected, alerts sent and a live event timeline">
+        </div>
 
-</h1>
+        <div class="lp-float">
+            <b>EXAMPLE ALERT · HIGH RISK</b>
+            <span>Sensitive file modified outside business hours, 14 changes in 2 minutes.</span>
+        </div>
 
-
-
-<p class="hero-description">
-
-FALYS is an enterprise-style File Integrity Monitoring platform
-that provides continuous visibility into filesystem activity
-across Windows and Linux endpoints through lightweight agents,
-centralized analysis, and explainable security insights.
-
-</p>
-
-
-
-<div class="hero-buttons">
-
-<a href="platform.html" class="btn primary">
-Explore Platform
-</a>
-
-
-<a href="resources.html" class="btn secondary">
-Technical Resources
-</a>
-
+    </div>
 
 </div>
-
-
-</div>
-
-
-
-
-<!-- Fake dashboard preview -->
-
-<div class="dashboard-preview">
-
-
-<div class="window-header">
-
-<span></span>
-<span></span>
-<span></span>
-
-</div>
-
-
-
-<div class="dashboard-body">
-
-
-<div class="stat-card">
-<h3>
-24
-</h3>
-
-<p>
-Agents Online
-</p>
-
-</div>
-
-
-
-<div class="stat-card">
-<h3>
-1,248
-</h3>
-
-<p>
-Events Logged
-</p>
-
-</div>
-
-
-
-<div class="stat-card danger">
-
-<h3>
-03
-</h3>
-
-<p>
-Threats Detected
-</p>
-
-</div>
-
-
-
-</div>
-
-
-</div>
-
 
 </section>
 
 
+<!-- ================= TRUST BAR ================= -->
 
-
-
-
-<!-- ================= INTRO ================= -->
-
-
-
-<section class="section">
-
-
-<div class="section-title">
-
-<p class="tag">
-WHY FALYS
-</p>
-
-
-<h2>
-Security visibility starts with knowing what changed.
-</h2>
-
-
-<p>
-
-Critical files are constantly changing.
-The challenge is understanding which changes matter.
-
-</p>
-
+<section class="lp-trust">
+<div class="lp-wrap">
+<ul>
+    <li>Windows + Linux agents</li>
+    <li>SHA-256 hash on every change</li>
+    <li>HTTPS with certificate pinning</li>
+    <li>Revocable per-agent API keys</li>
+    <li>CSV / JSON audit export</li>
+</ul>
 </div>
-
-
-
-<div class="feature-grid">
-
-
-
-<div class="feature-card">
-
-<h3>
-Endpoint Visibility
-</h3>
-
-<p>
-
-Lightweight Windows and Linux agents continuously monitor
-filesystem activity including create, modify, delete and move events.
-
-</p>
-
-</div>
-
-
-
-<div class="feature-card">
-
-<h3>
-Explainable Detection
-</h3>
-
-<p>
-
-Events are evaluated through a multi-stage detection pipeline
-combining rules, behavior analysis and risk classification.
-
-</p>
-
-</div>
-
-
-
-<div class="feature-card">
-
-<h3>
-Centralized Monitoring
-</h3>
-
-<p>
-
-Security teams receive a unified view of endpoints,
-events, incidents and alerts through a central console.
-
-</p>
-
-</div>
-
-
-
-</div>
-
-
 </section>
 
 
+<!-- ================= PROBLEM ================= -->
 
+<section class="lp-section">
+<div class="lp-wrap">
 
+<div class="lp-head lp-reveal">
+    <p class="tag">THE PROBLEM</p>
+    <h2>Files change all day. Most changes are harmless. <span class="lp-grad">One isn’t.</span></h2>
+    <p>A tampered config, a swapped script, a sensitive file touched at 3&nbsp;a.m. Without file monitoring, you usually find out after the damage is done.</p>
+</div>
 
+<div class="lp-cards3">
 
-<!-- ================= ARCHITECTURE ================= -->
+    <div class="lp-card bad lp-reveal">
+        <div class="ic">⏱</div>
+        <h3>You find out too late</h3>
+        <p>Nobody notices an unexpected change until something breaks, a customer complains, or an auditor asks.</p>
+    </div>
 
+    <div class="lp-card bad lp-reveal">
+        <div class="ic">❓</div>
+        <h3>You can’t tell who did it</h3>
+        <p>Basic tools say “a file changed”. They don’t say which account made the change, or if it was supposed to happen.</p>
+    </div>
 
-
-<section class="architecture section">
-
-
-<div class="section-title">
-
-<p class="tag">
-ARCHITECTURE
-</p>
-
-
-<h2>
-From endpoint activity to security intelligence.
-</h2>
-
+    <div class="lp-card bad lp-reveal">
+        <div class="ic">🔊</div>
+        <h3>Alerts are just noise</h3>
+        <p>Thousands of raw events with no priority. The one that matters is buried under hundreds that don’t.</p>
+    </div>
 
 </div>
 
-
-
-<div class="flow">
-
-
-<div class="flow-box">
-Windows Agent
-</div>
-
-
-<div class="arrow">
-↓
-</div>
-
-
-<div class="flow-box">
-Linux Agent
-</div>
-
-
-<div class="arrow">
-↓
-</div>
-
-
-<div class="flow-box highlight">
-FALYS Server
-</div>
-
-
-<div class="arrow">
-↓
-</div>
-
-
-<div class="flow-box">
-Detection Engine
-</div>
-
-
-<div class="arrow">
-↓
-</div>
-
-
-<div class="flow-box">
-Security Dashboard
-</div>
-
-
+<p class="lp-bridge lp-reveal">FALYS turns that noise into <span class="lp-grad">a short list of things worth your attention.</span></p>
 
 </div>
-
-
-
 </section>
 
 
+<!-- ================= HOW IT WORKS ================= -->
 
+<section class="lp-section alt" id="how">
+<div class="lp-wrap">
 
-
-
-
-<!-- ================= DETECTION ================= -->
-
-
-
-<section class="section">
-
-
-<div class="detection-box">
-
-
-<p class="tag">
-DETECTION ENGINE
-</p>
-
-
-<h2>
-Five stages. One security decision.
-</h2>
-
-
-<div class="pipeline">
-
-
-<div>
-Context Collection
+<div class="lp-head lp-reveal">
+    <p class="tag">HOW IT WORKS</p>
+    <h2>From download to first alert, in four steps.</h2>
+    <p>No agents to compile and no dependencies to chase. Server and agents ship as single binaries.</p>
 </div>
 
+<div class="lp-steps">
 
-<div>
-Rule-Based Scoring
-</div>
+    <div class="lp-step lp-reveal">
+        <h3>Start the server</h3>
+        <p>Run <code>FalysServer.exe</code> or <code>falys-server</code>. Secrets and an HTTPS certificate are generated for you on first run.</p>
+    </div>
 
+    <div class="lp-step lp-reveal">
+        <h3>Generate an agent</h3>
+        <p>In the dashboard, pick Windows or Linux, choose the folder to watch and who should get alerts, then click <b>Generate &amp; Download</b>.</p>
+    </div>
 
-<div>
-Behavior Analysis
-</div>
+    <div class="lp-step lp-reveal">
+        <h3>Run it on the endpoint</h3>
+        <p>Double-click the agent (or run it on Linux). It installs itself as a service and starts watching straight away.</p>
+    </div>
 
-
-<div>
-Event Correlation
-</div>
-
-
-<div>
-Risk Classification
-</div>
-
+    <div class="lp-step lp-reveal">
+        <h3>Get alerts that explain themselves</h3>
+        <p>Every change is scored, classified and logged. The right person gets an email when something looks wrong.</p>
+    </div>
 
 </div>
 
+<p class="lp-note">Self-hosted on your own servers, or on a VM inside your own AWS, Azure or GCP account.</p>
 
 </div>
-
-
 </section>
 
 
+<!-- ================= EXAMPLE ALERT ================= -->
 
+<section class="lp-section">
+<div class="lp-wrap lp-split">
 
+    <div class="lp-split-text lp-reveal">
+        <p class="tag">WHAT YOU ACTUALLY SEE</p>
+        <h2>Not just “file changed”. <span class="lp-grad">A decision you can act on.</span></h2>
+        <p>Every event gets a risk score, a confidence level and the reasons behind it, so you know whether to ignore it, check it, or act now.</p>
 
+        <ul class="lp-checks">
+            <li><b>Who</b> made the change, labelled Verified or Unverified.</li>
+            <li><b>How risky</b> it is: 0–100 across five tiers, from Legitimate to Critical.</li>
+            <li><b>Why</b> FALYS scored it that way, in readable reasons.</li>
+            <li><b>How sure</b> it is, based on how much history that machine has.</li>
+        </ul>
+    </div>
 
+    <div class="lp-reveal">
+        <div class="lp-alert">
 
+            <div class="lp-alert-top">
+                <span>fileserver-01 · modified</span>
+                <span class="lp-pill high">HIGH RISK</span>
+            </div>
 
-<!-- ================= RESOURCES CTA ================= -->
+            <div class="lp-alert-body">
+                <div class="lp-alert-file">D:\Shared\Finance\payroll_2026.xlsx</div>
 
+                <div class="lp-alert-grid">
+                    <div>
+                        <small>Risk score</small>
+                        <strong>78 / 100</strong>
+                        <div class="lp-bar risk"><span style="width:78%"></span></div>
+                    </div>
+                    <div>
+                        <small>Confidence</small>
+                        <strong>92%</strong>
+                        <div class="lp-bar"><span style="width:92%"></span></div>
+                    </div>
+                    <div>
+                        <small>Changed by</small>
+                        <strong>j.parker <span class="lp-pill ok">Verified</span></strong>
+                    </div>
+                    <div>
+                        <small>Alert sent to</small>
+                        <strong>IT on-call</strong>
+                    </div>
+                </div>
+            </div>
 
+            <div class="lp-why">
+                <h4>Why this scored high</h4>
+                <ul>
+                    <li>Path matches a sensitive-file rule</li>
+                    <li>Change happened outside business hours</li>
+                    <li>14 changes on this host in 2 minutes (burst)</li>
+                </ul>
+            </div>
 
-<section class="cta">
+            <div class="lp-alert-foot">Illustrative example of a FALYS detection</div>
 
+        </div>
+    </div>
 
-<h2>
-Explore the FALYS ecosystem
-</h2>
-
-
-<p>
-Read the technical documentation,
-system guide and upcoming research whitepaper.
-</p>
-
-
-
-<a href="resources.html" class="btn primary">
-View Resources
-</a>
-
-
+</div>
 </section>
 
 
+<!-- ================= FEATURE SHOWCASE ================= -->
+
+<section class="lp-section alt" id="features">
+<div class="lp-wrap">
+
+<div class="lp-head lp-reveal">
+    <p class="tag">INSIDE THE PLATFORM</p>
+    <h2>Everything you need to see, judge and respond.</h2>
+    <p>Real screenshots from the FALYS console.</p>
+</div>
+
+<!-- Detections -->
+<div class="lp-feature lp-split lp-reveal">
+    <div class="lp-split-text">
+        <p class="tag">FIVE-STAGE DETECTION</p>
+        <h2>It learns what’s normal for each machine.</h2>
+        <p>A rule check, a comparison against that host’s own history, and a look for linked events are combined into one score. A burst of changes becomes one incident, not fifty alerts.</p>
+        <ul class="lp-checks">
+            <li>Admin-editable rules and sensitive paths</li>
+            <li>Behavior baseline per host (event rate, active hours)</li>
+            <li>Correlated incidents across time and hosts</li>
+        </ul>
+    </div>
+    <div class="lp-shot">
+        <div class="bar"><i></i><i></i><i></i><em>Detections</em></div>
+        <img src="docs/images/09-detections.png" width="1885" height="911" loading="lazy"
+            alt="FALYS Detections page with risk tiers, classification breakdown and correlated incidents">
+    </div>
+</div>
+
+<!-- Agents -->
+<div class="lp-feature lp-split rev lp-reveal">
+    <div class="lp-split-text">
+        <p class="tag">EASY DEPLOYMENT</p>
+        <h2>Add a machine in a few clicks.</h2>
+        <p>Generate a ready-to-run agent package from the dashboard. It arrives pre-configured, with its own API key you can revoke at any time without touching the rest of your fleet.</p>
+        <ul class="lp-checks">
+            <li>Single binary, no Python on the endpoint</li>
+            <li>Live Online / Offline status for every agent</li>
+            <li>Each agent alerts its own focal person</li>
+        </ul>
+    </div>
+    <div class="lp-shot">
+        <div class="bar"><i></i><i></i><i></i><em>Agents</em></div>
+        <img src="docs/images/08-agents.png" width="1898" height="908" loading="lazy"
+            alt="FALYS Agents page for deploying and monitoring Windows and Linux agents">
+    </div>
+</div>
+
+<!-- Investigation -->
+<div class="lp-feature lp-split lp-reveal">
+    <div class="lp-split-text">
+        <p class="tag">INVESTIGATE &amp; PROVE</p>
+        <h2>A searchable trail for every change, ready for audits.</h2>
+        <p>Filter by host, file or event type, see the attributed user and alert status for each event, and export the full record when someone asks “what happened?”.</p>
+        <ul class="lp-checks">
+            <li>Created, modified, deleted and moved events</li>
+            <li>SHA-256 hash and permissions on every change</li>
+            <li>Export to CSV or JSON in one click</li>
+        </ul>
+    </div>
+    <div class="lp-shot">
+        <div class="bar"><i></i><i></i><i></i><em>Event History</em></div>
+        <img src="docs/images/06-event-history-table.png" width="1883" height="907" loading="lazy"
+            alt="FALYS Event History table with search, filters and export options">
+    </div>
+</div>
+
+<!-- Tuning -->
+<div class="lp-feature lp-split rev lp-reveal">
+    <div class="lp-split-text">
+        <p class="tag">YOU STAY IN CONTROL</p>
+        <h2>Tune it to your environment, no code needed.</h2>
+        <p>Decide which paths are sensitive, how aggressive detection should be, and when an agent counts as offline. Adjust it from the settings page as your needs change.</p>
+        <ul class="lp-checks">
+            <li>Editable detection rules and sensitive paths</li>
+            <li>Engine tuning and alert thresholds</li>
+            <li>Email alerting you can switch on or off</li>
+        </ul>
+    </div>
+    <div class="lp-shot">
+        <div class="bar"><i></i><i></i><i></i><em>Settings</em></div>
+        <img src="docs/images/12-settings-detection-rules.png" width="1882" height="916" loading="lazy"
+            alt="FALYS settings page with editable detection rules">
+    </div>
+</div>
+
+</div>
+</section>
 
 
+<!-- ================= COMPARISON ================= -->
 
+<section class="lp-section">
+<div class="lp-wrap">
+
+<div class="lp-head lp-reveal">
+    <p class="tag">WHY NOT JUST USE BASIC LOGGING?</p>
+    <h2>Logs tell you something happened. <span class="lp-grad">FALYS tells you if it matters.</span></h2>
+</div>
+
+<div class="lp-compare-wrap lp-reveal">
+<table class="lp-compare">
+    <thead>
+        <tr>
+            <th>What you need to know</th>
+            <th>Basic file logging</th>
+            <th class="us">FALYS</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>A file was changed</td><td class="no">Yes</td><td class="us yes">Yes, with hash and permissions</td></tr>
+        <tr><td>Which account changed it</td><td class="no">Usually not</td><td class="us yes">OS-level attribution, Verified / Unverified</td></tr>
+        <tr><td>Whether it’s risky</td><td class="no">You decide</td><td class="us yes">0–100 score in five tiers</td></tr>
+        <tr><td>Why it was flagged</td><td class="no">No</td><td class="us yes">Readable reasons and confidence</td></tr>
+        <tr><td>If it’s unusual for that machine</td><td class="no">No</td><td class="us yes">Per-host behavior baseline</td></tr>
+        <tr><td>If events are related</td><td class="no">Manual correlation</td><td class="us yes">Grouped into incidents</td></tr>
+        <tr><td>Telling the right person</td><td class="no">Manual</td><td class="us yes">Per-agent email alerts</td></tr>
+    </tbody>
+</table>
+</div>
+
+</div>
+</section>
+
+
+<!-- ================= WHO IT'S FOR ================= -->
+
+<section class="lp-section alt">
+<div class="lp-wrap">
+
+<div class="lp-head lp-reveal">
+    <p class="tag">WHO IT’S FOR</p>
+    <h2>Built for the people who answer for the systems.</h2>
+</div>
+
+<div class="lp-cards4">
+
+    <div class="lp-card lp-reveal">
+        <span class="who">IT Administrators</span>
+        <h3>Know before users do</h3>
+        <p>Get told when config files, shared folders or critical directories change unexpectedly.</p>
+    </div>
+
+    <div class="lp-card lp-reveal">
+        <span class="who">SOC Analysts</span>
+        <h3>Triage faster</h3>
+        <p>Start from a ranked, explained list of events and correlated incidents, not a wall of logs.</p>
+    </div>
+
+    <div class="lp-card lp-reveal">
+        <span class="who">Compliance Teams</span>
+        <h3>Evidence on demand</h3>
+        <p>Detailed, exportable history of who changed what and when, for audits and reviews.</p>
+    </div>
+
+    <div class="lp-card lp-reveal">
+        <span class="who">Small Teams</span>
+        <h3>Start small, grow later</h3>
+        <p>Begin with a handful of critical machines from $29/mo and scale up as your fleet grows.</p>
+    </div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- ================= LIVE DEMO BAND ================= -->
+
+<section class="lp-section">
+<div class="lp-wrap">
+
+<div class="lp-demo lp-reveal">
+    <p class="tag">SEE IT FOR YOURSELF</p>
+    <h2>Hit “Simulate an attack” and watch FALYS respond.</h2>
+    <p>The interactive demo runs on sample data, so you can explore the dashboard, detections and alerts without installing anything or signing up.</p>
+    <div class="lp-cta-row">
+        <a href="live-demo.html" class="btn primary" data-cta="demo_band_live_demo">▶&nbsp; Open the live demo</a>
+        <a href="assets/documents/FALYS_User_Guide.pdf" class="btn secondary" download data-cta="demo_band_user_guide">Download the user guide</a>
+    </div>
+</div>
+
+</div>
+</section>
+
+
+<!-- ================= PRICING TEASER ================= -->
+
+<section class="lp-section alt">
+<div class="lp-wrap">
+
+<div class="lp-head lp-reveal">
+    <p class="tag">SIMPLE PRICING</p>
+    <h2>Every plan includes the full monitoring core.</h2>
+    <p>Real-time detection, the five-stage engine and Windows + Linux agents. Higher tiers add scale and enterprise controls.</p>
+</div>
+
+<div class="lp-plans">
+
+    <div class="lp-plan lp-reveal">
+        <h3>Professional</h3>
+        <p class="for">For small teams securing a handful of critical systems.</p>
+        <div class="price">$29<small> /mo</small></div>
+        <div class="ep">UP TO 10 ENDPOINTS</div>
+        <ul>
+            <li>Full File Integrity Monitoring</li>
+            <li>Security dashboard</li>
+            <li>Email alerts</li>
+            <li>Event history</li>
+        </ul>
+        <a href="pricing.html" class="btn secondary" data-cta="plan_professional">View plan</a>
+    </div>
+
+    <div class="lp-plan hot lp-reveal">
+        <span class="badge">MOST POPULAR</span>
+        <h3>Business</h3>
+        <p class="for">For growing teams that need deeper analysis.</p>
+        <div class="price">$99<small> /mo</small></div>
+        <div class="ep">UP TO 50 ENDPOINTS</div>
+        <ul>
+            <li>Everything in Professional</li>
+            <li>Advanced analytics</li>
+            <li>Incident correlation</li>
+            <li>API access and priority support</li>
+        </ul>
+        <a href="pricing.html" class="btn primary" data-cta="plan_business">View plan</a>
+    </div>
+
+    <div class="lp-plan lp-reveal">
+        <h3>Enterprise</h3>
+        <p class="for">For organizations deploying across multiple sites.</p>
+        <div class="price">Custom</div>
+        <div class="ep">100+ ENDPOINTS</div>
+        <ul>
+            <li>Everything in Business</li>
+            <li>SSO / RBAC and SIEM integrations</li>
+            <li>SLA and dedicated support</li>
+            <li>Deployment assistance</li>
+        </ul>
+        <a href="contact.html" class="btn secondary" data-cta="plan_enterprise">Contact sales</a>
+    </div>
+
+</div>
+
+<p class="lp-plan-note">Annual billing includes 2 months free. <a href="pricing.html" data-cta="pricing_full_details">See full pricing details</a></p>
+
+</div>
+</section>
+
+
+<!-- ================= FAQ ================= -->
+
+<section class="lp-section">
+<div class="lp-wrap">
+
+<div class="lp-head lp-reveal">
+    <p class="tag">QUESTIONS</p>
+    <h2>Answers before you ask.</h2>
+</div>
+
+<div class="lp-faq lp-reveal">
+
+    <details>
+        <summary>Where does my data live?</summary>
+        <p>FALYS is self-hosted. Run the server on your own infrastructure, or on a virtual machine inside your own AWS, Azure or GCP account. You keep control of the data, the network and the secrets.</p>
+    </details>
+
+    <details>
+        <summary>Do I need to install Python or other dependencies?</summary>
+        <p>No. The server and the agents are shipped as single compiled binaries for Windows and Linux, so there is nothing extra to install on the endpoint.</p>
+    </details>
+
+    <details>
+        <summary>What exactly does it monitor?</summary>
+        <p>The folders you choose. For every created, modified, deleted or moved file, the agent records a SHA-256 hash and the file’s permissions. Where OS auditing is configured, it also records which account made the change.</p>
+    </details>
+
+    <details>
+        <summary>How is the agent-to-server connection secured?</summary>
+        <p>Communication uses HTTPS by default with certificate pinning on every agent. Each agent has its own API key, so one compromised endpoint can be revoked without affecting the others.</p>
+    </details>
+
+    <details>
+        <summary>What happens if a machine goes offline?</summary>
+        <p>Agents queue events while they can’t reach the server and send them once the connection is back. If the server’s IP changes, agents can find it again automatically on the local network.</p>
+    </details>
+
+    <details>
+        <summary>Is this a replacement for antivirus?</summary>
+        <p>No, it complements it. Antivirus looks for known malicious software. FALYS answers a different question: which important files changed, who changed them, and does it look normal?</p>
+    </details>
+
+    <details>
+        <summary>Can I adjust what counts as suspicious?</summary>
+        <p>Yes. Administrators can edit detection rules, sensitive paths, engine tuning and alert thresholds from the settings page, with no code changes.</p>
+    </details>
+
+    <details>
+        <summary>Which operating systems are supported?</summary>
+        <p>Windows and Linux endpoints. The server also runs on both.</p>
+    </details>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- ================= FINAL CTA ================= -->
+
+<section class="lp-final">
+
+<h2 class="lp-reveal">See what’s <span class="lp-grad">really changing</span> on your systems.</h2>
+
+<p class="lp-reveal">Explore the demo in minutes, or talk to us about your setup.</p>
+
+<div class="lp-cta-row lp-reveal">
+    <a href="live-demo.html" class="btn primary" data-cta="final_live_demo">▶&nbsp; Try the live demo</a>
+    <a href="contact.html" class="btn secondary" data-cta="final_contact">Talk to the team</a>
+</div>
+
+<p class="contact-line lp-reveal">Questions? Email <a href="mailto:info@falys.io" data-cta="final_email">info@falys.io</a></p>
+
+</section>
 
 
 <!-- ================= FOOTER ================= -->
 
-
 <footer>
 
-
 <div>
-
-<h3>
-FALYS
-</h3>
-
-<p>
-Enterprise File Integrity Monitoring
-</p>
-
+    <h3>FALYS</h3>
+    <p>Enterprise File Integrity Monitoring</p>
 </div>
 
-
-
 <div>
-  <p><strong>Legal</strong></p>
-  <p>
-    <a href="/assets/documents/FALYS_Buyer_Terms_and_Conditions.pdf"
-   target="_blank"
-   rel="noopener noreferrer">
-   Terms &amp; Conditions
-</a>
-  </p>
+    <p><strong>Product</strong></p>
+    <p><a href="platform.html">Platform</a></p>
+    <p><a href="live-demo.html">Live Demo</a></p>
+    <p><a href="pricing.html">Pricing</a></p>
 </div>
 
-
-
 <div>
-
-<a href="contact.html">
-Contact
-</a>
-
+    <p><strong>Resources</strong></p>
+    <p><a href="docs/">Docs</a></p>
+    <p><a href="resources.html">Guides &amp; Brochure</a></p>
 </div>
 
+<div>
+    <p><strong>Legal</strong></p>
+    <p>
+        <a href="/assets/documents/FALYS_Buyer_Terms_and_Conditions.pdf"
+           target="_blank"
+           rel="noopener noreferrer">
+           Terms &amp; Conditions
+        </a>
+    </p>
+</div>
 
+<div>
+    <a href="contact.html">Contact</a>
+</div>
 
 </footer>
 
 
-
+<!-- Sticky call-to-action, shown on phones after the hero -->
+<div class="lp-sticky">
+    <a href="live-demo.html" class="btn primary" data-cta="sticky_live_demo">▶ Live demo</a>
+    <a href="pricing.html" class="btn secondary" data-cta="sticky_pricing">Pricing</a>
+</div>
 
 
 <script src="js/main.js"></script>
+<script>
+/* =====================================================
+   FALYS LANDING PAGE — behavior
+   Self-contained. Does not touch anything main.js owns.
+   - scroll reveal
+   - sticky mobile CTA (appears after the hero)
+   - Google Analytics events so you can see what convinces people
+   ===================================================== */
 
+document.addEventListener("DOMContentLoaded", () => {
+
+    const track = (name, params) => {
+        if (typeof window.gtag === "function") {
+            window.gtag("event", name, params || {});
+        }
+    };
+
+    /* ---------- scroll reveal ---------- */
+    const reveals = document.querySelectorAll(".lp-reveal");
+
+    if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("in");
+                    io.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        reveals.forEach((el) => io.observe(el));
+    } else {
+        reveals.forEach((el) => el.classList.add("in"));
+    }
+
+    /* ---------- sticky mobile CTA ---------- */
+    const sticky = document.querySelector(".lp-sticky");
+    const hero = document.querySelector(".lp-hero");
+
+    if (sticky && hero && "IntersectionObserver" in window) {
+        new IntersectionObserver((entries) => {
+            sticky.classList.toggle("show", !entries[0].isIntersecting);
+        }, { threshold: 0 }).observe(hero);
+    }
+
+    /* ---------- CTA click tracking ---------- */
+    document.querySelectorAll("[data-cta]").forEach((el) => {
+        el.addEventListener("click", () => {
+            track("cta_click", { cta_name: el.dataset.cta, page: "home" });
+        });
+    });
+
+    /* ---------- FAQ opens ---------- */
+    document.querySelectorAll(".lp-faq details").forEach((d) => {
+        d.addEventListener("toggle", () => {
+            if (d.open) {
+                track("faq_open", { question: d.querySelector("summary").innerText.trim() });
+            }
+        });
+    });
+
+    /* ---------- click-to-enlarge screenshots ---------- */
+    const box = document.createElement("div");
+    box.className = "lp-lightbox";
+    box.innerHTML = '<img alt="">';
+    document.body.appendChild(box);
+    const boxImg = box.querySelector("img");
+
+    document.querySelectorAll(".lp-feature .lp-shot img").forEach((img) => {
+        img.addEventListener("click", () => {
+            boxImg.src = img.src;
+            boxImg.alt = img.alt;
+            box.classList.add("open");
+            track("screenshot_zoom", { image: img.alt });
+        });
+    });
+
+    const closeBox = () => box.classList.remove("open");
+    box.addEventListener("click", closeBox);
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeBox(); });
+
+    /* ---------- scroll depth (25 / 50 / 75 / 100) ---------- */
+    const marks = [25, 50, 75, 100];
+    const fired = new Set();
+
+    window.addEventListener("scroll", () => {
+        const h = document.documentElement;
+        const pct = Math.round((h.scrollTop + window.innerHeight) / h.scrollHeight * 100);
+        marks.forEach((m) => {
+            if (pct >= m && !fired.has(m)) {
+                fired.add(m);
+                track("scroll_depth", { percent: m, page: "home" });
+            }
+        });
+    }, { passive: true });
+
+});
+
+</script>
 
 </body>
 
