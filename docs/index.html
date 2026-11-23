@@ -213,10 +213,12 @@ agent).</li>
 <code>server/build_server_exe.ps1</code> (Windows) or
 <code>server/build_server_exe_linux.sh</code> (Linux); no Python is then
 needed on the machine that runs it.</li>
-<li><strong>To receive email alerts:</strong> an SMTP account. Gmail
-with 2-Step Verification and an App Password is the quickest (free, takes
-a couple of minutes), but any SMTP provider works - steps in
-<em>Installation &amp; Setup</em>.</li>
+<li><strong>To receive email alerts (optional):</strong> an account with an
+external SMTP provider. Gmail with 2-Step Verification and an App Password is
+the quickest to set up, but any SMTP provider works - steps in
+<em>Installation &amp; Setup</em>. These are third-party services that are not
+included with Falys and may involve additional costs, depending on the
+provider and your plan.</li>
 <li><strong>Agent endpoints:</strong> Windows (x86-64) or Linux
 (x86-64). Agents need no Python.</li>
 </ul><h2 id="support">Support</h2><p>Support for this item is provided through the item's <strong>Comments
@@ -280,9 +282,10 @@ sending account either way - <strong>don't use your personal
 inbox</strong>, since the credential lives in a config file on the
 server.</p><p><strong>Email is an external service.</strong> Falys does not include a mail
 server or mail credentials. Gmail, Microsoft 365, Amazon SES, SendGrid and
-similar providers are third-party services that you set up and pay for (if
-they charge) yourself. Depending on the provider, this can involve costs
-(for example per-message or per-user fees), account requirements (such as
+similar providers are third-party services that you set up yourself, and they
+may involve additional costs that you pay directly to the provider. Depending
+on the provider, this can mean subscription, per-message or per-user fees,
+account requirements (such as
 2-Step Verification and an App Password for Gmail, or SMTP AUTH for Microsoft
 365) and sending limits that apply to your account. Falys is not affiliated
 with these providers and cannot change their terms, prices or limits. Without
@@ -1919,7 +1922,7 @@ Free</a></td>
 </table><p>Python itself is used under the <a href="https://docs.python.org/3/license.html">PSF License</a>. The
 dashboard pages load Font Awesome from a public CDN (cdnjs.cloudflare.com);
 it is pinned to version 6.5.1 with a Subresource Integrity (SRI) hash and
-is not bundled in the download. Chart.js 4.4.1 is bundled
+is not bundled in the download. Chart.js 4.4.1 is bundled as an unminified, readable build
 (<code>server/static/chart.umd.js</code>), so the charts need no internet
 access, and its script tags carry an SRI hash too. In both cases the browser
 refuses the file if it does not match the hash. Without internet access the
