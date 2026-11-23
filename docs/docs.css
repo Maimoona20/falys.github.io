@@ -114,6 +114,7 @@ header{
 #toc a[href="#file-event-attribution"]::before{content:"🕵️"}
 #toc a[href="#detection-engine"]::before{content:"🧠"}
 #toc a[href="#dynamic-ip-discovery"]::before{content:"📡"}
+#toc a[href="#command-tunnel"]::before{content:"🔐"}
 #toc a[href="#credits"]::before,#toc a[href="#credits--third-party-licenses"]::before{content:"💙"}
 #toc>ul>li.active>a{background:linear-gradient(135deg,rgba(45,212,238,.18),rgba(145,97,245,.18));color:#fff}
 #toc li ul{display:none;margin:2px 0 8px 22px;padding-left:10px;border-left:1px dashed var(--line)}
