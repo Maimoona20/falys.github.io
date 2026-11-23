@@ -65,3 +65,4 @@ body{padding-bottom:70px}
 .th-stk .btn.p{background:var(--a);color:#04121a;border:1px solid var(--a)}.th-stk .btn:not(.p){border:1px solid #2a3a57;color:var(--t)}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.th-h .navbar{display:none!important}
