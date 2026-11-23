@@ -6,10 +6,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pricing | FALYS</title>
+<title>Pricing &amp; Purchase Requests | Falys</title>
 
 <meta name="description"
-content="FALYS pricing — Professional, Business and Enterprise plans for File Integrity Monitoring, scaled by endpoint count.">
+content="Falys pricing, manual purchase requests and proforma invoice generator for File Integrity Monitoring software.">
 
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,8 +23,408 @@ rel="stylesheet">
 <link rel="stylesheet" href="css/animations.css">
 <link rel="stylesheet" href="css/responsive.css">
 
-<!-- Pricing module stylesheet — additive only, never overrides the files above -->
-<link rel="stylesheet" href="css/pricing.css">
+<!-- Pricing page-only styles are embedded below; shared site CSS remains unchanged. -->
+<style>
+/* =====================================================
+   Falys WEBSITE - PRICING PAGE MODULE
+   Self-contained. Only new classnames (all prefixed
+   `pricing-` or `plan-`) so this can never collide with
+   or override anything in style.css / animations.css /
+   responsive.css. Reuses existing design tokens
+   (--cyan, --blue, --purple, --card, --border, --radius)
+   defined in style.css's :root.
+   ===================================================== */
+
+
+/* =====================
+   BILLING TOGGLE
+===================== */
+
+.pricing-toggle-wrap {
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:14px;
+
+    margin:50px auto 10px;
+
+}
+
+
+.pricing-toggle {
+
+    display:inline-flex;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:999px;
+    padding:6px;
+    gap:4px;
+
+}
+
+
+.pricing-toggle-btn {
+
+    border:none;
+    background:transparent;
+    color:var(--muted);
+    font-family:"Inter", sans-serif;
+    font-weight:600;
+    font-size:.9rem;
+    padding:10px 22px;
+    border-radius:999px;
+    cursor:pointer;
+    transition:.3s;
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+}
+
+
+.pricing-toggle-btn.active {
+
+    background:linear-gradient(135deg, var(--cyan), var(--blue));
+    color:#020617;
+
+}
+
+
+.pricing-save-badge {
+
+    background:rgba(0,234,255,.15);
+    color:var(--cyan);
+    font-size:.68rem;
+    font-weight:700;
+    letter-spacing:.5px;
+    padding:3px 8px;
+    border-radius:999px;
+
+}
+
+
+.pricing-toggle-btn.active .pricing-save-badge {
+
+    background:rgba(2,6,23,.25);
+    color:#020617;
+
+}
+
+
+.pricing-note {
+
+    text-align:center;
+    color:var(--muted);
+    font-size:.85rem;
+    margin-bottom:20px;
+
+}
+
+
+/* =====================
+   PLAN GRID
+===================== */
+
+.plan-grid {
+
+    margin-top:50px;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:25px;
+    align-items:stretch;
+
+}
+
+
+.plan-card {
+
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    padding:40px 32px;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    transition:.3s;
+
+}
+
+
+.plan-card:hover {
+
+    transform:translateY(-8px);
+    border-color:rgba(0,234,255,.4);
+
+}
+
+
+.plan-card.featured {
+
+    border-color:var(--cyan);
+    box-shadow:0 20px 60px rgba(0,234,255,.12);
+
+}
+
+
+.plan-badge {
+
+    position:absolute;
+    top:-14px;
+    left:50%;
+    transform:translateX(-50%);
+    background:linear-gradient(135deg, var(--cyan), var(--purple));
+    color:#020617;
+    font-size:.7rem;
+    font-weight:700;
+    letter-spacing:1px;
+    padding:6px 16px;
+    border-radius:999px;
+    white-space:nowrap;
+
+}
+
+
+.plan-name {
+
+    font-family:"Space Grotesk", sans-serif;
+    font-size:1.3rem;
+    color:white;
+    margin-bottom:6px;
+
+}
+
+
+.plan-tagline {
+
+    color:var(--muted);
+    font-size:.88rem;
+    margin-bottom:26px;
+
+}
+
+
+.plan-price {
+
+    display:flex;
+    align-items:baseline;
+    gap:6px;
+    margin-bottom:6px;
+
+}
+
+
+.plan-price-amount {
+
+    font-family:"Space Grotesk", sans-serif;
+    font-size:2.6rem;
+    font-weight:700;
+    color:white;
+
+}
+
+
+.plan-price-period {
+
+    color:var(--muted);
+    font-size:.95rem;
+
+}
+
+
+.plan-price-sub {
+
+    color:var(--muted);
+    font-size:.8rem;
+    margin-bottom:30px;
+    min-height:1.2em;
+
+}
+
+
+.plan-endpoints {
+
+    display:inline-block;
+    color:var(--cyan);
+    font-size:.78rem;
+    font-weight:700;
+    letter-spacing:1px;
+    margin-bottom:26px;
+
+}
+
+
+.plan-features {
+
+    list-style:none;
+    margin-bottom:34px;
+    flex-grow:1;
+
+}
+
+
+.plan-features li {
+
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    color:var(--text);
+    font-size:.92rem;
+    padding:9px 0;
+    border-bottom:1px solid var(--border);
+
+}
+
+
+.plan-features li:last-child {
+
+    border-bottom:none;
+
+}
+
+
+.plan-features li::before {
+
+    content:"✓";
+    color:var(--cyan);
+    font-weight:700;
+    flex-shrink:0;
+
+}
+
+
+.plan-cta {
+
+    text-align:center;
+    width:100%;
+
+}
+
+
+/* =====================
+   COMPARISON TABLE
+===================== */
+
+.pricing-compare-wrap {
+
+    overflow-x:auto;
+    margin-top:60px;
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    background:var(--card);
+
+}
+
+
+.pricing-compare-table {
+
+    width:100%;
+    border-collapse:collapse;
+    min-width:640px;
+
+}
+
+
+.pricing-compare-table th,
+.pricing-compare-table td {
+
+    text-align:left;
+    padding:18px 24px;
+    border-bottom:1px solid var(--border);
+    font-size:.92rem;
+
+}
+
+
+.pricing-compare-table th {
+
+    font-family:"Space Grotesk", sans-serif;
+    color:white;
+    font-size:.95rem;
+
+}
+
+
+.pricing-compare-table td {
+
+    color:var(--muted);
+
+}
+
+
+.pricing-compare-table td strong,
+.pricing-compare-table th strong {
+
+    color:var(--cyan);
+
+}
+
+
+.pricing-compare-table tr:last-child th,
+.pricing-compare-table tr:last-child td {
+
+    border-bottom:none;
+
+}
+
+
+/* =====================
+   RESPONSIVE (module-local only)
+===================== */
+
+@media (max-width:900px) {
+
+    .plan-grid {
+
+        grid-template-columns:1fr;
+
+    }
+
+    .plan-card.featured {
+
+        order:-1;
+
+    }
+
+}
+
+
+/* Manual purchase and proforma invoice generator */
+.pricing-order-section{scroll-margin-top:95px}
+.pricing-order-wrap{max-width:1020px;margin:0 auto;border:1px solid var(--border);border-radius:var(--radius);background:var(--card);padding:clamp(24px,4vw,48px)}
+.pricing-order-intro h2{font-size:clamp(1.7rem,3vw,2.4rem);margin:12px 0}
+.pricing-order-intro p{color:var(--text);line-height:1.7}
+.pricing-order-intro a,.pricing-invoice-result a:not(.btn){color:var(--cyan)}
+.pricing-order-steps{display:flex;gap:10px;flex-wrap:wrap;margin:25px 0}
+.pricing-order-steps span{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--border);border-radius:50px;padding:9px 12px;font-size:.8rem;color:var(--text)}
+.pricing-order-steps b{background:var(--cyan);color:#06111c;width:23px;height:23px;border-radius:50%;display:grid;place-items:center}
+.pricing-order-note{font-size:.84rem!important;color:var(--muted)!important}
+.pricing-order-form{margin:27px 0 0;display:grid;gap:18px}
+.pricing-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
+.pricing-order-form label{display:flex;flex-direction:column;gap:8px;font-size:.9rem;font-weight:600;color:var(--text)}
+.pricing-order-form input,.pricing-order-form select,.pricing-order-form textarea{min-width:0;width:100%;border:1px solid var(--border);border-radius:10px;background:#0d1627;color:#f4f8ff;padding:13px;font:inherit}
+.pricing-order-form input:focus-visible,.pricing-order-form select:focus-visible,.pricing-order-form textarea:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+.pricing-order-form select option{color:#101928;background:white}
+.pricing-order-form select:disabled{opacity:.5}
+.pricing-order-actions{display:flex;align-items:center;gap:15px;flex-wrap:wrap}
+.pricing-order-actions span{font-size:.82rem;color:var(--muted)}
+.pricing-order-actions button{cursor:pointer}
+.pricing-form-error{color:#ffb8b8;font-weight:600}
+.pricing-invoice-result{margin-top:30px;padding-top:28px;border-top:1px solid var(--border)}
+.pricing-invoice-result h3{color:#fff;margin-bottom:10px}
+.pricing-invoice-result>p{color:var(--text);line-height:1.6}
+.pricing-invoice-preview{background:white;color:#162233;border-radius:12px;padding:clamp(15px,3vw,30px);margin:20px 0;overflow-wrap:anywhere}
+.invoice-sheet-header{display:flex;justify-content:space-between;gap:20px;border-bottom:2px solid #1b819c;padding-bottom:12px}
+.invoice-sheet-header strong{font-size:1.12rem}
+.invoice-sheet-header p{font-size:.78rem;margin-top:7px;color:#4c6274}
+.invoice-sheet table{border-collapse:collapse;width:100%;margin:20px 0}
+.invoice-sheet th,.invoice-sheet td{text-align:left;vertical-align:top;border-bottom:1px solid #dce4ea;padding:9px;font-size:.85rem;overflow-wrap:anywhere}
+.invoice-sheet th{width:34%;color:#26394b;background:#f5f8fa}
+.invoice-sheet p{color:#36495d;line-height:1.55;font-size:.83rem}
+.pricing-result-actions{margin:20px 0}
+@media(max-width:650px){.pricing-form-grid{grid-template-columns:1fr}.invoice-sheet-header{flex-direction:column}.pricing-order-steps{flex-direction:column;align-items:start}.pricing-order-actions .btn{width:100%;text-align:center}}
+
+</style>
 
 
 
@@ -41,7 +441,7 @@ rel="stylesheet">
 
 
 
-<header class="th-h"><span class="navbar" hidden></span><div class="w nv"><a class="lg" href="index.html"><img src="assets/images/logo-nav.png" onerror="this.onerror=null;this.src='assets/images/logo.png'" alt="FALYS File Integrity Monitor" width="78" height="46"></a><button class="bgr" aria-label="Menu" aria-expanded="false"><i></i></button><nav class="nl"><a href="index.html">Home</a><a href="platform.html">Platform</a><a href="resources.html">Resources</a><a href="docs/">Docs</a><a href="pricing.html" class="on">Pricing</a><a href="contact.html">Contact</a><a class="btn" href="live-demo.html">Live demo</a></nav></div></header>
+<header class="th-h"><span class="navbar" hidden></span><div class="w nv"><a class="lg" href="index.html"><img src="assets/images/logo-nav.png" onerror="this.onerror=null;this.src='assets/images/logo.png'" alt="Falys File Integrity Monitor" width="78" height="46"></a><button class="bgr" aria-label="Menu" aria-expanded="false"><i></i></button><nav class="nl"><a href="index.html">Home</a><a href="platform.html">Platform</a><a href="resources.html">Resources</a><a href="docs/">Docs</a><a href="pricing.html" class="on">Pricing</a><a href="contact.html">Contact</a><a class="btn" href="live-demo.html">Live demo</a></nav></div></header>
 
 
 
@@ -56,7 +456,7 @@ rel="stylesheet">
 
 
 <p class="tag">
-FALYS PRICING
+Falys PRICING
 </p>
 
 
@@ -74,7 +474,7 @@ Scales with your endpoints.
 
 <p class="hero-description">
 
-Every plan includes the full File Integrity Monitoring core —
+Every plan includes the File Integrity Monitoring core —
 real-time detection, the five-stage scoring pipeline, and
 Windows + Linux agents. Higher tiers add scale, analytics
 and enterprise controls.
@@ -110,7 +510,7 @@ Annually
 </div>
 
 <p class="pricing-note">
-Prices in USD. Annual billing shown as total per year.
+Prices in USD. Annual billing shown as total per year. These are manual purchase requests, not online card payments. Final terms are confirmed by email.
 </p>
 
 
@@ -131,7 +531,7 @@ Prices in USD. Annual billing shown as total per year.
 <div class="plan-card">
 
 <div class="plan-name">
-FALYS Professional
+Falys Professional
 </div>
 
 <p class="plan-tagline">
@@ -162,8 +562,8 @@ UP TO 10 ENDPOINTS
 
 </ul>
 
-<a href="contact.html" class="btn secondary plan-cta">
-Get Started
+<a href="#request-invoice" class="btn secondary plan-cta" data-invoice-plan="professional">
+Request Invoice
 </a>
 
 </div>
@@ -179,7 +579,7 @@ MOST POPULAR
 </span>
 
 <div class="plan-name">
-FALYS Business
+Falys Business
 </div>
 
 <p class="plan-tagline">
@@ -210,8 +610,8 @@ UP TO 50 ENDPOINTS
 
 </ul>
 
-<a href="contact.html" class="btn primary plan-cta">
-Get Started
+<a href="#request-invoice" class="btn primary plan-cta" data-invoice-plan="business">
+Request Invoice
 </a>
 
 </div>
@@ -223,7 +623,7 @@ Get Started
 <div class="plan-card">
 
 <div class="plan-name">
-FALYS Enterprise
+Falys Enterprise
 </div>
 
 <p class="plan-tagline">
@@ -254,8 +654,8 @@ tailored to your deployment
 
 </ul>
 
-<a href="contact.html" class="btn secondary plan-cta">
-Contact Sales
+<a href="#request-invoice" class="btn secondary plan-cta" data-invoice-plan="enterprise">
+Request Quote
 </a>
 
 </div>
@@ -280,19 +680,19 @@ Contact Sales
 </tr>
 
 <tr>
-<td><strong>FALYS Professional</strong></td>
+<td><strong>Falys Professional</strong></td>
 <td>Up to 10</td>
 <td>$29/month or $290/year</td>
 </tr>
 
 <tr>
-<td><strong>FALYS Business</strong></td>
+<td><strong>Falys Business</strong></td>
 <td>Up to 50</td>
 <td>$99/month or $990/year</td>
 </tr>
 
 <tr>
-<td><strong>FALYS Enterprise</strong></td>
+<td><strong>Falys Enterprise</strong></td>
 <td>100+</td>
 <td>Custom pricing</td>
 </tr>
@@ -307,6 +707,49 @@ Contact Sales
 
 
 
+
+<!-- MANUAL PURCHASE / PROFORMA INVOICE -->
+<section class="section pricing-order-section" id="request-invoice" aria-labelledby="invoice-heading">
+  <div class="pricing-order-wrap">
+    <div class="pricing-order-intro">
+      <p class="tag">BUY FALYS DIRECTLY</p>
+      <h2 id="invoice-heading">Request an invoice</h2>
+      <p>Choose your plan and enter your billing details. Generate a <strong>proforma invoice (payment request)</strong>, then email the order to <a href="mailto:shizaalam50@gmail.com">shizaalam50@gmail.com</a>. No online payment is taken on this website.</p>
+      <div class="pricing-order-steps">
+        <span><b>1</b> Generate invoice</span><span><b>2</b> Email your request</span><span><b>3</b> Receive bank instructions</span><span><b>4</b> Pay &amp; get Falys</span>
+      </div>
+      <p class="pricing-order-note">After reviewing your request, we will send payment instructions for an international bank transfer. We provide the secure software download only after the payment is confirmed. Do not send passwords, card details, or banking credentials by email.</p>
+    </div>
+    <form id="falys-order-form" class="pricing-order-form" novalidate>
+      <div class="pricing-form-grid">
+        <label>Full name / company contact <span aria-hidden="true">*</span><input name="customerName" required maxlength="100" autocomplete="name" placeholder="Your full name"></label>
+        <label>Email address <span aria-hidden="true">*</span><input type="email" name="customerEmail" required maxlength="180" autocomplete="email" placeholder="you@company.com"></label>
+        <label>Company name (optional)<input name="companyName" maxlength="120" autocomplete="organization" placeholder="Company or individual"></label>
+        <label>Country <span aria-hidden="true">*</span><input name="country" required maxlength="80" autocomplete="country-name" placeholder="Country of purchase"></label>
+        <label>Plan <span aria-hidden="true">*</span><select name="plan" required><option value="professional">Falys Professional — up to 10 endpoints</option><option value="business">Falys Business — up to 50 endpoints</option><option value="enterprise">Falys Enterprise — custom quote</option></select></label>
+        <label>Billing period <span aria-hidden="true">*</span><select name="period" required><option value="monthly">Monthly</option><option value="annual">Annual</option></select></label>
+      </div>
+      <label>Requirements or billing notes (optional)<textarea name="notes" rows="3" maxlength="600" placeholder="Any details we should know before confirming your order?"></textarea></label>
+      <p class="pricing-form-error" id="falys-order-error" role="alert" hidden></p>
+      <div class="pricing-order-actions">
+        <button type="submit" class="btn primary">Generate Proforma Invoice</button>
+        <span>Invoice generation is free; no payment is collected here.</span>
+      </div>
+    </form>
+    <section id="falys-invoice-result" class="pricing-invoice-result" aria-live="polite" hidden>
+      <h3>Proforma invoice created</h3>
+      <p>This is a quotation/payment request, <strong>not a payment receipt</strong>. Email it to Falys to receive your payment instructions.</p>
+      <div id="falys-invoice-preview" class="pricing-invoice-preview"></div>
+      <div class="pricing-order-actions pricing-result-actions">
+        <button type="button" class="btn secondary" id="falys-print-invoice">Print / Save as PDF</button>
+        <a class="btn primary" id="falys-email-invoice" href="mailto:shizaalam50@gmail.com">Email Invoice Request</a>
+        <button type="button" class="btn secondary" id="falys-copy-invoice">Copy Invoice Details</button>
+      </div>
+      <p class="pricing-order-note">If your email app does not open, copy the invoice details and send them manually to <a href="mailto:shizaalam50@gmail.com">shizaalam50@gmail.com</a>. Attach the PDF if you saved it. An invoice number generated in your browser is a reference only and is not a confirmed order until we reply.</p>
+    </section>
+  </div>
+</section>
+
 <!-- SALES CTA -->
 
 
@@ -314,20 +757,18 @@ Contact Sales
 
 
 <h2>
-Not sure which plan fits?
+Have questions about purchasing?
 </h2>
 
 
 <p>
-Tell us how many endpoints you're securing and
-we'll help you pick the right tier — or scope a
-custom Enterprise deployment.
+Send your purchase request to shizaalam50@gmail.com. We will confirm your plan, provide bank-transfer instructions, and deliver the software after successful payment verification.
 </p>
 
 
 
-<a href="contact.html" class="btn primary">
-Talk to Sales
+<a href="#request-invoice" class="btn primary">
+Generate Invoice
 </a>
 
 
@@ -339,7 +780,7 @@ Talk to Sales
 <!-- FOOTER -->
 
 
-<footer class="th-f"><div class="w ft"><div><img class="fl" src="assets/images/logo-nav.png" onerror="this.onerror=null;this.src='assets/images/logo.png'" alt="FALYS" width="86" height="50" loading="lazy"><br>Enterprise File Integrity Monitoring</div><div><b>Product</b><a href="platform.html">Platform</a><a href="live-demo.html">Live demo</a><a href="pricing.html">Pricing</a></div><div><b>Resources</b><a href="docs/">Docs</a><a href="resources.html">Guides &amp; brochure</a></div><div><b>Company</b><a href="contact.html">Contact</a><a href="/assets/documents/FALYS_Buyer_Terms_and_Conditions.pdf" target="_blank" rel="noopener noreferrer">Terms &amp; conditions</a></div></div></footer>
+<footer class="th-f"><div class="w ft"><div><img class="fl" src="assets/images/logo-nav.png" onerror="this.onerror=null;this.src='assets/images/logo.png'" alt="Falys" width="86" height="50" loading="lazy"><br>Enterprise File Integrity Monitoring</div><div><b>Product</b><a href="platform.html">Platform</a><a href="live-demo.html">Live demo</a><a href="pricing.html">Pricing</a></div><div><b>Resources</b><a href="docs/">Docs</a><a href="resources.html">Guides &amp; brochure</a></div><div><b>Company</b><a href="contact.html">Contact</a><a href="/assets/documents/FALYS_Buyer_Terms_and_Conditions.pdf" target="_blank" rel="noopener noreferrer">Terms &amp; conditions</a></div></div></footer>
 <div class="th-stk"><a class="btn p" href="live-demo.html">Live demo</a><a class="btn" href="pricing.html">Pricing</a></div>
 
 
@@ -347,8 +788,146 @@ Talk to Sales
 
 <script src="js/main.js"></script>
 
-<!-- Pricing module script — only touches .pricing-toggle-btn elements -->
-<script src="js/pricing.js"></script>
+<!-- Pricing page-only invoice and billing logic; shared site JS remains unchanged. -->
+<script>
+/* =====================================================
+   Falys WEBSITE - PRICING PAGE MODULE (JS)
+   Self-contained. Only touches elements inside
+   .pricing-toggle / [data-monthly] / [data-annual] —
+   never queries or modifies anything main.js owns.
+   ===================================================== */
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const toggleButtons = document.querySelectorAll(".pricing-toggle-btn");
+    const priceAmounts = document.querySelectorAll(".plan-price-amount[data-monthly]");
+    const priceSubs = document.querySelectorAll(".plan-price-sub[data-monthly]");
+
+    if (!toggleButtons.length) return;
+
+    function setPeriod(period) {
+
+        toggleButtons.forEach((btn) => {
+            btn.classList.toggle("active", btn.dataset.period === period);
+        });
+
+        priceAmounts.forEach((el) => {
+            const value = el.dataset[period];
+            if (value) el.textContent = value;
+        });
+
+        priceSubs.forEach((el) => {
+            const value = el.dataset[period];
+            if (value !== undefined) el.textContent = value;
+        });
+    }
+
+    toggleButtons.forEach((btn) => {
+        btn.addEventListener("click", () => setPeriod(btn.dataset.period));
+    });
+
+    // default state matches whichever button already has .active in the HTML
+    const initial = document.querySelector(".pricing-toggle-btn.active");
+    setPeriod(initial ? initial.dataset.period : "monthly");
+
+});
+
+
+/* Manual purchase requests on static GitHub Pages; no payment collection. */
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("falys-order-form");
+  if (!form) return;
+  const result = document.getElementById("falys-invoice-result");
+  const preview = document.getElementById("falys-invoice-preview");
+  const error = document.getElementById("falys-order-error");
+  const emailLink = document.getElementById("falys-email-invoice");
+  const prices = {
+    professional: {name:"Falys Professional",monthly:29,annual:290},
+    business: {name:"Falys Business",monthly:99,annual:990},
+    enterprise: {name:"Falys Enterprise",monthly:null,annual:null}
+  };
+  let invoiceText = "";
+  let invoiceHTML = "";
+  const safe = value => String(value).replace(/[&<>\"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[c]));
+  const makeReference = () => {
+    const data = new Uint32Array(2);
+    if (window.crypto && window.crypto.getRandomValues) window.crypto.getRandomValues(data);
+    else { data[0] = Math.floor(Math.random()*4294967296); data[1] = Math.floor(Math.random()*4294967296); }
+    const day = new Date().toISOString().slice(0,10).replace(/-/g,'');
+    return `FALYS-${day}-${data[0].toString(36).toUpperCase()}${data[1].toString(36).toUpperCase()}`;
+  };
+  function updatePeriodDisabled() {
+    const custom = form.elements.plan.value === "enterprise";
+    form.elements.period.disabled = custom;
+  }
+  form.elements.plan.addEventListener("change", updatePeriodDisabled);
+  updatePeriodDisabled();
+  document.querySelectorAll("[data-invoice-plan]").forEach(link => link.addEventListener("click", () => {
+    form.elements.plan.value = link.dataset.invoicePlan;
+    const active = document.querySelector(".pricing-toggle-btn.active");
+    form.elements.period.value = active && active.dataset.period === "annual" ? "annual" : "monthly";
+    updatePeriodDisabled();
+  }));
+  document.querySelectorAll(".pricing-toggle-btn").forEach(btn => btn.addEventListener("click", () => {
+    if (!form.elements.period.disabled) form.elements.period.value = btn.dataset.period;
+  }));
+  form.addEventListener("submit", ev => {
+    ev.preventDefault();
+    error.hidden = true;
+    if (!form.reportValidity()) return;
+    const values = Object.fromEntries(new FormData(form).entries());
+    const plan = prices[values.plan];
+    if (!plan) return;
+    const period = values.plan === "enterprise" ? "Custom quote" : values.period === "annual" ? "Annual (12 months)" : "Monthly (1 month)";
+    const amount = values.plan === "enterprise" ? "To be confirmed" : `$${plan[values.period].toFixed(2)} USD`;
+    const ref = makeReference();
+    const date = new Date().toISOString().slice(0,10);
+    const rows = [
+      ["Reference", ref], ["Issue date (UTC)", date], ["Status", "PROFORMA — UNPAID"],
+      ["Seller", "Falys"], ["Seller email", "shizaalam50@gmail.com"],
+      ["Bill to", values.customerName], ["Customer email", values.customerEmail],
+      ["Company", values.companyName || "Not provided"], ["Country", values.country],
+      ["Product / plan", plan.name], ["Billing period", period], ["Listed price", amount],
+      ["Notes", values.notes || "None"]
+    ];
+    invoiceText = ["FALYS — PROFORMA INVOICE / PURCHASE REQUEST", ...rows.map(([k,v])=>`${k}: ${v}`),
+      "", "Payment method: International bank transfer — details provided by Falys after review.",
+      "Final price, tax treatment, licensing, and payment instructions are subject to seller confirmation.",
+      "No payment has been received. Delivery occurs only after confirmed payment.",
+      "Please reply with your invoice reference and do not email sensitive banking credentials."].join("\n");
+    invoiceHTML = `<div class="invoice-sheet"><div class="invoice-sheet-header"><div><strong>Falys</strong><p>File Integrity Monitoring &amp; Threat Detection</p></div><div><strong>PROFORMA INVOICE</strong><p>UNPAID — Not a receipt</p></div></div><table><tbody>${rows.map(([k,v])=>`<tr><th scope="row">${safe(k)}</th><td>${safe(v)}</td></tr>`).join("")}</tbody></table><p><strong>Payment:</strong> International bank transfer instructions are supplied after seller review. Any taxes, fees and final license terms are confirmed before payment.</p><p>No payment has been received. Falys is delivered after confirmed payment.</p><p>Contact: shizaalam50@gmail.com</p></div>`;
+    preview.innerHTML = invoiceHTML;
+    const subject = `Falys purchase request — ${ref}`;
+    const mailBody = `Hello Falys,
+
+Please review my proforma invoice and send the bank-transfer payment instructions.
+
+${invoiceText}
+
+Thank you.`;
+    emailLink.href = `mailto:shizaalam50@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(mailBody)}`;
+    result.hidden = false;
+    result.scrollIntoView({behavior:"smooth",block:"start"});
+  });
+  document.getElementById("falys-copy-invoice").addEventListener("click", async ev => {
+    if (!invoiceText) return;
+    try { await navigator.clipboard.writeText(invoiceText); ev.currentTarget.textContent = "Copied"; }
+    catch { window.prompt("Copy these invoice details:", invoiceText); }
+  });
+  document.getElementById("falys-print-invoice").addEventListener("click", () => {
+    if (!invoiceHTML) return;
+    const popup = window.open("", "_blank", "width=860,height=950");
+    if (!popup) { error.textContent = "Allow pop-ups for this site to print your invoice, or use the Copy Invoice Details button."; error.hidden = false; return; }
+    popup.document.open();
+    popup.document.write(`<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Falys Proforma Invoice</title><style>body{font:15px Arial,sans-serif;margin:35px;color:#172238}.invoice-sheet-header{display:flex;justify-content:space-between;gap:25px;border-bottom:2px solid #166d8a;padding-bottom:18px}table{border-collapse:collapse;width:100%;margin:22px 0}th,td{border-bottom:1px solid #ddd;text-align:left;padding:9px;vertical-align:top;overflow-wrap:anywhere}th{width:33%;background:#f5f7f9}p{line-height:1.55}@media print{body{margin:14mm}}</style></head><body>${invoiceHTML}</body></html>`);
+    popup.document.close();
+    popup.focus();
+    popup.print();
+  });
+});
+
+</script>
 
 
 </body>
