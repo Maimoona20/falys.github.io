@@ -1,4 +1,4 @@
-/* FALYS docs — tiny enhancements: active-section sidebar, search, copy buttons, mobile menu, back-to-top */
+/* Falys docs — tiny enhancements: active-section sidebar, search, copy buttons, mobile menu, back-to-top */
 (function(){
   var toc=document.getElementById('toc'),secs=[].slice.call(document.querySelectorAll('main section'));
   var tops=[].slice.call(toc.querySelectorAll(':scope>ul>li'));
